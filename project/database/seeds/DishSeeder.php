@@ -1,6 +1,9 @@
 <?php
 
 use App\Dish;
+use App\User;
+use App\Category;
+use App\Cart;
 use Illuminate\Database\Seeder;
 
 class DishSeeder extends Seeder
@@ -12,6 +15,18 @@ class DishSeeder extends Seeder
      */
     public function run()
     {
-        factory(Dish::class, 25) -> create();
+        
+        factory(Dish::class, 25) 
+            -> make()
+            -> each(function($dish){
+
+                $user = User::inRandomOrder() -> first();
+                $dish -> user() -> associate($user);
+                
+                $category = Category::inRandomOrder() -> first();
+                $dish -> category() -> associate($category);
+                
+                $dish -> save();
+            });
     }
 }

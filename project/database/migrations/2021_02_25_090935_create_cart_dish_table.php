@@ -16,8 +16,8 @@ class CreateCartDishTable extends Migration
         Schema::create('cart_dish', function (Blueprint $table) {
             $table -> id();
 
-            $table -> bigInteger('id_dish') -> unsigned();
-            $table -> bigInteger('id_cart') -> unsigned();
+            $table -> bigInteger('dish_id') -> unsigned();
+            $table -> bigInteger('cart_id') -> unsigned();
 
             $table -> timestamps();
         });

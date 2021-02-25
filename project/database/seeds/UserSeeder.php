@@ -1,17 +1,17 @@
 <?php
 
-use App\Restaurant;
+use App\User;
 use Illuminate\Database\Seeder;
 
-class RestaurantSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
-     * @return void 
+     * @return void
      */
     public function run()
     {
-        factory(Restaurant::class, 25) -> create();
+        factory(User::class, 25) -> create();
     }
 }

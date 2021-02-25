@@ -9,7 +9,7 @@ class CreateDishesTable extends Migration
     /**
      * Run the migrations.
      *
-     * @return void
+     * @return void 
      */
     public function up()
     {
@@ -20,14 +20,12 @@ class CreateDishesTable extends Migration
             $table -> tinyInteger('status');
             $table -> integer('price');
             $table -> text('description');
-            $table -> text('img_dish'); 
+            $table -> text('img_dish');
 
             //foreign keys
-            /*
-            $table -> bigInteger('id_category') -> unsigned(); 
-            $table -> bigInteger('id_restaurant') -> unsigned(); 
-            $table -> bigInteger('id_cart') -> unsigned(); 
-            */
+            $table -> bigInteger('user_id') -> unsigned(); 
+            $table -> bigInteger('category_id') -> unsigned(); 
+
             $table -> timestamps();
         });
     }

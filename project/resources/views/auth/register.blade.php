@@ -42,11 +42,80 @@
                         </div>
 
                         {{-- address --}}
+                        <div class="form-group row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
+
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         {{-- city --}}
+                        <div class="form-group row">
+                            <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city" autofocus>
+
+                                @error('city')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         {{-- IVA --}}
+                        <div class="form-group row">
+                            <label for="IVA" class="col-md-4 col-form-label text-md-right">{{ __('IVA') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="IVA" type="text" class="form-control @error('IVA') is-invalid @enderror" name="IVA" value="{{ old('IVA') }}" required autocomplete="IVA" autofocus>
+
+                                @error('IVA')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         {{-- DAY_OFF --}}
+                       <div class="form-group row">
+                            <label for="day_off" class="col-md-4 col-form-label text-md-right">{{ __('Day off') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="day_off" type="text" class="form-control @error('day_off') is-invalid @enderror" name="day_off" value="{{ old('day_off') }}" required autocomplete="day_off" autofocus>
+
+                                @error('day_off')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         {{-- LOGO --}}
-                        {{-- RATING --}}
+                       <div class="form-group row">
+                            <label for="logo" class="col-md-4 col-form-label text-md-right">{{ __('Logo') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="logo" type="text" class="form-control @error('logo') is-invalid @enderror" name="logo" value="{{ old('logo') }}" required autocomplete="logo" autofocus>
+
+                                @error('logo')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
 
                         {{-- password --}}
                         <div class="form-group row">

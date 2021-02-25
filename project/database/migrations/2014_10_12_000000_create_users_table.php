@@ -22,15 +22,17 @@ class CreateUsersTable extends Migration
             $table -> string('password');
             $table -> rememberToken();
 
-            /*
+            
             $table -> string('address', 100);
+            
             $table -> string('city', 100);
             $table -> string('IVA', 100) -> unique(); 
             $table -> string('day_off', 50);
+            /*
             $table -> text('logo');
             */
             
-            $table -> tinyInteger('rating') -> unsigned() -> default(rand(1, 5));
+            $table -> tinyInteger('rating') -> unsigned() -> default(0);
             
             $table  -> timestamps();
         });

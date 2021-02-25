@@ -25,9 +25,9 @@ class CreatePaymentsTable extends Migration
             $table -> text('note');
 
             //foreign keys
+            $table -> bigInteger('user_id') -> unsigned();
             /*
-            $table -> bigInteger('id_cart') -> unsigned();
-            $table -> bigInteger('id_restaurant') -> unsigned();
+            $table -> bigInteger('cart_id') -> unsigned();
             */
              
             $table -> timestamps();

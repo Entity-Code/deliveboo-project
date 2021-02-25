@@ -1,6 +1,8 @@
 <?php
 
 use App\Payment;
+use App\User;
+
 use Illuminate\Database\Seeder;
 
 class PaymentSeeder extends Seeder
@@ -12,6 +14,13 @@ class PaymentSeeder extends Seeder
      */
     public function run()
     {
-        factory(Payment::class, 25) -> create();
+        factory(Payment::class, 50) 
+		    -> make() 
+		    -> each(function($payment){ 
+            //dd($payment);
+            $user = User::inRandomOrder() -> first(); 
+            $payment -> user() -> associate($user); 
+            $payment -> save();
+        });
     }
 }
