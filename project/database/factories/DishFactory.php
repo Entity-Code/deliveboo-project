@@ -15,3 +15,4 @@ $factory->define(Dish::class, function (Faker $faker) {
         'img_dish' => $faker -> imageUrl()
     ];
 }); 
+ 

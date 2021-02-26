@@ -27,13 +27,6 @@ class AddForeignKeys extends Migration
                    -> on('categories');
         });
 
-        //user-payments (1..n)
-        Schema::table('payments', function (Blueprint $table) {
-            $table -> foreign('user_id', 'payment-user')
-                   -> references('id')
-                   -> on('users');
-        });
-
         //typology-users (n..n)
         Schema::table('typology_user', function (Blueprint $table) {
             $table -> foreign('typology_id', 'tu-typology')
@@ -45,16 +38,17 @@ class AddForeignKeys extends Migration
                    -> on('users');
         });
 
-        //cart-dish (n..n)
-        Schema::table('cart_dish', function (Blueprint $table) {
-            $table -> foreign('cart_id', 'cd-cart')
-                   -> references('id')
-                   -> on('carts');
-
-            $table -> foreign('dish_id', 'cd-dish')
+        //dish-payment (n..n)
+        Schema::table('dish_payment', function (Blueprint $table) {
+            $table -> foreign('dish_id', 'dp-dish')
                    -> references('id')
                    -> on('dishes');
+
+            $table -> foreign('payment_id', 'dp-payment')
+                   -> references('id')
+                   -> on('payments');
         });
+
 
     }
 
@@ -64,14 +58,15 @@ class AddForeignKeys extends Migration
      * @return void 
      */
     public function down() //3 2 1 (delle table all'interno degli schema)
-    { 
+    {
 
-        //cart-dish (n..n)
-        Schema::table('cart_dish', function (Blueprint $table) {
+        //dish-payment (n..n)
+        Schema::table('dish_payment', function (Blueprint $table) {
             
-            $table -> dropForeign('cd-dish'); 
-            $table -> dropForeign('cd-cart'); 
+            $table -> dropForeign('dp-payment'); 
+            $table -> dropForeign('dp-dish');  
         });
+
 
         //typology-users (n..n)
         Schema::table('typology_user', function (Blueprint $table) {
@@ -91,12 +86,6 @@ class AddForeignKeys extends Migration
         Schema::table('dishes', function (Blueprint $table) {
             
 			$table -> dropForeign('category-dish');
-	    });
-
-        //user-payment (1..n)
-        Schema::table('payments', function (Blueprint $table) {
-            
-			$table -> dropForeign('payment-user');
 	    });
         
     }

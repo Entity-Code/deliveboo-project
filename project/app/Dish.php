@@ -13,7 +13,7 @@ class Dish extends Model
         'price',
         'description',
         'img_dish' 
-    ];
+    ]; 
 
 
     public function user() {
@@ -26,9 +26,10 @@ class Dish extends Model
         return $this -> belongsTo(Category::class);
     }
 
-    public function carts(){
-
-        return $this -> belongsToMany(Cart::class);
+    public function payments() {
+        
+        return $this -> belongsToMany(Payment::class);
     }
+
     
 }

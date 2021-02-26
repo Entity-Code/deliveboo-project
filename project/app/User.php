@@ -29,10 +29,6 @@ class User extends Authenticatable
         return $this -> hasMany(Dish::class);
     }
 
-    public function payments() {
-        return $this -> hasMany(Payment::class);
-    }
-
     public function typologies(){
         return $this -> belongsToMany(Typology::class);
     }

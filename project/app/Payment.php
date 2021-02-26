@@ -17,9 +17,9 @@ class Payment extends Model
         'note'
     ];
 
-    public function user() {
+    public function dishes() {
         
-        return $this -> belongsTo(User::class);
+        return $this -> belongsToMany(Dish::class);
     }
 
 }

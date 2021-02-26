@@ -3,7 +3,6 @@
 use App\Dish;
 use App\User;
 use App\Category;
-use App\Cart;
 use Illuminate\Database\Seeder;
 
 class DishSeeder extends Seeder

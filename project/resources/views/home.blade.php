@@ -14,8 +14,39 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
                 </div>
+
+                <h1>
+                    
+                    {{$user -> logo }} <br>
+
+                    Name: {{$user -> name }} <br>
+                    IVA: {{$user -> IVA }} <br>
+                    email: {{$user -> email }} <br>
+                    address: {{$user -> address }} <br>
+                    city: {{$user -> city }} <br>
+                    day_off: {{$user -> day_off }} <br>
+                    rating: {{$user -> rating }}
+
+
+
+                </h1>
+                    
+
+
+
+
+                {{-- my foods --}}
+                <a class="btn btn-lg btn-success" href="{{route('dish-index')}}" >foods</a>
+
+                {{-- my orders --}}
+                <a class="btn btn-danger btn-lg" href="{{route('order-index')}}" >orders</a>
+                
+
+
+
+
+
             </div>
         </div>
     </div>
