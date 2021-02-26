@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Dish;
 use App\Category;
+use App\User;
 
 
 class DishController extends Controller
@@ -26,34 +27,29 @@ class DishController extends Controller
 
     public function create() {
 
+        $users = User::all();
         $dishes = Dish::all();
         $categories = Category::all();
 
-        return view('pages.dish-create', compact('dishes', 'categories'));
+        return view('pages.dish-create', compact('dishes', 'users', 'categories'));
     }
 
     public function store(Request $request) {
         //dd($request -> all());
         
+        //dd($newDish);
+        
+        $user = User::findOrFail($request -> get('user_id'));
         $newDish = Dish::make($request -> all());
+        $newDish -> user() -> associate($user);
+        $newDish -> save();
+        
         //dd($newDish);
         
-        $category = Category::findOrFail($request -> get('category_id'));
-        $newDish -> category() -> associate($category);
-        $newDish -> save(); 
-        //dd($newDish);
-        
-        //return redirect() -> route('dish-index');
+        $categories = User::findOrFail($request -> get('categories'));
+        $newDish -> categories() -> attach($categories);
 
-        /*
-        $data = Request::all();
-        $dish = Dish::findOrFail($data['category_id']);
-        $category = Category::make($request -> all());
-        $category -> dish() -> associate($dish);
-        $category -> save(); 
-        
-        
-        */
+        //return redirect() -> route('dish-index');
         
 
     }

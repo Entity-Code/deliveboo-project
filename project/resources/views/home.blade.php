@@ -18,8 +18,8 @@
 
                 <h1>
                     
-                    {{$user -> logo }} <br>
-
+                    {{-- {{$user -> logo }} <br> --}}
+                    
                     Name: {{$user -> name }} <br>
                     IVA: {{$user -> IVA }} <br>
                     email: {{$user -> email }} <br>
@@ -36,11 +36,11 @@
 
 
 
-                {{-- my foods --}}
-                <a class="btn btn-lg btn-success" href="{{route('dish-index')}}" >foods</a>
+                {{-- I MIEI PIATTI --}}
+                <a class="btn btn-lg btn-success" href="{{route('dish-index')}}">MY MENU</a></a>
 
-                {{-- my orders --}}
-                <a class="btn btn-danger btn-lg" href="{{route('order-index')}}" >orders</a>
+                {{-- ORDINI RICEVUTI --}}
+                <a class="btn btn-danger btn-lg" href="{{route('order-index')}}"> ORDERS RECEIVED</a>
                 
 
 

@@ -24,13 +24,11 @@ class CreateUsersTable extends Migration
 
             
             $table -> string('address', 100);
-            
             $table -> string('city', 100);
             $table -> string('IVA', 100) -> unique(); 
             $table -> string('day_off', 50);
-            /*
-            $table -> text('logo');
-            */
+            //$table -> text('logo');
+            
             
             $table -> tinyInteger('rating') -> unsigned() -> default(0);
             

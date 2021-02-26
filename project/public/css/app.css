@@ -10944,3 +10944,26 @@ a.text-dark:focus {
   }
 }
 
+body {
+  background: #2c2c2c;
+  color: white;
+}
+
+body .navbar {
+  background-color: black;
+}
+
+body .navbar .container .navbar-brand,
+body .navbar .container .nav-link {
+  color: white;
+  transition: all 0.1s;
+  font-size: 17.5px;
+}
+
+body .navbar .container .nav-link:hover {
+  font-size: 17.5px;
+  color: black;
+  padding: 7.5px 10px;
+  background-color: white;
+}
+

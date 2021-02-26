@@ -19,6 +19,8 @@ $factory->define(User::class, function (Faker $faker) {
         'address' => $faker -> address(),
         'city' => $faker -> city(),
         'IVA' => $faker -> ipv4(),
-        'day_off' => $faker -> dayOfWeek()
+        'day_off' => $faker -> dayOfWeek(),
+        //'logo' => $faker -> imageUrl()
+
     ];
 });
