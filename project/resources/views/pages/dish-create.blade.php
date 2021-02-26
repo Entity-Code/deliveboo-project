@@ -42,16 +42,19 @@
         </div>
 
         <br>
-
+    
         <label for="category_id">category_id</label>
+
         <select class="" name="category_id">
+
             @foreach ($categories as $category)
                 <option value="{{$category -> id}}">
                     {{$category -> name}}
                 </option>
             @endforeach
-        </select>
 
+        </select>
+        
       <button type="submit" class="btn btn-primary">Submit</button>
       </form>
 

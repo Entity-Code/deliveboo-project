@@ -13,8 +13,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')
     -> name('home');
 
-
-
 //dishes
 Route::get('/dishes', 'DishController@index')   
     -> name('dish-index');
