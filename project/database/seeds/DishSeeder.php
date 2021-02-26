@@ -26,7 +26,10 @@ class DishSeeder extends Seeder
                 $category = Category::inRandomOrder() -> first();
                 $dish -> category() -> associate($category);
                 
-                $dish -> save();
+                $dish -> save(); 
             });
+        
+            
+        
     }
 }

@@ -11,4 +11,9 @@ class Cart extends Model
         'quantity',
     ];
 
-}
+    public function dishes(){
+
+        return $this -> belongsToMany(Dish::class);
+    }
+
+} 

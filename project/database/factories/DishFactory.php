@@ -14,4 +14,4 @@ $factory->define(Dish::class, function (Faker $faker) {
         'description' => $faker -> paragraph(),
         'img_dish' => $faker -> imageUrl()
     ];
-});
+}); 

@@ -11,7 +11,7 @@ class CreateTypologyUserTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up() 
     {
         Schema::create('typology_user', function (Blueprint $table) {
             $table->id();
@@ -24,7 +24,7 @@ class CreateTypologyUserTable extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations. 
      *
      * @return void
      */

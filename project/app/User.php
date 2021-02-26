@@ -33,6 +33,10 @@ class User extends Authenticatable
         return $this -> hasMany(Payment::class);
     }
 
+    public function typologies(){
+        return $this -> belongsToMany(Typology::class);
+    }
+
 
 
     /**

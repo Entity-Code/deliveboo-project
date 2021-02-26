@@ -9,4 +9,4 @@ $factory->define(Typology::class, function (Faker $faker) {
     return [
         'name' => $faker -> unique() -> word()
     ];
-});
+}); 

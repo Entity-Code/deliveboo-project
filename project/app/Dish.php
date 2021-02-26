@@ -12,17 +12,23 @@ class Dish extends Model
         'status',
         'price',
         'description',
-        'img_dish'
+        'img_dish' 
     ];
 
 
     public function user() {
+
         return $this -> belongsTo(User::class); 
     }
     
-    
     public function category() {
+
         return $this -> belongsTo(Category::class);
+    }
+
+    public function carts(){
+
+        return $this -> belongsToMany(Cart::class);
     }
     
 }
