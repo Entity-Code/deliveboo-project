@@ -15,7 +15,7 @@
                         <img src="{{$dish -> img_dish}}" width="200px">
                         <p>
                             Category: {{$dish -> category -> name}} <br>
-                            price: {{$dish -> price}}€ <br> 
+                            price: {{$dish -> price/100}}€ <br>
                             description: {{$dish -> description}} <br>
 
                             status: 

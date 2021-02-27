@@ -38,6 +38,8 @@ class DishController extends Controller
     public function store(Request $request) {
         //dd($request -> all());
 
+        $request = $this -> conversion($request);
+
         //validazione
         /*
         Validator::make($request -> all(), [
@@ -56,7 +58,9 @@ class DishController extends Controller
         $newDish -> category() -> associate($category);
 
         $newDish -> save();
+
         
+
         return redirect() -> route('dish-index');   
     }
 
@@ -110,5 +114,16 @@ class DishController extends Controller
         return redirect() -> route('dish-index');
     }
 
+    //conversione euro -> cent (richiamata in store)
+    private function conversion($request) {
 
-}
+        $price = $request -> get('price') * 100;
+        $request -> merge([
+            'price' => $price
+        ]);
+        
+        return $request; 
+    }
+}   
+
+
