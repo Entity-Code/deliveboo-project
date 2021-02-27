@@ -12,8 +12,8 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                background-color: black;
+                color: white;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 100vh;
@@ -48,14 +48,15 @@
                 font-size: 84px;
             }
 
-            .links > a {
-                color: #636b6f;
+            .links > a, li {
+                color: white;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+                display: inline-block;
             }
 
             .m-b-md {
@@ -81,18 +82,16 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Deliveboo
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <ul>
+                        <li>Pizzeria da gigi</li>
+                        <li>Pizzeria da gigi</li>
+                        <li>Pizzeria da gigi</li>
+                        <li>Pizzeria da gigi</li>
+                    </ul>
                 </div>
             </div>
         </div>

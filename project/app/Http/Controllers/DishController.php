@@ -36,22 +36,28 @@ class DishController extends Controller
 
     public function store(Request $request) {
         //dd($request -> all());
-        
-        //dd($newDish);
-        
-        $user = User::findOrFail($request -> get('user_id'));
+
         $newDish = Dish::make($request -> all());
+
+        $user = User::findOrFail($request -> get('user_id'));
+        $category = Category::findOrFail($request -> get('category_id'));
+
         $newDish -> user() -> associate($user);
+        $newDish -> category() -> associate($category);
+
         $newDish -> save();
         
-        //dd($newDish);
+        return redirect() -> route('dish-index');
         
-        $categories = User::findOrFail($request -> get('categories'));
-        $newDish -> categories() -> attach($categories);
+    }
 
-        //return redirect() -> route('dish-index');
-        
 
+    public function delete($id) {
+
+        $dish = Dish::findOrFail($id);
+        $dish -> delete();
+
+        return redirect() -> route('dish-index');
     }
 
 

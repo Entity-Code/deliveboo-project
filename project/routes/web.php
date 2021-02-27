@@ -13,14 +13,19 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')
     -> name('home');
 
+    
 //dishes
 Route::get('/dishes', 'DishController@index')   
     -> name('dish-index');
-//dishes create-store
-Route::get('/create/dish', 'DishController@create')
-    -> name('dish-create');
-Route::post('/store/dish', 'DishController@store')
-    -> name('dish-store');
+    //dishes create-store
+    Route::get('/create/dish', 'DishController@create')
+        -> name('dish-create');
+    Route::post('/store/dish', 'DishController@store')
+        -> name('dish-store');
+    //delete
+    Route::get('/delete/dish/{id}', 'DishController@delete')
+        -> name('dish-delete');
+    
 
 //orders
 Route::get('/orders', 'OrderController@index') 

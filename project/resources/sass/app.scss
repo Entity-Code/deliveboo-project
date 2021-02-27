@@ -10,6 +10,9 @@
 body{
     background: rgb(44, 44, 44);
     color: white;
+    .card {
+        color: black;
+    }
     .navbar{
         background-color: black;
 
@@ -19,7 +22,7 @@ body{
                 transition: all 0.10s;
                 font-size: 17.5px;            
             }
-
+            
             .nav-link:hover{
                 font-size: 17.5px;
                 color: black;

@@ -10949,6 +10949,10 @@ body {
   color: white;
 }
 
+body .card {
+  color: black;
+}
+
 body .navbar {
   background-color: black;
 }

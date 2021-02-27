@@ -2,71 +2,81 @@
 
 @section('content') 
     
-    <h1>creazione pagina</h1>
+    <h1 class="ml-5">creazione pagina</h1>
 
-    <form class="ml-5 w-25 .mx-auto" action="{{route('dish-store')}}" method="POST">
+    <form class="ml-5 w-25 .mx-auto mt-5" action="{{route('dish-store')}}" method="POST">
         @csrf
         @method('POST')
         
+        <label for="category_id mb-4">Category</label> <br>
+        <select name="category_id" class="mb-4">
+            @foreach ($categories as $category)
+                <option value="{{$category -> id}}">{{ $category -> name }}</option>
+            @endforeach
+        </select>
+
+        {{-- nome piatto --}}
         <div class="form-group">
-          <label for="name">name</label>
+          <label for="name">Name</label>
           <input name="name" type="text" class="form-control">
         </div>
 
         <br>
 
+        {{-- descrizione piatto --}}
         <div class="form-group">
-          <label for="description">descr</label>
+          <label for="description">Description</label>
           <input name="description" type="text" class="form-control">
         </div>
 
         <br>
 
+        {{-- prezzo piatto --}}
         <div class="form-group">
-          <label for="price">price</label>
+          <label for="price">Price</label> (€)
           <input name="price" type="text" class="form-control">
         </div>
 
         <br>
         
+
+
+        {{-- img piatto --}}
         <div class="form-group">
-            <label for="status">status</label></label>
-            <input name="status" type="text" class="form-control">
+          <label for="img_dish">Image (url)</label>
+          <input name="img_dish" type="text" class="form-control">
         </div>
 
         <br>
 
+        {{-- stato piatto (0,1) (default value, not visible) --}}
         <div class="form-group">
-            <label for="img_dish">img</label></label>
-            <input name="img_dish" type="text" class="form-control">
+          <input 
+            name="status"
+            type="text"
+            class="form-control"
+            value="1"
+            readonly
+            style="display: none"
+          >
         </div>
 
-        <br>
-    
-        <label for="user_id">User:</label>
-        {{-- user id --}}
-        <select class="" name="user_id">
-            @foreach ($users as $user)
-                <option value="{{$user -> id}}">
-                    {{$user -> name}} ({{$user -> id}})
-                </option>
-            @endforeach
-        </select>
+        {{-- user id (default value, not visible)--}}
+        <div class="form-group">
+          <input 
+            name="user_id"
+            type="text" 
+            class="form-control"
+            value="{{Auth::user() -> id}}"
+            readonly
+            style="display: none"
+          >
+        </div>
 
         <br>        
-        
-        <label for="categories[]">Categories:</label> <br>
-        {{-- mi ritorno un array di typologies (quelle selezionate dall'utente), per poi lavorarmelo nel controller (vedere in store) --}}
-            @foreach ($categories as $category)
-                <input name="categories[]" 
-                type="checkbox" 
-                value="{{$category -> id}}"> 
 
-                    {{ $category -> name}} 
-                    
-                <br>
-            @endforeach
         
+          
       <button type="submit" class="btn btn-primary">Submit</button>
       </form>
 
