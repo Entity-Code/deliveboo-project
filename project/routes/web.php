@@ -22,7 +22,12 @@ Route::get('/dishes', 'DishController@index')
         -> name('dish-create');
     Route::post('/store/dish', 'DishController@store')
         -> name('dish-store');
-    //delete
+    //dishes edit-update
+    Route::get('/edit/dish/{id}', 'DishController@edit')
+        -> name('dish-edit');
+    Route::post('/update/dish/{id}', 'DishController@update')
+        -> name('dish-update');
+    //dishes delete
     Route::get('/delete/dish/{id}', 'DishController@delete')
         -> name('dish-delete');
     

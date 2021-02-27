@@ -18,7 +18,7 @@
 
                 <h1>
                     
-                    {{-- {{$user -> logo }} <br> --}}
+                    <img src="{{$user -> logo}}" width="200px"> <br> 
                     
                     Name: {{$user -> name }} <br>
                     IVA: {{$user -> IVA }} <br>

@@ -56,7 +56,8 @@ class RegisterController extends Controller
             'address' => ['required'],
             'city' => ['required'],
             'IVA' => ['required'], 
-            'day_off' => ['required']
+            'day_off' => ['required'],
+            'logo' => ['required']
         ]);
     }
 
@@ -75,7 +76,8 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'city' => $data['city'],
             'IVA' => $data['IVA'],
-            'day_off' => $data['day_off']
+            'day_off' => $data['day_off'],
+            'logo' => $data['logo']
         ]);
     }
 }

@@ -20,7 +20,7 @@ $factory->define(User::class, function (Faker $faker) {
         'city' => $faker -> city(),
         'IVA' => $faker -> ipv4(),
         'day_off' => $faker -> dayOfWeek(),
-        //'logo' => $faker -> imageUrl()
+        'logo' => $faker -> imageUrl()
 
     ];
 });

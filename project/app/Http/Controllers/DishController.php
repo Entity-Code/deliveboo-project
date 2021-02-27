@@ -18,24 +18,34 @@ class DishController extends Controller
         $this->middleware('auth');
     }
     
+    //index (senza show)
     public function index() {
         
         $dishes = Dish::all();
-        
+
         return view('pages.dish-index', compact('dishes'));
     }
 
+    //create-store
     public function create() {
 
         $users = User::all();
         $dishes = Dish::all();
         $categories = Category::all();
-
+        
         return view('pages.dish-create', compact('dishes', 'users', 'categories'));
     }
-
     public function store(Request $request) {
         //dd($request -> all());
+
+        //validazione
+        /*
+        Validator::make($request -> all(), [
+            'name' => 'required|min:5|max:15',
+            'description' => 'required|min:5|max:20,
+            ...
+        ]) -> validate();
+        */
 
         $newDish = Dish::make($request -> all());
 
@@ -47,11 +57,51 @@ class DishController extends Controller
 
         $newDish -> save();
         
-        return redirect() -> route('dish-index');
-        
+        return redirect() -> route('dish-index');   
     }
 
+    //edit-update
+    public function edit($id) {
 
+        $users = User::all();
+        $categories = Category::all();
+
+        $dish = Dish::findOrFail($id);
+
+        return view('pages.dish-edit', compact('users','categories','dish'));
+    }
+    public function update(Request $request, $id) {
+
+        $data = $request -> all();
+        //dd($data);
+
+        //validazione
+        /*
+        Validator::make($data, [
+            'name' => 'required|min:5|max:15',
+            'description' => 'required|min:5|max:20,
+            ...
+        ]) -> validate();
+        */
+        
+        $user = User::findOrFail($data['user_id']);
+        $category = Category::findOrFail($data['category_id']);
+
+        $editDish = Dish::findOrFail($id);
+        $editDish -> update($data);
+
+        $editDish -> user() -> associate($user);
+        $editDish -> category() -> associate($category);
+
+        $editDish -> save();
+        
+        return redirect() -> route('dish-index');
+        
+
+
+    }
+
+    //delete
     public function delete($id) {
 
         $dish = Dish::findOrFail($id);

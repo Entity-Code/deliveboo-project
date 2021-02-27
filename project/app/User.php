@@ -22,7 +22,8 @@ class User extends Authenticatable
         'address',
         'city',
         'IVA',
-        'day_off'
+        'day_off',
+        'logo'
     ];
 
     public function dishes() {
