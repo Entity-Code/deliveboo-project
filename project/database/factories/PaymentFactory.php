@@ -11,7 +11,7 @@ $factory->define(Payment::class, function (Faker $faker) {
         'lastname' => $faker -> lastName(),
         'email' => $faker -> safeEmail(),
         'address' => $faker -> streetAddress(),
-        'total_price' => $faker -> numberBetween($min = 1000, $max = 200000),
+        'total_price' => $faker -> numberBetween($min = 1000, $max = 20000),
         'status' => rand(0,1),
         'note' => $faker -> paragraph()
     ];

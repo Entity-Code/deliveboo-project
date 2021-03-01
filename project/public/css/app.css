@@ -10971,3 +10971,7 @@ body .navbar .container .nav-link:hover {
   background-color: white;
 }
 
+body a {
+  color: white !important;
+}
+

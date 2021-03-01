@@ -17,6 +17,7 @@ class CreateTypologiesTable extends Migration
             $table -> id();
             
             $table -> string('name', 100) -> unique();
+            $table -> text('img_typs');
 
             $table -> timestamps();
         });

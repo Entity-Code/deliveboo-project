@@ -18,7 +18,7 @@ class PaymentSeeder extends Seeder
             -> create()                   //le salvo direttamente in database
             -> each(function($payment) {      //per ogni typologies:
             //prendi user casualmente, recupero da 1 a 5 employee
-            $dishes = Dish::inRandomOrder() -> get();   
+            $dishes = Dish::inRandomOrder() -> limit(5) -> get();   
             $payment -> dishes() -> attach($dishes);
 
         });

@@ -4,17 +4,24 @@
 
     <h1>
         lista degli ordini
-        <a href="{{route('order-stats')}}" class="btn btn-primary btn-lg">statistiche</a>
-        
+        <a href="{{route('order-stats')}}" class="btn btn-primary btn-lg">statistiche</a> 
     </h1>
-    <ul>
-        @foreach ($orders as $order)
-            <li>
-                {{$order -> firstname}}
-                {{$order -> total_price}}
-            </li>
+
+        @foreach ($orders as $order)  
+            <ul>
+                @foreach ($order -> dishes as $dish)
+                    @if (Auth::user() -> id === $dish -> user_id)       
+                        <li class="card p-3 mr-5"> 
+                            @if ($loop -> parent -> count)
+                                
+                                <a href="{{route('order-show', $order -> id)}}">total price: {{$order -> total_price/100}} (id:{{$order -> id}})</a> 
+                            @break
+                            @endif 
+                        </li>
+                    @endif
+                @endforeach
+            </ul>                        
         @endforeach
-    </ul>
-
-
+    
 @endsection
+ 

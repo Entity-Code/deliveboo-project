@@ -17,7 +17,7 @@
                             Category: {{$dish -> category -> name}} <br>
                             price: {{$dish -> price/100}}€ <br>
                             description: {{$dish -> description}} <br>
-
+                            id: {{$dish -> id}} <br>
                             status: 
                             @if ($dish -> status === 1)
                                 available

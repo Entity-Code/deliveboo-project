@@ -76,6 +76,7 @@ class DishController extends Controller
     }
     public function update(Request $request, $id) {
 
+        $request = $this -> conversion($request);
         $data = $request -> all();
         //dd($data);
 
@@ -88,6 +89,8 @@ class DishController extends Controller
         ]) -> validate();
         */
         
+        
+
         $user = User::findOrFail($data['user_id']);
         $category = Category::findOrFail($data['category_id']);
 
@@ -101,8 +104,6 @@ class DishController extends Controller
         
         return redirect() -> route('dish-index');
         
-
-
     }
 
     //delete
@@ -122,7 +123,7 @@ class DishController extends Controller
             'price' => $price
         ]);
         
-        return $request; 
+        return $request;
     }
 }   
 

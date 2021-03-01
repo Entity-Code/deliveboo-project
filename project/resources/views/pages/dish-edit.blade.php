@@ -58,7 +58,7 @@
             name="price" 
             type="text" 
             class="form-control"
-            value="{{$dish -> price}}"
+            value="{{$dish -> price/100}}"
           >
         </div>
 

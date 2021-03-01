@@ -18,6 +18,7 @@
                 font-weight: 200;
                 height: 100vh;
                 margin: 0;
+                scroll-behavior: smooth;
             }
 
             .full-height {
@@ -62,6 +63,19 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .box{
+                transition: all 1s;
+                height: 100vh;
+            }
+
+            a{
+                color: white !important;
+            }
+            
+
+            
+
         </style>
     </head>
     <body>
@@ -71,7 +85,10 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
+                        
+
                         <a href="{{ route('login') }}">Login</a>
+                        
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}">Register</a>
@@ -93,7 +110,43 @@
                         <li>Pizzeria da gigi</li>
                     </ul>
                 </div>
+                <a href="#scroll-up">freccia down</a>
             </div>
         </div>
+        
+        
+        <section class="box" id="scroll-down">
+            <h1>Typology</h1> <br>
+            <ul>
+                @foreach ($typs as $typ)
+                    <li>
+                        <a href="{{route('typ-show', $typ -> id)}}">
+                            {{$typ -> name}}
+                        </a> <br>
+                        <img src="{{$typ -> img_typs}}" style="width:200px; height:180px;">
+                        
+                    </li>
+                @endforeach
+            </ul>
+        </section>
+
+
+        <section class="box" id="scroll-up">
+            <h1>Ciao</h1> <br>
+            <ul>
+                @foreach ($typs as $typ)
+                    <li>
+                        <a href="{{route('typ-show', $typ -> id)}}">
+                            {{$typ -> name}}
+                        </a> <br>
+                        <img src="{{$typ -> img_typs}}" style="width:200px; height:180px;">
+                        
+                    </li>
+                @endforeach
+            </ul>
+        </section>
+
+        <a href="#scroll-down" >freccia up</a>
+        
     </body>
 </html>

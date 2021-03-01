@@ -3,17 +3,27 @@
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
 //dashboard
 Route::get('/home', 'HomeController@index')
     -> name('home');
+    Route::get('/','TypologyController@index')
+        -> name('welcome');
+    Route::get('/show/typology/{id}', 'TypologyController@show')
+        -> name('typ-show');
+    //index
+    //Route::get('/index/menu/', 'UserMenuController@index')
+        //->name('user-menu-index');
+    //show
+    Route::get('/show/menu/{id}', 'UserMenuController@show')
+        ->name('user-menu-show');
 
-    
+
+
+
+//RISTORANTE
 //dishes
 Route::get('/dishes', 'DishController@index')   
     -> name('dish-index');
@@ -30,14 +40,16 @@ Route::get('/dishes', 'DishController@index')
     //dishes delete
     Route::get('/delete/dish/{id}', 'DishController@delete')
         -> name('dish-delete');
-    
 
 //orders
 Route::get('/orders', 'OrderController@index') 
     -> name('order-index');
-//orders-stats
-Route::get('/stats', 'OrderController@stats') 
--> name('order-stats');
-
+    //orders-show
+    Route::get('/show/order/{id}', 'OrderController@show')
+    -> name('order-show');
+    //orders-stats
+    Route::get('/stats', 'OrderController@stats') 
+    -> name('order-stats');
+    
 
 

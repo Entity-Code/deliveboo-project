@@ -20,7 +20,4 @@ class HomeController extends Controller
         return view('home', compact('user'));
     }
 
-    public function index2() {
-        return view('home2');
-    }
-}
+} 
