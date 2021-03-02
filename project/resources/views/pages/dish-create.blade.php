@@ -4,21 +4,6 @@
     
     <h1 class="ml-5">creazione pagina</h1>
 
-
-    <form action="{{route('update-dish')}}" method="POST" enctype="multipart/form-data">
-                        
-      @csrf
-      @method('POST')
-              
-      {{-- Aggiunto dopo punto 4 (metodo controller)--}}
-      <input 
-          name="img-dish" 
-          type="file" 
-          class="form-control border-0"
-      >       
-      <input type="submit" value="Upload" class="btn btn-primary">   
-    </form>
-
     <form class="ml-5 w-25 .mx-auto mt-5" action="{{route('dish-store')}}" method="POST">
         @csrf
         @method('POST')
@@ -57,13 +42,13 @@
         
 
 
-        {{-- img piatto
+        {{-- img piatto --}}
         <div class="form-group">
           <label for="img_dish">Image (url)</label>
           <input name="img_dish" type="text" class="form-control">
         </div>
 
-        <br> --}}
+        <br>
 
         {{-- stato piatto (0,1) (default value, not visible) --}}
         <div class="form-group">

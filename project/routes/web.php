@@ -47,8 +47,8 @@ Route::post('/update/dish/{id}', 'DishController@update')
 Route::get('/delete/dish/{id}', 'DishController@delete')
     -> name('dish-delete');
 //img upload (dishes) (DishController)
-Route::post('/update/img-dish', 'DishController@updateLogo')
-        -> name('update-dish');
+// Route::post('/update/img-dish', 'DishController@updateLogo')
+//         -> name('update-dish');
     
 
 

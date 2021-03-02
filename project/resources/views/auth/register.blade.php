@@ -100,7 +100,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> 
 
                         {{-- LOGO --}}
                        <div class="form-group row" style="display: none">
