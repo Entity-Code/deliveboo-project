@@ -4,7 +4,7 @@
     
     <h1 class="ml-5">EDIT PIATTO</h1>
 
-    <form class="ml-5 w-25 .mx-auto mt-5" action="{{route('dish-update', $dish -> id)}}" method="POST">
+    <form class="ml-5 w-25 .mx-auto mt-5" action="{{route('dish-update', $dish -> id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('POST')
         
@@ -67,7 +67,7 @@
 
 
         {{-- img piatto --}}
-        <div class="form-group">
+        <div class="form-group" style="display: none;">
           <label for="img_dish">Image (url)</label>
           <input 
             name="img_dish" 
@@ -103,7 +103,11 @@
           >
         </div>
 
-        <br>        
+        <br>
+        
+        <label for="img_dish">Immagine piatto</label>
+        <input type="file" name="img_dish">
+        <input type="submit" value="Update">
 
         
           

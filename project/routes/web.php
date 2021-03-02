@@ -9,6 +9,7 @@ Auth::routes();
 //dashboard
 Route::get('/home', 'HomeController@index')
     -> name('home');
+    Route::post('typ-store', 'HomeController@typstore') -> name('typ-store');
     Route::get('/','TypologyController@index')
         -> name('welcome');
     Route::get('/show/typology/{id}', 'TypologyController@show')
@@ -47,8 +48,8 @@ Route::post('/update/dish/{id}', 'DishController@update')
 Route::get('/delete/dish/{id}', 'DishController@delete')
     -> name('dish-delete');
 //img upload (dishes) (DishController)
-// Route::post('/update/img-dish', 'DishController@updateLogo')
-//         -> name('update-dish');
+Route::post('/update/img-dish', 'DishController@updateLogo')
+    -> name('update-logo-dish');
     
 
 

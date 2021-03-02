@@ -5,6 +5,8 @@
     <h1 class="btn btn-warning btn-lg">dishes list ({{Auth::user() -> name}}, id: {{Auth::user() -> id}})</h1>
     
     <a href="{{route('dish-create')}}" class="btn btn-primary">Crea un nuovo piatto</a>
+
+    <a href="{{route('home')}}" class="btn btn-primary">return home</a>
     <ul>
             
         @foreach ($dishes as $dish)
@@ -12,7 +14,12 @@
                 @if (Auth::user() -> id === $dish -> user_id)
                     <li class="card p-3 mr-5">
                         <h4>name: {{$dish -> name}}(user_id: {{Auth::user() -> id}})</h4>
-                        <img src="{{$dish -> img_dish}}" width="200px">
+
+                        <img 
+                            src="{{$dish -> img_dish}}"
+                            width="200px"
+                            style="display: {{$dish -> img_dish == '0' ? 'none' : 'block'}}"
+                        >
                         <p>
                             Category: {{$dish -> category -> name}} <br>
                             price: {{$dish -> price/100}}€ <br>
@@ -40,4 +47,4 @@
                   
     </ul>
 
-@endsection 
+@endsection

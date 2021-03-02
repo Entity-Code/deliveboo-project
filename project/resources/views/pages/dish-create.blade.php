@@ -28,7 +28,7 @@
         <div class="form-group">
           <label for="description">Description</label>
           <input name="description" type="text" class="form-control">
-        </div>
+        </div> 
 
         <br>
 
@@ -43,11 +43,17 @@
 
 
         {{-- img piatto --}}
-        <div class="form-group">
+        <div class="form-group" style="display: none;">
           <label for="img_dish">Image (url)</label>
-          <input name="img_dish" type="text" class="form-control">
+          <input 
+            name="img_dish" 
+            type="text" 
+            class="form-control"
+            value="0"
+            readonly     
+          >
         </div>
-
+        
         <br>
 
         {{-- stato piatto (0,1) (default value, not visible) --}}

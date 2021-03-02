@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use App\Typology;
 
 class HomeController extends Controller
 {
@@ -17,9 +18,23 @@ class HomeController extends Controller
     public function index() {
         
         $user = Auth::user();
-        return view('home', compact('user'));
+        $typs = Typology::all();
+        return view('home', compact('user', 'typs'));
     }
 
+
+    public function typstore(Request $request) {
+        $data = $request -> all();
+  
+        $typs = Typology::findOrFail($data['typs']);
+  
+        $user = Auth::user();
+        $user -> typologies() -> attach($typs);
+  
+        return redirect() -> route('home');
+  
+    }
+  
 
 
 

@@ -115,7 +115,7 @@
         </div>
         
         
-        <section class="box" id="scroll-down">
+        <section class="box" id="scroll-up">
             <h1>Typology</h1> <br>
             <ul>
                 @foreach ($typs as $typ)
@@ -130,21 +130,6 @@
         </section>
 
 
-        <section class="box" id="scroll-up">
-            <h1>Ciao</h1> <br>
-            <ul>
-                @foreach ($typs as $typ)
-                    <li>
-                        <a href="{{route('typ-show', $typ -> id)}}">
-                            {{$typ -> name}}
-                        </a> <br>
-                        <img src="{{$typ -> img_typs}}" style="width:200px; height:180px;">
-                        
-                    </li>
-                @endforeach
-            </ul>
-            <a href="#scroll-down">freccia up</a>
-        </section>
         
     </body>
 </html>

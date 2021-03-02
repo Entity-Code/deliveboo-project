@@ -22,7 +22,7 @@
                             <img src="{{asset('/storage/logo/' . Auth::user() -> logo)}}" width="300px">
                             @break
                         @default
-                            <img src="{{asset('/storage/logo/default-logo.png')}}" width="300px">                             
+                            <img src="{{asset('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Futulsa.edu%2Fwp-content%2Fuploads%2F2018%2F08%2Fgeneric-avatar.jpg&f=1&nofb=1')}}" width="300px">                             
                             @break
                     @endswitch
                                         
@@ -50,11 +50,50 @@
                     day_off: {{$user -> day_off }} <br>
                     rating: {{$user -> rating }}
 
-                    
-
 
                 </h1>
+
+                {{--                 
+                <h1>Scegli la tipologia del tuo ristorante</h1>
+                
+                <form id="form"action="{{route('typ-store')}}" method="POST">
+
+                  @csrf
+                  @method('POST')
+
+                  <label for="typs[]">Typologies</label> <br>
+                  @foreach ($typs as $typ)
+                    <input class="advancecheck" type="checkbox" name="typs[]" value="{{$typ -> id}}"
+                    @if ($user -> typologies -> contains($typ -> id) )
+                      checked
+                    @endif> 
+                    {{$typ -> name}} <br>
+                  @endforeach
+                  <input onclick="hideTyps()" type="submit" name="" value="Aggiungi">
+
+                </form> --}}
+
+
+                {{-- <script type="text/javascript">
+                    function hideTyps() {
+
+                        document.getElementById('form').style.display = 'none';
+
+                        //console.log(document.querySelector('advancecheck').value);
+                        
+                    }
+                </script> --}}
+  
+                {{-- 
+                        $('input').click(remove)
+                        function remove() {
+                            $('form#form').addClass("none");    
+                        }
+                
+                            --}}
                     
+
+  
 
 
 

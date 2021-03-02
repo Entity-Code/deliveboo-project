@@ -11,7 +11,7 @@
             <ul>
                 @foreach ($order -> dishes as $dish)
                     @if (Auth::user() -> id === $dish -> user_id)       
-                        <li class="card p-3 mr-5"> 
+                        <li> 
                             @if ($loop -> parent -> count)
                                 
                                 <a href="{{route('order-show', $order -> id)}}">total price: {{$order -> total_price/100}} (id:{{$order -> id}})</a> 

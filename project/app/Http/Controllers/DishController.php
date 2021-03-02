@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use App\Dish;
 use App\Category;
 use App\User;
@@ -90,7 +91,6 @@ class DishController extends Controller
         */
         
         
-
         $user = User::findOrFail($data['user_id']);
         $category = Category::findOrFail($data['category_id']);
 
@@ -126,43 +126,55 @@ class DishController extends Controller
         return $request;
     }
 
-    // //IMG UPLOAD DISHES
-        // //upload img
-        // public function updateLogo(Request $request) {
+    //IMG UPLOAD DISHES -----------------------------------------------------------
+        //upload img
+        public function updateLogo(Request $request, $id) {
             
-        //     //DA FARE PER VERIFICARE CHE FUNZIONI TUTTO
-        //     //prendo l'icona inserita dall'utente
-        //     $data = $request -> all();
-        //     //usiamo la funzione file('colonna') per passare i dati 'complessi', in questo caso un immagine
-        //     $image = $request -> file('img_dish');
-        //     //dd($data, $image); 
+            //DA FARE PER VERIFICARE CHE FUNZIONI TUTTO
+            //prendo l'icona inserita dall'utente
+            $data = $request -> all();
+            //usiamo la funzione file('colonna') per passare i dati 'complessi', in questo caso un immagine
+            $image = $request -> file('img_dish');
+            //dd($data, $image);
         
-        // 	//evita l'accumulamento delle img (PUNTO 7)
-        //     // $this -> deleteLogo();
+            //evita l'accumulamento delle img (PUNTO 7)
+            //$this -> deleteLogo();
     
-        // 	//ALGORITMO PER RISOLVERE IL CONFLITTO DEI NOMI DEI FILE
-        // 		//ricaviamo l'estensione del file caricato    
-        //     $ext = $image -> getClientOriginalExtension();
-        //     //creiamo il nome del file updato, formato da un n. random da n. a m. + tempo in millisecondi
-        //     $name = rand(100000, 999999) . '_' . time();
-        // 		//nome file completo
-        //     $destFile = $name . '.' . $ext;
+            //ALGORITMO PER RISOLVERE IL CONFLITTO DEI NOMI DEI FILE
+                //ricaviamo l'estensione del file caricato    
+            $ext = $image -> getClientOriginalExtension();
             
-        //     $file = $image -> storeAs('img_dish', $destFile, 'public');
+            //creiamo il nome del file updato, formato da un n. random da n. a m. + tempo in millisecondi
+            $name = rand(100000, 999999) . '_' . time();
+
+            //nome file completo
+            $destFile = $name . '.' . $ext;
+            
+            $file = $image -> storeAs('img_dish', $destFile, 'public');
     
-        //     //SALVIAMO L'INFORMAZIONE NEL DB
-        //     $dish = dish();
-        //     //il valore della colonna icon sarà uguale al file
-        //     $dish -> img_dish = $destFile;
-        //     $dish -> save();
+            //SALVIAMO L'INFORMAZIONE NEL DB
+
+
+
+            $dish = Dish::findOrFail($id);
+
+            dd($dish);
+
+
+            //$dish = ;
+            //il valore della colonna icon sarà uguale al file
+            $dish -> img_dish = $destFile;
+
+            $dish -> save();
                     
             //dd($image, $ext, $name, $destFile);
-        // }
+            return redirect('dish-index', compact('dish'));
+        }
     
         // public function clearLogo() {
                     
         //     //evita l'accumulamento delle img (PUNTO 7)
-        //     $this -> deleteLogo();
+        //     //$this -> deleteLogo();
     
         //     //recupero lo dish
         //     $dish = Auth::dish();
@@ -192,6 +204,5 @@ class DishController extends Controller
         //         //se avviene qualunque errore, non fare nulla
         //     } catch (\Exception $e) { } //do nothing
         // }
-      
 }       
 

@@ -79,6 +79,7 @@ class RegisterController extends Controller
             'IVA' => $data['IVA'],
             'day_off' => $data['day_off'],
             'logo' => $data['logo']
+            
         ]);
     }
 
