@@ -9,6 +9,7 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
+                        @method('POST')
                         @csrf
 
                         {{-- name --}}
@@ -102,20 +103,19 @@
                         </div>
 
                         {{-- LOGO --}}
-                       <div class="form-group row">
+                       <div class="form-group row" style="display: none">
                             <label for="logo" class="col-md-4 col-form-label text-md-right">{{ __('Logo') }}</label>
 
                             <div class="col-md-6">
-                                <input id="logo" type="text" class="form-control @error('logo') is-invalid @enderror" name="logo" value="{{ old('logo') }}" required autocomplete="logo" autofocus>
-
-                                @error('logo')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input 
+                                    id="logo" 
+                                    type="text" 
+                                    class="form-control"
+                                    name="logo" 
+                                    value="default-logo.png"
+                                >
                             </div>
                         </div>
-
 
                         {{-- password --}}
                         <div class="form-group row">
@@ -140,6 +140,13 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+
+                        {{-- <label for="typs[]">
+                            Typologies
+                        </label>
+                        @foreach ($typs as $typ)
+                          <input type="checkbox" value="{{$typ -> id}}" name="typs[]"> {{$typ -> name}}<br>
+                        @endforeach --}}
 
                         {{-- registrati (btn) --}}
                         <div class="form-group row mb-0">

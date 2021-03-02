@@ -124,7 +124,6 @@
                             {{$typ -> name}}
                         </a> <br>
                         <img src="{{$typ -> img_typs}}" style="width:200px; height:180px;">
-                        
                     </li>
                 @endforeach
             </ul>
@@ -144,9 +143,8 @@
                     </li>
                 @endforeach
             </ul>
+            <a href="#scroll-down">freccia up</a>
         </section>
-
-        <a href="#scroll-down" >freccia up</a>
         
     </body>
 </html>
