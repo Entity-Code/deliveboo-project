@@ -16,7 +16,7 @@
 
                 </div>
 
-                <h1>
+                <div>
                     @switch(Auth::user() -> logo)
                         @case(Auth::user() -> logo)
                             <img src="{{asset('/storage/logo/' . Auth::user() -> logo)}}" width="300px">
@@ -48,55 +48,25 @@
                     address: {{$user -> address }} <br>
                     city: {{$user -> city }} <br>
                     day_off: {{$user -> day_off }} <br>
-                    rating: {{$user -> rating }}
+                    rating: {{$user -> rating }} <br>
 
-
-                </h1>
-
-                {{--                 
-                <h1>Scegli la tipologia del tuo ristorante</h1>
-                
-                <form id="form"action="{{route('typ-store')}}" method="POST">
-
-                  @csrf
-                  @method('POST')
-
-                  <label for="typs[]">Typologies</label> <br>
-                  @foreach ($typs as $typ)
-                    <input class="advancecheck" type="checkbox" name="typs[]" value="{{$typ -> id}}"
-                    @if ($user -> typologies -> contains($typ -> id) )
-                      checked
-                    @endif> 
-                    {{$typ -> name}} <br>
-                  @endforeach
-                  <input onclick="hideTyps()" type="submit" name="" value="Aggiungi">
-
-                </form> --}}
-
-
-                {{-- <script type="text/javascript">
-                    function hideTyps() {
-
-                        document.getElementById('form').style.display = 'none';
-
-                        //console.log(document.querySelector('advancecheck').value);
-                        
-                    }
-                </script> --}}
-  
-                {{-- 
-                        $('input').click(remove)
-                        function remove() {
-                            $('form#form').addClass("none");    
-                        }
-                
-                            --}}
                     
+                    
+                    <h4>Typologies:</h4>
+                    <ul>
 
+                        @foreach (Auth::user()->typologies as $typology)
+                        
+                            <li>{{ $typology -> name }}</li>                       
+                        
+                        @endforeach
+                        
+                    </ul>
+
+                </div>
+
+                
   
-
-
-
 
                 {{-- I MIEI PIATTI --}}
                 <a class="btn btn-lg btn-success" href="{{route('dish-index')}}">MY MENU</a></a>

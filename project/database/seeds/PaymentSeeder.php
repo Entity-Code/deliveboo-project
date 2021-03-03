@@ -2,6 +2,7 @@
 
 use App\Dish;
 use App\Payment;
+use App\User;
 
 use Illuminate\Database\Seeder;
 
@@ -14,13 +15,13 @@ class PaymentSeeder extends Seeder
      */
     public function run()
     {
-        factory(Payment::class, 20)      //creo le mie 20 typologies
-            -> create()                   //le salvo direttamente in database
-            -> each(function($payment) {      //per ogni typologies:
-            //prendi user casualmente, recupero da 1 a 5 employee
-            $dishes = Dish::inRandomOrder() -> limit(5) -> get();   
-            $payment -> dishes() -> attach($dishes);
-
+        factory(Payment::class, 20)      
+            -> create()                   
+            -> each(function($payment) {     
+            
+                $user = User::inRandomOrder() -> first();
+                $dishes = Dish::where('user_id', $user -> id) -> inRandomOrder() -> limit(rand(1, 5)) -> get();   
+                $payment -> dishes() -> attach($dishes);
         });
     }
 }

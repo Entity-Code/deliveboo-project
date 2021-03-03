@@ -105,9 +105,10 @@
 
         <br>
         
-        <label for="img_dish">Immagine piatto</label>
+        {{-- <label for="img_dish">Immagine piatto</label>
         <input type="file" name="img_dish">
-        <input type="submit" value="Update">
+        <input type="submit" value="Update"> --}}
+        
 
         
           

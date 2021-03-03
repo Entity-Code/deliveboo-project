@@ -4,24 +4,17 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Typology;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
+    
     use RegistersUsers;
 
     /**
@@ -31,6 +24,7 @@ class RegisterController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
+
     /**
      * Create a new controller instance.
      *
@@ -38,7 +32,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this -> middleware('guest');
     }
 
     /**
@@ -57,8 +51,16 @@ class RegisterController extends Controller
             'city' => ['required'],
             'IVA' => ['required'], 
             'day_off' => ['required'],
-            'logo' => ['required']
+            'logo' => ['required'],
+            'typologies' => ['required']
         ]);
+    }
+
+    public function showRegistrationForm()
+    {
+        $typologies = Typology::all();
+        //dd($typologies);
+        return view('auth.register', compact('typologies'));
     }
 
     /**
@@ -67,10 +69,10 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
-    {   
+    protected function create(array $data) {   
+        $typologies = Typology::findOrFail($data['typologies']);
 
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -79,8 +81,12 @@ class RegisterController extends Controller
             'IVA' => $data['IVA'],
             'day_off' => $data['day_off'],
             'logo' => $data['logo']
-            
         ]);
-    }
+        
+        $user -> typologies() -> attach($typologies);
+        return $user;
+        
+    } 
+
 
 }

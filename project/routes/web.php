@@ -2,24 +2,23 @@
 
 use Illuminate\Support\Facades\Route;
 
-
-
 Auth::routes();
 
 //dashboard
 Route::get('/home', 'HomeController@index')
     -> name('home');
-    Route::post('typ-store', 'HomeController@typstore') -> name('typ-store');
-    Route::get('/','TypologyController@index')
-        -> name('welcome');
-    Route::get('/show/typology/{id}', 'TypologyController@show')
-        -> name('typ-show');
-    //index
-    //Route::get('/index/menu/', 'UserMenuController@index')
-        //->name('user-menu-index');
-    //show
-    Route::get('/show/menu/{id}', 'UserMenuController@show')
-        -> name('user-menu-show');
+Route::post('typ-store', 'HomeController@typstore') 
+    -> name('typ-store');
+Route::get('/','TypologyController@index')
+    -> name('welcome');
+Route::get('/show/typology/{id}', 'TypologyController@show')
+    -> name('typ-show');
+//index
+//Route::get('/index/menu/', 'UserMenuController@index')
+    //->name('user-menu-index');
+//show
+Route::get('/show/menu/{id}', 'UserMenuController@show')
+    -> name('user-menu-show');
 
 
 

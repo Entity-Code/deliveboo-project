@@ -18,8 +18,17 @@ class TypologyController extends Controller
     public function show($id) {
         
         $typ = Typology::FindOrFail($id);
-        $user = User::FindOrFail($id); 
+        $user = User::FindOrFail($id);  
 
         return view('pages.typology-show', compact('typ', 'user'));
     }
+
+    public function getTyps() {
+
+        $typs = Typologies::all();
+
+        return json_encode($typs);
+    }
+
+
 }

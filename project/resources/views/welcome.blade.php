@@ -9,6 +9,9 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        {{-- app js --}}
+        <script src="{{ asset('js/app.js') }}"></script>
+        
         <!-- Styles -->
         <style>
             html, body {
@@ -79,57 +82,94 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+        <div id="app">
+            
+            <div class="flex-center position-ref full-height">
+                @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                    <a href="{{ url('/home') }}">Home</a>
                     @else
-                        
-
-                        <a href="{{ route('login') }}">Login</a>
-                        
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
+                    
+                    
+                    <a href="{{ route('login') }}">Login</a>
+                    
+                    
+                    @if (Route::has('register'))
+                    <a href="{{ route('register') }}">Register</a>
+                    @endif
                     @endauth
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Deliveboo
-                </div>
-
-                <div class="links">
+                @endif
+                
+                <div class="content">
+                    <div class="title m-b-md">
+                        Deliveboo
+                    </div>
+                    
+                    <div class="links">
+                        <ul>
+                            <li>Pizzeria da gigi</li>
+                            <li>Pizzeria da gigi</li>
+                            <li>Pizzeria da gigi</li>
+                            <li>Pizzeria da gigi</li>
+                        </ul>
+                    </div>
+                    <a href="#scroll-up">freccia down</a> <br><br><br><br>
+                    
+                    {{-- prova datalist ricerca typologies --}}
+                    <fieldset>
+                        
+                        <legend>Typologies</legend>
+                        
+                        <input list="typs-list" type="search">
+                        <datalist id="typs-list">
+                            @foreach ($typs as $typ)
+                            <option value="{{$typ -> name}}"></option>
+                            @endforeach
+                        </datalist>
+                        
+                    </fieldset>
+                    
+                    
                     <ul>
-                        <li>Pizzeria da gigi</li>
-                        <li>Pizzeria da gigi</li>
-                        <li>Pizzeria da gigi</li>
-                        <li>Pizzeria da gigi</li>
+                        <li v-for="message in messages">
+                            @{{message}}
+                        </li>
                     </ul>
+                    
+                    
+                    
+                    
                 </div>
-                <a href="#scroll-up">freccia down</a>
+                
+                
             </div>
-        </div>
-        
-        
-        <section class="box" id="scroll-up">
-            <h1>Typology</h1> <br>
-            <ul>
-                @foreach ($typs as $typ)
+            
+            
+            
+            <section class="box" id="scroll-up">
+                <h1>Typology</h1> <br>
+                <ul>
+                    @foreach ($typs as $typ)
                     <li>
                         <a href="{{route('typ-show', $typ -> id)}}">
                             {{$typ -> name}}
                         </a> <br>
                         <img src="{{$typ -> img_typs}}" style="width:200px; height:180px;">
                     </li>
-                @endforeach
-            </ul>
-        </section>
-
+                    @endforeach
+                </ul>
+            </section>
+            
+            
+            
+        </div>
+        
+        
 
         
+
     </body>
-</html>
+    </html>
+    

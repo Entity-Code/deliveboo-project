@@ -8,9 +8,30 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
+                    
                     <form method="POST" action="{{ route('register') }}">
                         @method('POST')
                         @csrf
+
+        
+
+                        @foreach ($typologies as $typology)
+
+                                <div class="form-check form-check-inline mb-4">
+
+                                    <input name="typologies[]" class="form-check-input" type="checkbox"
+                                        value={{ $typology -> id}}>
+                                    
+                                    <label class="form-check-label">{{ $typology->name }}</label>
+
+                                </div>
+
+                        @endforeach
+
+
+
+
+
 
                         {{-- name --}}
                         <div class="form-group row">
@@ -141,14 +162,7 @@
                             </div>
                         </div>
 
-                        {{-- <label for="typs[]">
-                            Typologies
-                        </label>
-                        @foreach ($typs as $typ)
-                          <input type="checkbox" value="{{$typ -> id}}" name="typs[]"> {{$typ -> name}}<br>
-                        @endforeach --}}
-
-                        {{-- registrati (btn) --}}
+                        
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
