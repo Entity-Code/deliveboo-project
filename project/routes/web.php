@@ -63,5 +63,7 @@ Route::get('/stats', 'OrderController@stats')
     -> name('order-stats');
     
 
-
+//Typologies filter
+Route::get('/typs/filter', 'TypologyController@getTyps')
+    -> name('typs-filter');
 

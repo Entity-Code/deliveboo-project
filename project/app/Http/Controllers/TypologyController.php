@@ -25,9 +25,15 @@ class TypologyController extends Controller
 
     public function getTyps() {
 
-        $typs = Typologies::all();
+        $typs = Typology::all();
+        
+        return response() -> json ([
+            'typs' => $typs
+        ]);
+        
+        //$typs = Typology::where('active', $request -> sort) -> get();
 
-        return json_encode($typs);
+        //return response() -> json(['typ' => $typs]);
     }
 
 

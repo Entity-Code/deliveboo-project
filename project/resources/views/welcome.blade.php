@@ -119,7 +119,7 @@
                     
                     {{-- prova datalist ricerca typologies --}}
                     <fieldset>
-                        
+
                         <legend>Typologies</legend>
                         
                         <input list="typs-list" type="search">
@@ -132,15 +132,14 @@
                     </fieldset>
                     
                     
-                    <ul>
-                        <li v-for="message in messages">
-                            @{{message}}
-                        </li>
-                    </ul>
                     
                     
+                    <filter-typologies
+                        :typ="{{$typs}}"
+                    >
+                </filter-typologies>
                     
-                    
+                
                 </div>
                 
                 
