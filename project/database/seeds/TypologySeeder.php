@@ -12,14 +12,19 @@ class TypologySeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        factory(Typology::class, 5)      //creo le mie 20 typologies
-            -> create()                   //le salvo direttamente in database
-            -> each(function($typ) {      //per ogni typologies:
-                //prendi user casualmente, recupero da 1 a 5 employee
-                $users = User::inRandomOrder() -> get();   
-                $typ -> users() -> attach($users);
+    {   
+        //  factory(Typology::class, 20)  
+        //     -> create()                    
+        //     -> each(function($typ) {      
+        //         //prendi user casualmente, recupero da 1 a 5 users
+        //         $users = User::inRandomOrder() -> get();   
+        //         $typ -> users() -> attach($users);
 
+        // }); 
+        factory(Typology::class, 5) -> create()
+            -> each(function ($typo) {
+                $user = User::inRandomOrder() -> limit(rand(1,8)) -> get();
+                $typo -> users() -> attach($user);
         });
     }
 }

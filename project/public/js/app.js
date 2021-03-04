@@ -1966,15 +1966,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2002,6 +1993,10 @@ __webpack_require__.r(__webpack_exports__);
         for (var key in _this.data) {
           _this.data[key].filtered = true; //console.log(this.data[key]);
         }
+
+        for (var _key in _this.users) {
+          _this.users[_key].filtered = true; //console.log(this.data[key]);
+        }
       })["catch"](function (err) {
         console.log(err);
       });
@@ -2009,16 +2004,46 @@ __webpack_require__.r(__webpack_exports__);
     filtraggio: function filtraggio() {
       var _this2 = this;
 
+      //console.log(this.users.typologies.name);
       // ciclo la lista tipologie
-      this.data.forEach(function (typ) {
-        var name = typ.name;
+      this.users.forEach(function (user, i) {
+        user.typologies.forEach(function (typ) {
+          var typ = typ.name;
+          var typLow = typ.toLowerCase(); //console.log(typLow);
 
-        if (_this2.checkedNames.includes(name) || _this2.checkedNames == '') {
-          typ.filtered = true;
-        } else {
-          typ.filtered = false;
-        }
+          if (_this2.checkedNames.includes(typLow) || _this2.checkedNames == '') {
+            user.filtered = true;
+          } else {
+            user.filtered = false;
+          } //console.log(this.arrTyp);
+
+        });
       });
+      /*
+      this.users.forEach((user) => {
+          this.user.forEach((typ) => {
+              console.log(typ);
+          });
+      });
+      */
+
+      /* 
+      filtraggio: function () {
+       
+       // ciclo la lista tipologie
+       this.data.forEach(typ => {
+           let name =  typ.name;
+           
+           if (this.checkedNames.includes(name) || this.checkedNames == '') {
+               typ.filtered = true;
+           } else {
+               typ.filtered = false;
+           }
+           
+           
+       });
+      
+      */
     }
   }
 });
@@ -37740,42 +37765,37 @@ var render = function() {
       2
     ),
     _vm._v(" "),
-    _c(
-      "main",
-      { attrs: { id: "container-boxes" } },
-      [
-        _vm._l(_vm.data, function(typ) {
-          return typ.filtered
-            ? _c("a", { attrs: { href: "#" } }, [
-                _c("div", { staticClass: "box" }, [
-                  _c("h3", { staticClass: "info name-typ" }, [
+    _c("div", [_vm._v("\n        " + _vm._s(_vm.checkedNames) + "\n    ")]),
+    _vm._v(" "),
+    _c("main", { attrs: { id: "container-boxes" } }, [
+      _c(
+        "ul",
+        _vm._l(_vm.users, function(user) {
+          return user.filtered
+            ? _c(
+                "li",
+                [
+                  _c("a", { attrs: { href: "/show/menu/" + user.id } }, [
                     _vm._v(
-                      "\n                    " +
-                        _vm._s(typ.name) +
-                        "\n                "
+                      "\n                        " +
+                        _vm._s(user.id) +
+                        "] " +
+                        _vm._s(user.name) +
+                        "\n                    "
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "info img-typ" }, [
-                    _c("img", { attrs: { src: typ.img_typs } })
-                  ])
-                ])
-              ])
+                  _vm._l(user.typologies, function(user) {
+                    return _c("ul", [_c("li", [_vm._v(_vm._s(user.name))])])
+                  })
+                ],
+                2
+              )
             : _vm._e()
         }),
-        _vm._v(" "),
-        _vm._l(_vm.users, function(user) {
-          return _c("div", [
-            _vm._v(
-              "          \n            \n            \n            " +
-                _vm._s(user.typologies[user.typologies.length - 1].name) +
-                "    \n\n        "
-            )
-          ])
-        })
-      ],
-      2
-    )
+        0
+      )
+    ])
   ])
 }
 var staticRenderFns = []

@@ -4,46 +4,37 @@
         <fieldset>
 
             <legend style="margin-left: 100px;">Search Typologies!</legend>
+               
             
-            
-            
-            <div v-for="typ in data">
+           <div v-for="typ in data">
 
                 <input type="checkbox" :id="typ.name" v-model="checkedNames" :value="typ.name" @change="filtraggio()">
                 <label :for="typ.name">{{ typ.name }}</label>
-            </div>
+            </div> 
               
         </fieldset>
         
+        <div>
+            {{checkedNames}}
+        </div>
+
         <!-- results -->
         <main id="container-boxes">
-            <a href="#" v-for="typ in data" v-if="typ.filtered">
-                <div class="box" >
 
-                    <!-- name -->
-                    <h3 class="info name-typ">
-                        {{typ.name}}
-                    </h3>
-                    <!-- titolo originale -->
-                    <div class="info img-typ">
-                        <img :src="typ.img_typs">
-                    </div>
 
-                    
-                    
-                    
 
-                </div>
-            </a>
-            
-            <div v-for="user in users">          
+            <ul >
+                    <li v-if="user.filtered" v-for="user in users" >
+                        <a :href="'/show/menu/' + user.id">
+                            {{user.id}}] {{user.name}}
+                        </a>
+                         <ul v-for="user in user.typologies">
+                             <li>{{user.name}}</li>
+                         </ul>
+                    </li>
+
                 
-                
-                {{user.typologies[user.typologies.length -1].name}}    
-
-            </div>
-
-
+            </ul>
             <!-- <div v-for="user in users">
                 
                 <span v-for="typology in user.typologies">
@@ -82,8 +73,6 @@
 
             this.getTyps();
             
-
-
         },
         
         methods: {
@@ -106,6 +95,11 @@
                             //console.log(this.data[key]);
                         }
 
+                        for (let key in this.users) {
+                            this.users[key].filtered = true;
+                            //console.log(this.data[key]);
+                        }
+
                     }).catch((err) => {
                         
                         console.log(err);
@@ -114,6 +108,45 @@
             },
 
             filtraggio: function () {
+                //console.log(this.users.typologies.name);
+                // ciclo la lista tipologie
+                
+                this.users.forEach((user,i) => {
+                    
+
+                    user.typologies.forEach((typ) => {
+
+                        var typ = typ.name;
+                        var typLow = typ.toLowerCase();
+
+                        
+                        //console.log(typLow);
+                        
+                        if (this.checkedNames.includes(typLow) || this.checkedNames == '') {
+                            user.filtered = true;
+                        } else {
+                            user.filtered = false;
+                        }
+                        
+                        //console.log(this.arrTyp);
+                    });
+                    
+                });
+                
+                /*
+                this.users.forEach((user) => {
+                    this.user.forEach((typ) => {
+                        console.log(typ);
+                    });
+                });
+                */
+
+
+
+
+
+               /* 
+               filtraggio: function () {
                 
                 // ciclo la lista tipologie
                 this.data.forEach(typ => {
@@ -127,6 +160,10 @@
                     
                     
                 });
+               
+               */
+               
+                
 
             }
 
