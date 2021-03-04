@@ -1955,47 +1955,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      //typs in check
       data: [],
-      users: [],
+      //value input checkbox
       checkedNames: [],
-      indexUser: 0
+      //ristoranti
+      users: []
     };
   },
   mounted: function mounted() {
-    this.getTyps();
+    this.getData();
   },
   methods: {
-    getTyps: function getTyps() {
+    getData: function getData() {
       var _this = this;
 
-      //typs
       axios.get('http://localhost:8000/typs/filter').then(function (res) {
+        //typs per le checkbox (search)
         _this.data = res.data.typs;
+        console.log(_this.data); //restaurants
+
         _this.users = res.data.users;
-        console.log(_this.data);
         console.log(_this.users); //ciclo ogni oggetto e gli aggiungo la chiave filtered = true di default;
         //che utilizzo in filtraggio()
 
-        for (var key in _this.data) {
-          _this.data[key].filtered = true; //console.log(this.data[key]);
-        }
-
-        for (var _key in _this.users) {
-          _this.users[_key].filtered = true; //console.log(this.data[key]);
+        for (var key in _this.users) {
+          _this.users[key].filtered = true; //console.log(this.data[key]);
         }
       })["catch"](function (err) {
         console.log(err);
@@ -2004,46 +1992,22 @@ __webpack_require__.r(__webpack_exports__);
     filtraggio: function filtraggio() {
       var _this2 = this;
 
-      //console.log(this.users.typologies.name);
-      // ciclo la lista tipologie
-      this.users.forEach(function (user, i) {
-        user.typologies.forEach(function (typ) {
-          var typ = typ.name;
-          var typLow = typ.toLowerCase(); //console.log(typLow);
+      // ciclo user in users
+      this.users.forEach(function (user) {
+        // ciclo typology in user.typologies
+        for (var i = 0; i < user.typologies.length; i++) {
+          var element = user.typologies[i];
+          var typName = element.name;
+          console.log(typName);
 
-          if (_this2.checkedNames.includes(typLow) || _this2.checkedNames == '') {
+          if (_this2.checkedNames.includes(typName) || _this2.checkedNames == '') {
             user.filtered = true;
+            break;
           } else {
             user.filtered = false;
-          } //console.log(this.arrTyp);
-
-        });
+          }
+        }
       });
-      /*
-      this.users.forEach((user) => {
-          this.user.forEach((typ) => {
-              console.log(typ);
-          });
-      });
-      */
-
-      /* 
-      filtraggio: function () {
-       
-       // ciclo la lista tipologie
-       this.data.forEach(typ => {
-           let name =  typ.name;
-           
-           if (this.checkedNames.includes(name) || this.checkedNames == '') {
-               typ.filtered = true;
-           } else {
-               typ.filtered = false;
-           }
-           
-           
-       });
-      
-      */
     }
   }
 });
@@ -37777,11 +37741,11 @@ var render = function() {
                 [
                   _c("a", { attrs: { href: "/show/menu/" + user.id } }, [
                     _vm._v(
-                      "\n                        " +
+                      "\n                    " +
                         _vm._s(user.id) +
                         "] " +
                         _vm._s(user.name) +
-                        "\n                    "
+                        "\n                "
                     )
                   ]),
                   _vm._v(" "),

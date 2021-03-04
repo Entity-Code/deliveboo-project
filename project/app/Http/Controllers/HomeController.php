@@ -40,10 +40,10 @@ class HomeController extends Controller
 
     //upload img
     public function updateLogo(Request $request) {
-        
         //DA FARE PER VERIFICARE CHE FUNZIONI TUTTO
         //prendo l'icona inserita dall'utente
         $data = $request -> all();
+        
         //usiamo la funzione file('colonna') per passare i dati 'complessi', in questo caso un immagine
         $image = $request -> file('logo');
         //dd($data, $image); 
@@ -54,9 +54,10 @@ class HomeController extends Controller
 		//ALGORITMO PER RISOLVERE IL CONFLITTO DEI NOMI DEI FILE
 			//ricaviamo l'estensione del file caricato    
         $ext = $image -> getClientOriginalExtension();
+
         //creiamo il nome del file updato, formato da un n. random da n. a m. + tempo in millisecondi
         $name = rand(100000, 999999) . '_' . time();
-			//nome file completo
+		//nome file completo
         $destFile = $name . '.' . $ext;
         
         $file = $image -> storeAs('logo', $destFile, 'public');

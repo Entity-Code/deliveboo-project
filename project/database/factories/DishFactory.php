@@ -5,7 +5,7 @@
 use App\Dish;
 use Faker\Generator as Faker;
 
-$factory->define(Dish::class, function (Faker $faker) {
+$factory -> define(Dish::class, function (Faker $faker) {
     return [
 
         'name'   => $faker -> word(),
@@ -13,6 +13,7 @@ $factory->define(Dish::class, function (Faker $faker) {
         'price'  => rand(5000, 40000) ,
         'description' => $faker -> paragraph(),
         'img_dish' => $faker -> imageUrl()
+        
     ];
 }); 
  

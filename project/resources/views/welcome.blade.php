@@ -136,15 +136,8 @@
                         Deliveboo
                     </div>
                     
-                    <div class="links">
-                        <ul>
-                            <li>Pizzeria da gigi</li>
-                            <li>Pizzeria da gigi</li>
-                            <li>Pizzeria da gigi</li>
-                            <li>Pizzeria da gigi</li>
-                        </ul>
-                    </div>
-                    <a href="#scroll-up">freccia down</a> <br><br><br><br>
+                    
+                    {{-- <a href="#scroll-up">freccia down</a> <br><br><br><br> --}}
                     
                    
                     

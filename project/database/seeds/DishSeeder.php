@@ -10,7 +10,7 @@ class DishSeeder extends Seeder
     /**
      * Run the database seeds.
      *
-     * @return void
+     * @return void 
      */
     public function run()
     {
@@ -25,7 +25,7 @@ class DishSeeder extends Seeder
                 $category = Category::inRandomOrder() -> first();
                 $dish -> category() -> associate($category);
                 
-                $dish -> save(); 
+                $dish -> save();
             });
         
             

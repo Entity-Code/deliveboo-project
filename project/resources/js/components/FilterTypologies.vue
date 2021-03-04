@@ -4,11 +4,16 @@
         <fieldset>
 
             <legend style="margin-left: 100px;">Search Typologies!</legend>
-               
             
+            <!-- checkboxes -->
            <div v-for="typ in data">
-
-                <input type="checkbox" :id="typ.name" v-model="checkedNames" :value="typ.name" @change="filtraggio()">
+                <input 
+                    type="checkbox" 
+                    :id="typ.name" 
+                    v-model="checkedNames" 
+                    :value="typ.name" 
+                    @change="filtraggio()"
+                >
                 <label :for="typ.name">{{ typ.name }}</label>
             </div> 
               
@@ -18,37 +23,21 @@
             {{checkedNames}}
         </div>
 
-        <!-- results -->
+        <!-- results container--> 
         <main id="container-boxes">
 
-
-
-            <ul >
-                    <li v-if="user.filtered" v-for="user in users" >
-                        <a :href="'/show/menu/' + user.id">
-                            {{user.id}}] {{user.name}}
-                        </a>
-                         <ul v-for="user in user.typologies">
-                             <li>{{user.name}}</li>
-                         </ul>
-                    </li>
-
-                
+            <!-- results  -->
+            <ul>
+                <li v-if="user.filtered" v-for="user in users">
+                    <a :href="'/show/menu/' + user.id">
+                        {{user.id}}] {{user.name}}
+                    </a>
+                     <ul v-for="user in user.typologies">
+                            <li>{{user.name}}</li>
+                     </ul>
+                </li>  
             </ul>
-            <!-- <div v-for="user in users">
-                
-                <span v-for="typology in user.typologies">
-
-                    {{typology[0].name}}
-                    
-
-                </span>
-
-            </div> -->
-
-
-            
-            
+                      
         </main>
        
 
@@ -62,39 +51,39 @@
         
         data() {
             return {
+                //typs in check
                 data: [],
-                users: [],
+
+                //value input checkbox
                 checkedNames: [],
-                indexUser: 0
+
+                //ristoranti
+                users: [],
+
             }
         },
 
         mounted: function () {
 
-            this.getTyps();
-            
+            this.getData();
         },
         
         methods: {
-            getTyps: function () {
-                //typs
+            getData: function () {
                 
                 axios.get('http://localhost:8000/typs/filter')
                     .then(res => {
 
+                        //typs per le checkbox (search)
                         this.data = res.data.typs;
-                        this.users = res.data.users;
-
                         console.log(this.data);
+
+                        //restaurants
+                        this.users = res.data.users;
                         console.log(this.users);
 
                         //ciclo ogni oggetto e gli aggiungo la chiave filtered = true di default;
                         //che utilizzo in filtraggio()
-                        for (let key in this.data) {
-                            this.data[key].filtered = true;
-                            //console.log(this.data[key]);
-                        }
-
                         for (let key in this.users) {
                             this.users[key].filtered = true;
                             //console.log(this.data[key]);
@@ -104,68 +93,39 @@
                         
                         console.log(err);
                     });
-                
             },
+            
 
             filtraggio: function () {
-                //console.log(this.users.typologies.name);
-                // ciclo la lista tipologie
-                
-                this.users.forEach((user,i) => {
+
+                // ciclo user in users
+                this.users.forEach(user => {
                     
+                    // ciclo typology in user.typologies
 
-                    user.typologies.forEach((typ) => {
+                    for (let i = 0; i < user.typologies.length; i++) {
 
-                        var typ = typ.name;
-                        var typLow = typ.toLowerCase();
+                        var element = user.typologies[i];
+                        var typName = element.name;
 
-                        
-                        //console.log(typLow);
-                        
-                        if (this.checkedNames.includes(typLow) || this.checkedNames == '') {
+                        console.log(typName);
+
+                        if (this.checkedNames.includes(typName) || this.checkedNames == '') {
+                            
                             user.filtered = true;
+                            break;
+
                         } else {
+
                             user.filtered = false;
                         }
-                        
-                        //console.log(this.arrTyp);
-                    });
-                    
-                });
-                
-                /*
-                this.users.forEach((user) => {
-                    this.user.forEach((typ) => {
-                        console.log(typ);
-                    });
-                });
-                */
-
-
-
-
-
-               /* 
-               filtraggio: function () {
-                
-                // ciclo la lista tipologie
-                this.data.forEach(typ => {
-                    let name =  typ.name;
-                    
-                    if (this.checkedNames.includes(name) || this.checkedNames == '') {
-                        typ.filtered = true;
-                    } else {
-                        typ.filtered = false;
                     }
                     
-                    
                 });
-               
-               */
-               
-                
 
+                    
             }
+
 
         }
 

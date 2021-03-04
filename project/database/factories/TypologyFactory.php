@@ -5,7 +5,7 @@
 use App\Typology;
 use Faker\Generator as Faker;
 
-$factory->define(Typology::class, function (Faker $faker) {
+$factory -> define(Typology::class, function (Faker $faker) {
     return [
         'name' => $faker -> unique() -> word(),
         'img_typs' => $faker -> imageUrl()
