@@ -23,18 +23,33 @@ class TypologyController extends Controller
         return view('pages.typology-show', compact('typ', 'user'));
     }
 
-    public function getTyps() {
+    public function getTyps(Request $request) {
 
         $typs = Typology::all();
+        $users = User::all();
         
-        return response() -> json ([
-            'typs' => $typs
-        ]);
         
-        //$typs = Typology::where('active', $request -> sort) -> get();
+        foreach ($users as $key => $user){
+            $typologies = [];
+            foreach($user -> typologies as $typology){
+                $typologies[] = $typology -> typology;
+            }
+            
+            $users[$key]['typologies'] = $typologies;
+        }
 
-        //return response() -> json(['typ' => $typs]);
+        return response() -> json(compact('typs', 'users'));
     }
+
+
+    
+    public function userShow($id){
+        $user = User::findOrFail($id);
+        return view('user-menu-show', compact('user'));
+    }
+    
+
+    
 
 
 }

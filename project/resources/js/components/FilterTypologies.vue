@@ -4,20 +4,20 @@
         <fieldset>
 
             <legend style="margin-left: 100px;">Search Typologies!</legend>
-                        
-            <input list="typs-list" type="search" v-model="filter" @input="filtraggio()">
-            <datalist id="typs-list" >
-                <option v-for="typ in data">
-                    {{typ.name}}
-                </option>
-            </datalist>
-           
-                        
+            
+            
+            
+            <div v-for="typ in data">
+
+                <input type="checkbox" :id="typ.name" v-model="checkedNames" :value="typ.name" @change="filtraggio()">
+                <label :for="typ.name">{{ typ.name }}</label>
+            </div>
+              
         </fieldset>
         
         <!-- results -->
         <main id="container-boxes">
-            <a href="" v-for="(typ, index) in data" v-if="typ.filtered">
+            <a href="#" v-for="typ in data" v-if="typ.filtered">
                 <div class="box" >
 
                     <!-- name -->
@@ -28,9 +28,36 @@
                     <div class="info img-typ">
                         <img :src="typ.img_typs">
                     </div>
+
                     
+                    
+                    
+
                 </div>
             </a>
+            
+            <div v-for="user in users">          
+                
+                
+                {{user.typologies[user.typologies.length -1].name}}    
+
+            </div>
+
+
+            <!-- <div v-for="user in users">
+                
+                <span v-for="typology in user.typologies">
+
+                    {{typology[0].name}}
+                    
+
+                </span>
+
+            </div> -->
+
+
+            
+            
         </main>
        
 
@@ -45,25 +72,32 @@
         data() {
             return {
                 data: [],
-                filter: ""
+                users: [],
+                checkedNames: [],
+                indexUser: 0
             }
         },
-
 
         mounted: function () {
 
             this.getTyps();
-       
-        },
+            
 
+
+        },
+        
         methods: {
             getTyps: function () {
+                //typs
                 
                 axios.get('http://localhost:8000/typs/filter')
                     .then(res => {
 
                         this.data = res.data.typs;
+                        this.users = res.data.users;
+
                         console.log(this.data);
+                        console.log(this.users);
 
                         //ciclo ogni oggetto e gli aggiungo la chiave filtered = true di default;
                         //che utilizzo in filtraggio()
@@ -72,33 +106,26 @@
                             //console.log(this.data[key]);
                         }
 
-
-                
-
                     }).catch((err) => {
                         
                         console.log(err);
-                    }); 
+                    });
+                
             },
 
             filtraggio: function () {
                 
                 // ciclo la lista tipologie
-                this.data.forEach((typ, index) => {
-                    let string = this.filter;
+                this.data.forEach(typ => {
                     let name =  typ.name;
-
-                    //converto in minuscolo
-                    string = string.toLowerCase();
-                    name = name.toLowerCase();
-
-                    //se la stringa è contenuta nel nome inserito
-                    if (name.includes(string)) {
+                    
+                    if (this.checkedNames.includes(name) || this.checkedNames == '') {
                         typ.filtered = true;
-                    } else { //altrimenti
+                    } else {
                         typ.filtered = false;
                     }
-
+                    
+                    
                 });
 
             }

@@ -17,7 +17,9 @@ Route::get('/show/typology/{id}', 'TypologyController@show')
 //Route::get('/index/menu/', 'UserMenuController@index')
     //->name('user-menu-index');
 //show
-Route::get('/show/menu/{id}', 'UserMenuController@show')
+/* Route::get('/show/menu/{id}', 'UserMenuController@show')
+    -> name('user-menu-show'); */
+    Route::get('/show/menu/{id}', 'TypologyController@userShow')
     -> name('user-menu-show');
 
 
@@ -66,4 +68,5 @@ Route::get('/stats', 'OrderController@stats')
 //Typologies filter
 Route::get('/typs/filter', 'TypologyController@getTyps')
     -> name('typs-filter');
+
 

@@ -1948,11 +1948,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       data: [],
-      filter: ""
+      users: [],
+      checkedNames: [],
+      indexUser: 0
     };
   },
   mounted: function mounted() {
@@ -1962,9 +1991,12 @@ __webpack_require__.r(__webpack_exports__);
     getTyps: function getTyps() {
       var _this = this;
 
+      //typs
       axios.get('http://localhost:8000/typs/filter').then(function (res) {
         _this.data = res.data.typs;
-        console.log(_this.data); //ciclo ogni oggetto e gli aggiungo la chiave filtered = true di default;
+        _this.users = res.data.users;
+        console.log(_this.data);
+        console.log(_this.users); //ciclo ogni oggetto e gli aggiungo la chiave filtered = true di default;
         //che utilizzo in filtraggio()
 
         for (var key in _this.data) {
@@ -1978,17 +2010,12 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       // ciclo la lista tipologie
-      this.data.forEach(function (typ, index) {
-        var string = _this2.filter;
-        var name = typ.name; //converto in minuscolo
+      this.data.forEach(function (typ) {
+        var name = typ.name;
 
-        string = string.toLowerCase();
-        name = name.toLowerCase(); //se la stringa è contenuta nel nome inserito
-
-        if (name.includes(string)) {
+        if (_this2.checkedNames.includes(name) || _this2.checkedNames == '') {
           typ.filtered = true;
         } else {
-          //altrimenti
           typ.filtered = false;
         }
       });
@@ -37651,72 +37678,103 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("fieldset", [
-      _c("legend", { staticStyle: { "margin-left": "100px" } }, [
-        _vm._v("Search Typologies!")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.filter,
-            expression: "filter"
-          }
-        ],
-        attrs: { list: "typs-list", type: "search" },
-        domProps: { value: _vm.filter },
-        on: {
-          input: [
-            function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.filter = $event.target.value
-            },
-            function($event) {
-              return _vm.filtraggio()
-            }
-          ]
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "datalist",
-        { attrs: { id: "typs-list" } },
+    _c(
+      "fieldset",
+      [
+        _c("legend", { staticStyle: { "margin-left": "100px" } }, [
+          _vm._v("Search Typologies!")
+        ]),
+        _vm._v(" "),
         _vm._l(_vm.data, function(typ) {
-          return _c("option", [
-            _vm._v("\n                " + _vm._s(typ.name) + "\n            ")
+          return _c("div", [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.checkedNames,
+                  expression: "checkedNames"
+                }
+              ],
+              attrs: { type: "checkbox", id: typ.name },
+              domProps: {
+                value: typ.name,
+                checked: Array.isArray(_vm.checkedNames)
+                  ? _vm._i(_vm.checkedNames, typ.name) > -1
+                  : _vm.checkedNames
+              },
+              on: {
+                change: [
+                  function($event) {
+                    var $$a = _vm.checkedNames,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = typ.name,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.checkedNames = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.checkedNames = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.checkedNames = $$c
+                    }
+                  },
+                  function($event) {
+                    return _vm.filtraggio()
+                  }
+                ]
+              }
+            }),
+            _vm._v(" "),
+            _c("label", { attrs: { for: typ.name } }, [
+              _vm._v(_vm._s(typ.name))
+            ])
           ])
-        }),
-        0
-      )
-    ]),
+        })
+      ],
+      2
+    ),
     _vm._v(" "),
     _c(
       "main",
       { attrs: { id: "container-boxes" } },
-      _vm._l(_vm.data, function(typ, index) {
-        return typ.filtered
-          ? _c("a", { attrs: { href: "" } }, [
-              _c("div", { staticClass: "box" }, [
-                _c("h3", { staticClass: "info name-typ" }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(typ.name) +
-                      "\n                "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "info img-typ" }, [
-                  _c("img", { attrs: { src: typ.img_typs } })
+      [
+        _vm._l(_vm.data, function(typ) {
+          return typ.filtered
+            ? _c("a", { attrs: { href: "#" } }, [
+                _c("div", { staticClass: "box" }, [
+                  _c("h3", { staticClass: "info name-typ" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(typ.name) +
+                        "\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "info img-typ" }, [
+                    _c("img", { attrs: { src: typ.img_typs } })
+                  ])
                 ])
               ])
-            ])
-          : _vm._e()
-      }),
-      0
+            : _vm._e()
+        }),
+        _vm._v(" "),
+        _vm._l(_vm.users, function(user) {
+          return _c("div", [
+            _vm._v(
+              "          \n            \n            \n            " +
+                _vm._s(user.typologies[user.typologies.length - 1].name) +
+                "    \n\n        "
+            )
+          ])
+        })
+      ],
+      2
     )
   ])
 }
