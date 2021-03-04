@@ -76,7 +76,36 @@
                 color: white !important;
             }
             
+            /* results filter typologies */
+            #container-boxes {
+                display: flex;
+                flex-flow: wrap row;
+                justify-content: center;
+                margin: 50px 0;
+                padding-left: 0px;
+                border: 1px solid white;
+            }
+            #container-boxes a{
+                display: flex;
+                flex-flow: wrap row;
+                justify-content: center;
+            }
+            .box{
+                /* border: 1px solid lightgrey; */
+                height: 200px;
+                width: 200px;
+                background-color: black;
+                margin: 20px 0;
+                padding: 0px 0px;
+                font-size: 15px;
+                position: relative;
+                cursor: pointer;
+            }
 
+            img{
+                width: 100%;
+                height: 100%;
+            }
             
 
         </style>
@@ -117,27 +146,11 @@
                     </div>
                     <a href="#scroll-up">freccia down</a> <br><br><br><br>
                     
-                    {{-- prova datalist ricerca typologies --}}
-                    <fieldset>
-
-                        <legend>Typologies</legend>
-                        
-                        <input list="typs-list" type="search">
-                        <datalist id="typs-list">
-                            @foreach ($typs as $typ)
-                            <option value="{{$typ -> name}}"></option>
-                            @endforeach
-                        </datalist>
-                        
-                    </fieldset>
+                   
                     
                     
-                    
-                    
-                    <filter-typologies
-                        :typ="{{$typs}}"
-                    >
-                </filter-typologies>
+                    {{-- FILTER TYPOLOGIES --}}
+                    <filter-typologies></filter-typologies>
                     
                 
                 </div>
@@ -147,7 +160,7 @@
             
             
             
-            <section class="box" id="scroll-up">
+            {{-- <section class="box" id="scroll-up">
                 <h1>Typology</h1> <br>
                 <ul>
                     @foreach ($typs as $typ)
@@ -159,7 +172,7 @@
                     </li>
                     @endforeach
                 </ul>
-            </section>
+            </section> --}}
             
             
             

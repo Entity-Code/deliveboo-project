@@ -1921,10 +1921,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      data: []
+      data: [],
+      filter: ""
     };
   },
   mounted: function mounted() {
@@ -1936,9 +1964,33 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('http://localhost:8000/typs/filter').then(function (res) {
         _this.data = res.data.typs;
-        console.log(_this.data);
+        console.log(_this.data); //ciclo ogni oggetto e gli aggiungo la chiave filtered = true di default;
+        //che utilizzo in filtraggio()
+
+        for (var key in _this.data) {
+          _this.data[key].filtered = true; //console.log(this.data[key]);
+        }
       })["catch"](function (err) {
         console.log(err);
+      });
+    },
+    filtraggio: function filtraggio() {
+      var _this2 = this;
+
+      // ciclo la lista tipologie
+      this.data.forEach(function (typ, index) {
+        var string = _this2.filter;
+        var name = typ.name; //converto in minuscolo
+
+        string = string.toLowerCase();
+        name = name.toLowerCase(); //se la stringa è contenuta nel nome inserito
+
+        if (name.includes(string)) {
+          typ.filtered = true;
+        } else {
+          //altrimenti
+          typ.filtered = false;
+        }
       });
     }
   }
@@ -37599,12 +37651,70 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c("fieldset", [
+      _c("legend", { staticStyle: { "margin-left": "100px" } }, [
+        _vm._v("Search Typologies!")
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.filter,
+            expression: "filter"
+          }
+        ],
+        attrs: { list: "typs-list", type: "search" },
+        domProps: { value: _vm.filter },
+        on: {
+          input: [
+            function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.filter = $event.target.value
+            },
+            function($event) {
+              return _vm.filtraggio()
+            }
+          ]
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "datalist",
+        { attrs: { id: "typs-list" } },
+        _vm._l(_vm.data, function(typ) {
+          return _c("option", [
+            _vm._v("\n                " + _vm._s(typ.name) + "\n            ")
+          ])
+        }),
+        0
+      )
+    ]),
+    _vm._v(" "),
     _c(
-      "ul",
-      _vm._l(_vm.data, function(typ) {
-        return _c("li", [
-          _vm._v("\n            " + _vm._s(typ.name) + "\n        ")
-        ])
+      "main",
+      { attrs: { id: "container-boxes" } },
+      _vm._l(_vm.data, function(typ, index) {
+        return typ.filtered
+          ? _c("a", { attrs: { href: "" } }, [
+              _c("div", { staticClass: "box" }, [
+                _c("h3", { staticClass: "info name-typ" }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(typ.name) +
+                      "\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info img-typ" }, [
+                  _c("img", { attrs: { src: typ.img_typs } })
+                ])
+              ])
+            ])
+          : _vm._e()
       }),
       0
     )
