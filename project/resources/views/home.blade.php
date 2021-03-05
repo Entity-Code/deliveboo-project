@@ -22,7 +22,7 @@
                     @if (Auth::user() -> logo)
                         <img src="{{asset('/storage/logo/' . Auth::user() -> logo)}}" width="300px">
                     @else
-                        <img src="{{asset('/storage/logo/default-logo.png')}}" width="300px">
+                        
                     @endif
 
 

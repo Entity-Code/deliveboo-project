@@ -38,5 +38,4 @@
     {{-- return --}}
     <a href="{{route('home')}}" class="btn btn-primary return">return dashboard</a>
 
-@endsection
- 
+@endsection 

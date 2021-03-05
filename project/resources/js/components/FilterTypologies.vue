@@ -99,7 +99,7 @@
                     });
             },
             
-
+            
             filtraggio: function () {
                 
                 //console.log(this.checkedNames);
