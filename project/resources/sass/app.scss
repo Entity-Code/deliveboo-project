@@ -40,6 +40,9 @@ body{
 
     a{
         color: white !important;
+        &:hover{
+            color: black;
+        }
     }
 
     

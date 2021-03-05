@@ -19,7 +19,7 @@
             
     </div>
 
-    @push('js')
+    @push('js') 
         
     <!-- Your application script -->
     <script>

@@ -10979,3 +10979,7 @@ body a {
   color: white !important;
 }
 
+body a:hover {
+  color: black;
+}
+

@@ -2,7 +2,7 @@
 
 @section('content') 
     
-    <h1 class="ml-5">creazione pagina</h1>
+    <h1 class="ml-5">Creazione piatto</h1>
 
     <form class="ml-5 w-25 .mx-auto mt-5" action="{{route('dish-store')}}" method="POST">
         @csrf
@@ -19,7 +19,7 @@
         {{-- nome piatto --}}
         <div class="form-group">
           <label for="name">Name</label>
-          <input name="name" type="text" class="form-control">
+          <input minlength="5" maxlength="30" name="name" type="text" class="form-control" autofocus>
         </div>
 
         <br>
@@ -27,7 +27,7 @@
         {{-- descrizione piatto --}}
         <div class="form-group">
           <label for="description">Description</label>
-          <input name="description" type="text" class="form-control">
+          <input minlength="5" maxlength="255" name="description" type="text" class="form-control" autofocus>
         </div> 
 
         <br>
@@ -35,7 +35,7 @@
         {{-- prezzo piatto --}}
         <div class="form-group">
           <label for="price">Price</label> (€)
-          <input name="price" type="text" class="form-control">
+          <input min="1" max="1000" name="price" type="number" class="form-control" autofocus>
         </div>
 
         <br>

@@ -37,18 +37,15 @@ class DishController extends Controller
         return view('pages.dish-create', compact('dishes', 'users', 'categories'));
     }
     public function store(Request $request) {
-        //dd($request -> all());
-
-        $request = $this -> conversion($request);
 
         //validazione
-        /*
-        Validator::make($request -> all(), [
-            'name' => 'required|min:5|max:15',
-            'description' => 'required|min:5|max:20,
-            ...
-        ]) -> validate();
-        */
+        $request -> validate([
+            'name' => 'required', 'min:5', 'max:30',
+            'description' => 'required','min:5','max:255',
+            'price' => 'required','integer','min:1','max:999','digits_between:1,3'
+        ]);
+        
+        $request = $this -> conversion($request);
 
         $newDish = Dish::make($request -> all());
 
@@ -59,8 +56,6 @@ class DishController extends Controller
         $newDish -> category() -> associate($category);
 
         $newDish -> save();
-
-        
 
         return redirect() -> route('dish-index');   
     }
@@ -79,17 +74,13 @@ class DishController extends Controller
 
         $request = $this -> conversion($request);
         $data = $request -> all();
-        //dd($data);
 
         //validazione
-        /*
-        Validator::make($data, [
-            'name' => 'required|min:5|max:15',
-            'description' => 'required|min:5|max:20,
-            ...
-        ]) -> validate();
-        */
-        
+        $request -> validate([
+            'name' => 'required', 'min:5', 'max:30',
+            'description' => 'required','min:5','max:255',
+            'price' => 'required','integer','min:1','max:999','digits_between:1,3'
+        ]);
         
         $user = User::findOrFail($data['user_id']);
         $category = Category::findOrFail($data['category_id']);

@@ -26,10 +26,10 @@
                             description: {{$dish -> description}} <br>
                             id: {{$dish -> id}} <br>
                             status: 
-                            @if ($dish -> status === 1)
-                                available
+                            @if ($dish -> status == 1)
+                                Disponibile
                             @else
-                                unavailable
+                                Non disponibile
                             @endif
                         </p>
                         

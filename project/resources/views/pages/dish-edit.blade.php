@@ -29,6 +29,8 @@
         <div class="form-group">
           <label for="name">Name</label>
           <input 
+            minlength="5" 
+            maxlength="30"
             name="name" 
             type="text" 
             class="form-control"
@@ -42,6 +44,8 @@
         <div class="form-group">
           <label for="description">Description</label>
           <input 
+            minlength="5"
+            maxlength="255"
             name="description" 
             type="text" 
             class="form-control"
@@ -55,6 +59,8 @@
         <div class="form-group">
           <label for="price">Price</label> (€)
           <input 
+            min="1" 
+            max="1000"
             name="price" 
             type="text" 
             class="form-control"
@@ -68,7 +74,6 @@
 
         {{-- img piatto --}}
         <div class="form-group" style="display: none;">
-          <label for="img_dish">Image (url)</label>
           <input 
             name="img_dish" 
             type="text" 
@@ -81,16 +86,14 @@
 
         {{-- stato piatto (0,1) (default value, not visible) --}}
         <div class="form-group">
-          <input 
-            name="status"
-            type="text"
-            class="form-control"
-            value="1"
-            readonly
-            style="display: none"
-          >
+          <label for="status">Status</label>
+          <select class="form-control" name="status" required autofocus>
+            <option value="1" @if ($dish -> status == 1)selected @endif>Disponibile</option>
+            <option value="0" @if ($dish -> status == 0) selected @endif>Non disponibile</option>
+          </select>
         </div>
 
+       
         {{-- user id (default value, not visible)--}}
         <div class="form-group">
           <input 
@@ -104,15 +107,8 @@
         </div>
 
         <br>
-        
-        {{-- <label for="img_dish">Immagine piatto</label>
-        <input type="file" name="img_dish">
-        <input type="submit" value="Update"> --}}
-        
-
-        
           
-      <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
 
 @endsection 
