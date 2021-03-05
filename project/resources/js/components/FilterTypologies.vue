@@ -61,13 +61,13 @@
                 checkedNames: [],
 
                 //ristoranti
-                users: [],
-
+                users: [] 
+                
             }
         },
 
         mounted: function () {
-
+            
             this.getData();
         },
         
@@ -79,7 +79,8 @@
 
                         //typs per le checkbox (search)
                         this.data = res.data.typs;
-                        console.log(this.data);
+                        //console.log(this.data);
+
 
                         //restaurants
                         this.users = res.data.users;
@@ -100,34 +101,34 @@
             
 
             filtraggio: function () {
-
+                
+                //console.log(this.checkedNames);
                 // ciclo user in users
                 this.users.forEach(user => {
-                    
-                    // ciclo typology in user.typologies
-                    for (let i = 0; i < user.typologies.length; i++) {
-                        
-                        //singola typ
-                        var element = user.typologies[i];
-                    
-                        //input value
-                        var typName = element.name;
 
-                        //console.log(typName);
+                    //count
+                    var n = 0;
+                    user.typologies.forEach(typ => {
 
-                        if (this.checkedNames.includes(typName) || this.checkedNames == '') {
-                            
-                            user.filtered = true;
-                            break;
-                        } else {
-                            
-                            user.filtered = false;
+                        var typName = typ.name;
+
+                        if (this.checkedNames.includes(typName)){
+
+                            n = n + 1; 
                         }
-                    }
+
+                    });
+
+                    if (n == this.checkedNames.length || this.checkedNames == '') {
+
+                        user.filtered = true;                        
+                    } else {
+
+                        user.filtered = false;
+                    }         
                     
                 });
-
-                    
+            
             }
 
 

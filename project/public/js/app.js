@@ -1978,8 +1978,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('http://localhost:8000/typs/filter').then(function (res) {
         //typs per le checkbox (search)
-        _this.data = res.data.typs;
-        console.log(_this.data); //restaurants
+        _this.data = res.data.typs; //console.log(this.data);
+        //restaurants
 
         _this.users = res.data.users;
         console.log(_this.users); //ciclo ogni oggetto e gli aggiungo la chiave filtered = true di default;
@@ -1995,21 +1995,23 @@ __webpack_require__.r(__webpack_exports__);
     filtraggio: function filtraggio() {
       var _this2 = this;
 
+      //console.log(this.checkedNames);
       // ciclo user in users
       this.users.forEach(function (user) {
-        // ciclo typology in user.typologies
-        for (var i = 0; i < user.typologies.length; i++) {
-          //singola typ
-          var element = user.typologies[i]; //input value
+        //count
+        var n = 0;
+        user.typologies.forEach(function (typ) {
+          var typName = typ.name;
 
-          var typName = element.name; //console.log(typName);
-
-          if (_this2.checkedNames.includes(typName) || _this2.checkedNames == '') {
-            user.filtered = true;
-            break;
-          } else {
-            user.filtered = false;
+          if (_this2.checkedNames.includes(typName)) {
+            n = n + 1;
           }
+        });
+
+        if (n == _this2.checkedNames.length || _this2.checkedNames == '') {
+          user.filtered = true;
+        } else {
+          user.filtered = false;
         }
       });
     }
