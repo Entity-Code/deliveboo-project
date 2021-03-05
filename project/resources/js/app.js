@@ -14,6 +14,7 @@ function init() {
     const app = new Vue({
         el: '#app',
     });
+
 }
 
 document.addEventListener("DOMContentLoaded", init);

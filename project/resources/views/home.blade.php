@@ -17,15 +17,15 @@
                 </div>
 
                 <div>
-                    @switch(Auth::user() -> logo)
-                        @case(Auth::user() -> logo)
-                            <img src="{{asset('/storage/logo/' . Auth::user() -> logo)}}" width="300px">
-                            @break
-                        @default
-                            <img src="{{asset('/storage/logo/default-logo.png')}}" width="300px">                             
-                            @break
-                    @endswitch
-                                        
+
+                    @if (Auth::user() -> logo)
+                        <img src="{{asset('/storage/logo/' . Auth::user() -> logo)}}" width="300px">
+                    @else
+                        <img src="{{asset('/storage/logo/default-logo.png')}}" width="300px">
+                    @endif
+
+
+                     
                     <form action="{{route('update-logo')}}" method="POST" enctype="multipart/form-data">
                         
                         @csrf

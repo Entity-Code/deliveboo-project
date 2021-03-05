@@ -29,12 +29,15 @@
             <!-- results  -->
             <ul>
                 <li v-if="user.filtered" v-for="user in users">
+
                     <a :href="'/show/menu/' + user.id">
                         {{user.id}}] {{user.name}}
                     </a>
-                     <ul v-for="user in user.typologies">
-                            <li>{{user.name}}</li>
-                     </ul>
+                    
+                    <ul v-for="user in user.typologies">
+                        <li>{{user.name}}</li>
+                    </ul>
+
                 </li>  
             </ul>
                       
@@ -102,21 +105,22 @@
                 this.users.forEach(user => {
                     
                     // ciclo typology in user.typologies
-
                     for (let i = 0; i < user.typologies.length; i++) {
-
+                        
+                        //singola typ
                         var element = user.typologies[i];
+                    
+                        //input value
                         var typName = element.name;
 
-                        console.log(typName);
+                        //console.log(typName);
 
                         if (this.checkedNames.includes(typName) || this.checkedNames == '') {
                             
                             user.filtered = true;
                             break;
-
                         } else {
-
+                            
                             user.filtered = false;
                         }
                     }
