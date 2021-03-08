@@ -14,8 +14,8 @@ Route::get('/','TypologyController@index')
 Route::get('/show/typology/{id}', 'TypologyController@show')
     -> name('typ-show');
 //index
-//Route::get('/index/menu/', 'UserMenuController@index')
-    //->name('user-menu-index');
+Route::get('/index/menu/{id}', 'UserMenuController@getMenu')
+    -> name('user-menu-index');
 //show
 Route::get('/show/menu/{id}', 'UserMenuController@show')
     -> name('user-menu-show');
@@ -68,5 +68,9 @@ Route::get('/stats', 'OrderController@stats')
 //Typologies filter
 Route::get('/typs/filter', 'TypologyController@getTyps')
     -> name('typs-filter');
+
+//braintree
+Route::get('/braintree', 'UserMenuController@braintreeForm') -> name('braintree-index');
+Route::post('/braintree-checkout', 'UserMenuController@braintreePayment') -> name('braintree-payment');
 
 

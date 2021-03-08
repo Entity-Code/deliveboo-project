@@ -6,17 +6,22 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Dish;
 use App\Category;
+use Braintree\Gateway;
 
 
 class UserMenuController extends Controller
 {
-    /*  public function index(){
-        
-        $categories = Category::all();
+
+function getMenu($id){
+
+        $users = User::FindOrFail($id);
         $dishes = Dish::all();
-        return view ('pages.user-menu-show' , compact('categories', 'dishes', 'users'));
+        $categories = Category::all();
+
+        return response() -> json(compact('users', 'dishes','categories'));
     }
-    */
+
+    
     public function show($id) {
         $categories = Category::all();
         $user = User::FindOrFail($id);
@@ -24,5 +29,56 @@ class UserMenuController extends Controller
         $dish = Dish::FindOrFail($id); 
 
         return view('pages.user-menu-show', compact( 'category','categories', 'dish', 'user'));
+    }
+
+    public function braintreeForm() {
+
+        $gateway = new Gateway([
+          'environment' => config('services.braintree.environment'),
+          'merchantId' => config('services.braintree.merchantId'),
+          'publicKey' => config('services.braintree.publicKey'),
+          'privateKey' => config('services.braintree.privateKey')
+        ]);
+  
+        $token = $gateway->ClientToken()->generate();
+  
+        return view('pages.braintree', compact('token'));
+    }
+  
+    public function braintreePayment(Request $request) {
+  
+        $gateway = new Gateway([
+          'environment' => config('services.braintree.environment'),
+          'merchantId' => config('services.braintree.merchantId'),
+          'publicKey' => config('services.braintree.publicKey'),
+          'privateKey' => config('services.braintree.privateKey')
+        ]);
+  
+        $amount = $request -> amount;
+        $nonce = $request -> payment_method_nonce;
+  
+        $result = $gateway->transaction()->sale([
+            'amount' => $amount,
+            'paymentMethodNonce' => $nonce,
+            'options' => [
+                'submitForSettlement' => true
+            ]
+        ]);
+  
+        if ($result->success) {
+            $transaction = $result->transaction;
+  
+            // return redirect() -> route('welcome') ->  with('success_message', 'Transazione avvenuta con successo ' . 'Id: ' . $transaction-> id);
+            return back() -> with('success_message', 'Transazione avvenuta con successo ' . 'Id: ' . $transaction-> id);
+        } else {
+            $errorString = "";
+  
+            foreach($result->errors->deepAll() as $error) {
+                $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+            }
+  
+            return back() -> withErrors('Transazione annullata' . $result-> message);
+        }
+  
     }
 }

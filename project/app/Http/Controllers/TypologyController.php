@@ -30,6 +30,7 @@ class TypologyController extends Controller
         
         
         foreach ($users as $key => $user){
+            
             $typologies = [];
             foreach($user -> typologies as $typology){
                 $typologies[] = $typology -> typology;

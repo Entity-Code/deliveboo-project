@@ -1,6 +1,28 @@
 <template>
     <div>
-    
+        
+        <h1>Restaurant menu</h1>
+
+        <!-- dishes -->
+        <div >
+            
+            <div v-for="category in categories">
+                <div v-for="dish in dishes" v-if="dish.user_id == id && category.id == dish.category_id">
+                    <p>
+                        category name: {{category.name}} <br>
+                        dish name: {{dish.name}} <br>
+                        dish price: {{dish.price/100}}€
+                    </p>
+                    <button>Add to cart</button>
+                </div>
+            </div>
+
+        </div>
+        
+
+        <hr style="background: white;">
+
+        <!-- esempio -->
         <h1>Restaurant menu</h1>
 
         <ul>
@@ -38,7 +60,9 @@
         data() {
             return {
                 
-                data: []
+                categories: [],
+                dishes: []
+
             }
         },
 
@@ -46,23 +70,33 @@
 
             this.getData();
         },
-        
+        props: {
+            //nome proprietà: tipo di dato
+            id: Number
+        },
         methods: {
+
             getData: function () {
                 
-                axios.get('')
+                axios.get('http://localhost:8000/index/menu/' + this.id)
                     .then(res => {
                         
-                        this.data = res.data;
-                        console.log(this.data);
-                     
+                        //categories
+                        this.categories = res.data.categories;
+                        console.log(this.categories);
+                        
+                        //dishes
+                        this.dishes = res.data.dishes;
+                        console.log(this.dishes);
 
                     }).catch((err) => {
                         
                         console.log(err);
                     });
-
+                
             }
+
+
 
         }
 

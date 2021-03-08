@@ -8,6 +8,8 @@ use Chartisan\PHP\Chartisan;
 use ConsoleTVs\Charts\BaseChart;
 use Illuminate\Http\Request;
 
+use App\Payment;
+
 class SampleChart extends BaseChart
 {
     /**
@@ -17,8 +19,11 @@ class SampleChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
+        $ordName = Payment::orderBy('created_at') -> pluck('firstname','created_at');
+        $ordPrice = Payment::orderBy('created_at') -> pluck('total_price','created_at');
+
         return Chartisan::build()
-            -> labels(['First', 'Second', 'Third'])
-            -> dataset('Orders', [1, 2, 3]);
+            -> labels($ordName -> keys()) //n. ordine -
+            -> dataset('Orders', $ordName -> values()); //n. piatti |
     }
 }

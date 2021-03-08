@@ -2062,22 +2062,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      data: []
+      categories: [],
+      dishes: []
     };
   },
   mounted: function mounted() {
     this.getData();
   },
+  props: {
+    //nome proprietà: tipo di dato
+    id: Number
+  },
   methods: {
     getData: function getData() {
       var _this = this;
 
-      axios.get('').then(function (res) {
-        _this.data = res.data;
-        console.log(_this.data);
+      axios.get('http://localhost:8000/index/menu/' + this.id).then(function (res) {
+        //categories
+        _this.categories = res.data.categories;
+        console.log(_this.categories); //dishes
+
+        _this.dishes = res.data.dishes;
+        console.log(_this.dishes);
       })["catch"](function (err) {
         console.log(err);
       });
@@ -37857,46 +37888,94 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("h1", [_vm._v("Restaurant menu")]),
+    _vm._v(" "),
+    _c(
+      "div",
+      _vm._l(_vm.categories, function(category) {
+        return _c(
+          "div",
+          _vm._l(_vm.dishes, function(dish) {
+            return dish.user_id == _vm.id && category.id == dish.category_id
+              ? _c("div", [
+                  _c("p", [
+                    _vm._v(
+                      "\n                    category name: " +
+                        _vm._s(category.name) +
+                        " "
+                    ),
+                    _c("br"),
+                    _vm._v(
+                      "\n                    dish name: " +
+                        _vm._s(dish.name) +
+                        " "
+                    ),
+                    _c("br"),
+                    _vm._v(
+                      "\n                    dish price: " +
+                        _vm._s(dish.price / 100) +
+                        "€\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("button", [_vm._v("Add to cart")])
+                ])
+              : _vm._e()
+          }),
+          0
+        )
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _c("hr", { staticStyle: { background: "white" } }),
+    _vm._v(" "),
+    _c("h1", [_vm._v("Restaurant menu")]),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("h1", [_vm._v("Restaurant menu")]),
+    return _c("ul", [
+      _c("li", [_c("strong", [_vm._v("category1")])]),
       _vm._v(" "),
-      _c("ul", [
-        _c("li", [_c("strong", [_vm._v("category1")])]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v("\n            name: piatto2 "),
-          _c("br"),
-          _vm._v("\n            price: 13 €\n        ")
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v("\n            name: piatto2 "),
-          _c("br"),
-          _vm._v("\n            price: 15 €\n        ")
-        ])
+      _c("li", [
+        _vm._v("\n            name: piatto2 "),
+        _c("br"),
+        _vm._v("\n            price: 13 €\n        ")
       ]),
       _vm._v(" "),
-      _c("ul", [
-        _c("li", [_c("strong", [_vm._v("category2")])]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v("\n            name: piatto1 "),
-          _c("br"),
-          _vm._v("\n            price: 11 €\n        ")
-        ]),
-        _vm._v(" "),
-        _c("li", [
-          _vm._v("\n            name: piatto2 "),
-          _c("br"),
-          _vm._v("\n            price: 16 €\n        ")
-        ])
+      _c("li", [
+        _vm._v("\n            name: piatto2 "),
+        _c("br"),
+        _vm._v("\n            price: 15 €\n        ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", [
+      _c("li", [_c("strong", [_vm._v("category2")])]),
+      _vm._v(" "),
+      _c("li", [
+        _vm._v("\n            name: piatto1 "),
+        _c("br"),
+        _vm._v("\n            price: 11 €\n        ")
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _vm._v("\n            name: piatto2 "),
+        _c("br"),
+        _vm._v("\n            price: 16 €\n        ")
       ])
     ])
   }

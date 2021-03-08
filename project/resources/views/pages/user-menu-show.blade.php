@@ -15,7 +15,9 @@
     @endforeach --}}
         
         {{-- StoreDishes component --}}
-        <store-dishes></store-dishes>
+        <store-dishes
+            :id="{{$user -> id}}"
+        ></store-dishes>
 
-@endsection
+@endsection 
  
