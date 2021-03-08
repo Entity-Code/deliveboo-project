@@ -14,11 +14,24 @@ class UserMenuController extends Controller
 
 function getMenu($id){
 
-        $users = User::FindOrFail($id);
+        $user = User::FindOrFail($id);
         $dishes = Dish::all();
         $categories = Category::all();
+    
+        
+        foreach ($categories as $key => $cat) {
 
-        return response() -> json(compact('users', 'dishes','categories'));
+            $dishes_all = [];
+            foreach($dishes as $dish){
+                if($dish -> category_id == $cat -> id){
+                    $dishes_all[] = $dish;
+                }
+            }
+            
+            $categories[$key]['dishes'] = $dishes_all;
+        }
+
+        return response() -> json(compact('user','dishes','categories'));
     }
 
     

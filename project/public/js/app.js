@@ -2084,18 +2084,55 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      data: [],
       categories: [],
-      dishes: []
+      dishes: [],
+      page: "dishes",
+      cart: [],
+      totCart: 0
     };
   },
   mounted: function mounted() {
     this.getData();
   },
   props: {
-    //nome proprietà: tipo di dato
     id: Number
   },
   methods: {
@@ -2103,15 +2140,66 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get('http://localhost:8000/index/menu/' + this.id).then(function (res) {
-        //categories
-        _this.categories = res.data.categories;
-        console.log(_this.categories); //dishes
+        /*
+         //categories
+         this.categories = res.data.categories;
+         console.log(this.categories);
+         
+         //dishes
+         this.dishes = res.data.dishes;
+         console.log(this.dishes);
+        */
+        //categories-dishes
+        _this.data = res.data.categories; //console.log(this.data);
 
-        _this.dishes = res.data.dishes;
+        _this.data.forEach(function (category) {
+          console.log(category.id);
+          category.dishes.forEach(function (dish) {
+            if (dish.user_id == _this.id && dish.category_id == category.id) {
+              _this.dishes.push(dish);
+
+              _this.categories.push(category);
+            }
+          });
+        });
+
         console.log(_this.dishes);
+        console.log(_this.categories); //console.log(this.categories);
+
+        /*
+        for (const key in this.categories) {
+            
+            this.categories[key].quantity = 1;
+        }
+        */
+
+        console.log(_this.cart);
       })["catch"](function (err) {
         console.log(err);
       });
+    },
+    addItemToCart: function addItemToCart(dish) {
+      if (this.cart.includes(dish)) {
+        dish.quantity++;
+      } else {
+        this.cart.push(dish);
+      }
+
+      this.totCart++;
+      console.log(dish);
+    },
+    removeItemFromCart: function removeItemFromCart(dish) {
+      if (dish.quantity === 1) {
+        //this.cart.splice(this.cart.indexOf(dish));
+        this.cart.splice(dish, 1);
+      } else {
+        dish.quantity--;
+      }
+
+      this.totCart--;
+    },
+    navigateTo: function navigateTo(page) {
+      this.page = page;
     }
   }
 });
@@ -37888,98 +37976,69 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h1", [_vm._v("Restaurant menu")]),
-    _vm._v(" "),
-    _c(
-      "div",
+  return _c(
+    "div",
+    [
+      _c("div", [_vm._v(_vm._s(_vm.totCart) + " in cart")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          on: {
+            click: function($event) {
+              return _vm.navigateTo("dishes")
+            }
+          }
+        },
+        [_vm._v("View Menu")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          on: {
+            click: function($event) {
+              return _vm.navigateTo("cart")
+            }
+          }
+        },
+        [_vm._v("View Cart")]
+      ),
+      _vm._v(" "),
+      _c("hr", { staticStyle: { background: "white" } }),
+      _vm._v(" "),
       _vm._l(_vm.categories, function(category) {
         return _c(
           "div",
-          _vm._l(_vm.dishes, function(dish) {
+          _vm._l(category.dishes, function(dish) {
             return dish.user_id == _vm.id && category.id == dish.category_id
               ? _c("div", [
-                  _c("p", [
-                    _vm._v(
-                      "\n                    category name: " +
-                        _vm._s(category.name) +
-                        " "
-                    ),
-                    _c("br"),
-                    _vm._v(
-                      "\n                    dish name: " +
-                        _vm._s(dish.name) +
-                        " "
-                    ),
-                    _c("br"),
-                    _vm._v(
-                      "\n                    dish price: " +
-                        _vm._s(dish.price / 100) +
-                        "€\n                "
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("button", [_vm._v("Add to cart")])
+                  _vm._v(
+                    "\n            (" +
+                      _vm._s(category.id) +
+                      ")\n            category: name" +
+                      _vm._s(category.name) +
+                      " "
+                  ),
+                  _c("br"),
+                  _vm._v(
+                    "\n            dish name: " +
+                      _vm._s(dish.name) +
+                      "\n        "
+                  )
                 ])
               : _vm._e()
           }),
           0
         )
       }),
-      0
-    ),
-    _vm._v(" "),
-    _c("hr", { staticStyle: { background: "white" } }),
-    _vm._v(" "),
-    _c("h1", [_vm._v("Restaurant menu")]),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _vm._m(1)
-  ])
+      _vm._v(" "),
+      _c("hr", { staticStyle: { background: "white" } })
+    ],
+    2
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ul", [
-      _c("li", [_c("strong", [_vm._v("category1")])]),
-      _vm._v(" "),
-      _c("li", [
-        _vm._v("\n            name: piatto2 "),
-        _c("br"),
-        _vm._v("\n            price: 13 €\n        ")
-      ]),
-      _vm._v(" "),
-      _c("li", [
-        _vm._v("\n            name: piatto2 "),
-        _c("br"),
-        _vm._v("\n            price: 15 €\n        ")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("ul", [
-      _c("li", [_c("strong", [_vm._v("category2")])]),
-      _vm._v(" "),
-      _c("li", [
-        _vm._v("\n            name: piatto1 "),
-        _c("br"),
-        _vm._v("\n            price: 11 €\n        ")
-      ]),
-      _vm._v(" "),
-      _c("li", [
-        _vm._v("\n            name: piatto2 "),
-        _c("br"),
-        _vm._v("\n            price: 16 €\n        ")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
