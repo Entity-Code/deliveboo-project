@@ -20,7 +20,7 @@
                             <label :for="typ.name">{{ typ.name }}</label>
                         </div>    
                     </div>
-                </div>
+                </div> 
 
                     
                 <div class="main__container--right">
@@ -44,6 +44,9 @@
 
             </div>      
         </main>
+    
+    
+        
         
        
     </div>
@@ -52,8 +55,10 @@
 
 <script>
 
+    
+
     export default {
-        
+
         data() {
             return {
                 //typs in check
@@ -67,12 +72,15 @@
                 
             }
         },
-
+    
         mounted: function () {
             
             this.getData();
+            console.log(this.totPrice);
         },
         
+        
+
         methods: {
             getData: function () {
                 
@@ -138,6 +146,5 @@
 
         
     }
-
 
 </script>

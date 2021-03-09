@@ -44,9 +44,7 @@ function getMenu($id){
         return view('pages.user-menu-show', compact( 'category','categories', 'dish', 'user'));
     }
 
-    public function braintreeForm($id) {
-
-        $user = User::findOrFail($id);
+    public function braintreeForm() {
 
         $gateway = new Gateway([
           'environment' => config('services.braintree.environment'),
@@ -57,7 +55,7 @@ function getMenu($id){
   
         $token = $gateway->ClientToken()->generate();
   
-        return view('pages.braintree', compact('token', 'user'));
+        return view('pages.braintree', compact('token'));
     }
   
     public function braintreePayment(Request $request) {
@@ -96,4 +94,7 @@ function getMenu($id){
         }
   
     }
+
+
+
 }

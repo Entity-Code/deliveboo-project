@@ -142,10 +142,7 @@
                  
             },
 
-            sendTotPrice: function () {
-
-                
-            }
+            
             
         }
 

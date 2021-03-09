@@ -145,7 +145,6 @@
         
                 <div id="app">
                     <filter-typologies></filter-typologies>     
-                    
                 </div>
                   
             </main>
