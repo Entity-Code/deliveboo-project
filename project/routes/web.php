@@ -70,7 +70,9 @@ Route::get('/typs/filter', 'TypologyController@getTyps')
     -> name('typs-filter');
 
 //braintree
-Route::get('/braintree', 'UserMenuController@braintreeForm') -> name('braintree-index');
-Route::post('/braintree-checkout', 'UserMenuController@braintreePayment') -> name('braintree-payment');
+Route::get('/show/menu/{id}', 'UserMenuController@braintreeForm') 
+    -> name('braintree-index');
+Route::post('/braintree-checkout', 'UserMenuController@braintreePayment') 
+    -> name('braintree-payment');
 
 

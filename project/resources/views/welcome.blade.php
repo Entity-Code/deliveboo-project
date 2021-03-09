@@ -6,175 +6,151 @@
 
         <title>Laravel</title>
 
+        <link rel="stylesheet" href="{{asset('/css/app.css')}}">
+        <script src="{{asset('/js/app.js')}}"></script>
+
+        {{-- <script rel="stylesheet" href="{{asset('/js/app.js')}}"> --}}
+
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        {{-- app js --}}
-        <script src="{{ asset('js/app.js') }}"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Hind&display=swap" rel="stylesheet">
         
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: black;
-                color: white;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-                scroll-behavior: smooth;
-            }
+        {{-- HOME  --}}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Monofett&display=swap"
+          rel="stylesheet"
+        />
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a, li {
-                color: white;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-                display: inline-block;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-
-            .box{
-                transition: all 1s;
-                height: 100vh;
-            }
-
-            a{
-                color: white !important;
-            }
-            
-            /* results filter typologies */
-            #container-boxes {
-                display: flex;
-                flex-flow: wrap row;
-                justify-content: center;
-                margin: 50px 0;
-                padding-left: 0px;
-                border: 1px solid white;
-            }
-            #container-boxes a{
-                display: flex;
-                flex-flow: wrap row;
-                justify-content: center;
-            }
-            .box{
-                /* border: 1px solid lightgrey; */
-                height: 200px;
-                width: 200px;
-                background-color: black;
-                margin: 20px 0;
-                padding: 0px 0px;
-                font-size: 15px;
-                position: relative;
-                cursor: pointer;
-            }
-
-            img{
-                width: 100%;
-                height: 100%;
-            }
-            
-
-        </style>
+       
     </head>
     <body>
-        <div id="app">
+        
+        {{-- header  --}}
+             <header class="home">
+                <div class="home__register">
+                    <div class="home__register--box-anchor">
+                        @if (Route::has('login'))
+                            
+                                @auth
+                                    <a href="{{ url('/home') }}">Home</a>
+                                @else
+                                    <a href="{{ route('login') }}">Login</a>
             
-            <div class="flex-center position-ref full-height">
-                @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                    <a href="{{ url('/home') }}">Home</a>
-                    @else
-                    
-                    
-                    <a href="{{ route('login') }}">Login</a>
-                    
-                    
-                    @if (Route::has('register'))
-                    <a href="{{ route('register') }}">Register</a>
-                    @endif
-                    @endauth
+                                    @if (Route::has('register'))
+                                        <a href="{{ route('register') }}">Register</a>
+                                    @endif
+                                @endauth
+                            
+                        @endif
+            
+                    </div>   
                 </div>
-                @endif
                 
-                <div class="content">
-                    <div class="title m-b-md">
-                        Deliveboo
+                <div class="home__container">
+
+                    <div class="home__logo">
+
+                      <div class="home__logo--text">DeliveBoo</div>
+                      <div class="home__logo--subtext">
+                        La missione di DeliveBoo è trasformare il modo in cui i clienti
+                        mangiano. Un ingrediente chiave del nostro successo è offrire ai
+                        nostri clienti la migliore selezione di ristoranti: che tu voglia
+                        sushi per cena, un’insalata per pranzo, o una brioche per colazione,
+                        ci pensiamo noi!
+                      </div>
+
+                      <a href="#order" class="home__logo--arrow">
+                      <div class="round">
+
+                          
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                          
+                        
+                      </div>
+                      Ordina ora
+                    </a>
+
                     </div>
                     
-                    
-                    {{-- <a href="#scroll-up">freccia down</a> <br><br><br><br> --}}
-                    
-                   
-                    
-                    
-                    {{-- FILTER TYPOLOGIES --}}
-                    <filter-typologies></filter-typologies>
-                    
-                
+                  
                 </div>
+
+  
+                
+              </header>
+
+              
+
+               {{-- <main id="order" class="main">
+                  <div class="main__container">
+                      <div class="main__container--left">
+                        <div class="main__container--left--top">
+                            <h5>Tipologie:</h5>
+                        </div>
+                        <div class="main__container--left--checkbox">
+                           
+                            <div class="main__container--left--checkbox--single">
+                                <input  type="checkbox" value="" id="defaultCheck1">
+                                <label  for="defaultCheck1">
+                                Sushi
+                                </label>
+                            </div>
+                            
+                        </div>
+                      </div>
+                      <div class="main__container--right">
+                          <div class="main__container--right--top">
+                              <h5>Cerca un ristorante:</h5>
+                          </div>
+                          <div class="main__container--right--restourants">
+                              <div class="main__container--right--restourants--box">
+                                <img src="https://static-www.castedduonline.it/wp-content/2019/08/mcdonalds-653x367.png" alt="Logo">
+                                <h5>Mc Donald</h5>
+                                <div>Americano, Hamburger</div>
+                                <div>Centro Commerciale FrecciaRossa</div>
+                              </div>
+                              <div class="main__container--right--restourants--box">
+                                <img src="https://static-www.castedduonline.it/wp-content/2019/08/mcdonalds-653x367.png" alt="Logo">
+                                <h5>Mc Donald</h5>
+                                <div>Americano, Hamburger</div>
+                                <div>Centro Commerciale FrecciaRossa</div>
+                              </div>
+                              <div class="main__container--right--restourants--box">
+                                <img src="https://static-www.castedduonline.it/wp-content/2019/08/mcdonalds-653x367.png" alt="Logo">
+                                <h5>Mc Donald</h5>
+                                <div>Americano, Hamburger</div>
+                                <div>Centro Commerciale FrecciaRossa</div>
+                              </div>
+                              <div class="main__container--right--restourants--box">
+                                <img src="https://static-www.castedduonline.it/wp-content/2019/08/mcdonalds-653x367.png" alt="Logo">
+                                <h5>Mc Donald</h5>
+                                <div>Americano, Hamburger</div>
+                                <div>Centro Commerciale FrecciaRossa</div>
+                              </div>
+                              <div class="main__container--right--restourants--box">
+                                <img src="https://static-www.castedduonline.it/wp-content/2019/08/mcdonalds-653x367.png" alt="Logo">
+                                <h5>Mc Donald</h5>
+                                <div>Americano, Hamburger</div>
+                                <div>Centro Commerciale FrecciaRossa</div>
+                              </div>
+                          </div>
+                      </div>
+                </div> --}}
                 
                 
-            </div>
-            
-            
-            
-            {{-- <section class="box" id="scroll-up">
-                <h1>Typology</h1> <br>
-                <ul>
-                    @foreach ($typs as $typ)
-                    <li>
-                        <a href="{{route('typ-show', $typ -> id)}}">
-                            {{$typ -> name}}
-                        </a> <br>
-                        <img src="{{$typ -> img_typs}}" style="width:200px; height:180px;">
-                    </li>
-                    @endforeach
-                </ul>
-            </section> --}}
-            
-            
-            
-        </div>
         
-        
+                <div id="app">
+                    <filter-typologies></filter-typologies>     
+                    
+                </div>
+                  
+            </main>
 
+            
         
-
     </body>
-    </html>
-    
+</html>

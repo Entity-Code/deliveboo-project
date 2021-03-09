@@ -83,7 +83,7 @@
     @stack('modals')
     
     @livewireScripts
-
+    
     
     <script src="https://unpkg.com/echarts/dist/echarts.min.js"></script>
     <script src="https://unpkg.com/@chartisan/echarts/dist/chartisan_echarts.js"></script>

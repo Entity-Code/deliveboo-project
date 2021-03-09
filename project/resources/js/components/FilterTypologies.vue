@@ -1,49 +1,51 @@
 <template>
     <div>
-        <!-- search -->
-        <fieldset>
+        <main id="order" class="main">
+            <div class="main__container">             
+                                               
+                <div class="main__container--left">
+                    <div class="main__container--left--top">
+                        <h5>Tipologie:</h5>
+                    </div>
+                    <div class="main__container--left--checkbox">
+                                
+                        <div v-for="typ in data" class="main__container--left--checkbox--single">
+                            <input 
+                                type="checkbox" 
+                                :id="typ.name" 
+                                v-model="checkedNames" 
+                                :value="typ.name" 
+                                @change="filtraggio()"
+                            >
+                            <label :for="typ.name">{{ typ.name }}</label>
+                        </div>    
+                    </div>
+                </div>
 
-            <legend style="margin-left: 100px;">Search Typologies!</legend>
-            
-            <!-- checkboxes -->
-           <div v-for="typ in data">
-                <input 
-                    type="checkbox" 
-                    :id="typ.name" 
-                    v-model="checkedNames" 
-                    :value="typ.name" 
-                    @change="filtraggio()"
-                >
-                <label :for="typ.name">{{ typ.name }}</label>
-            </div> 
-              
-        </fieldset>
-        
-        <div>
-            {{checkedNames}}
-        </div>
-
-        <!-- results container--> 
-        <main id="container-boxes">
-
-            <!-- results  -->
-            <ul>
-                <li v-if="user.filtered" v-for="user in users">
-
-                    <a :href="'/show/menu/' + user.id">
-                        {{user.id}}] {{user.name}}
-                    </a>
                     
-                    <ul v-for="user in user.typologies">
-                        <li>{{user.name}}</li>
-                    </ul>
+                <div class="main__container--right">
+                    <div class="main__container--right--top">
+                        <h5>Cerca un ristorante:</h5>
+                    </div>
+                        <div class="main__container--right--restourants">
+                            <div class="main__container--right--restourants--box" v-if="user.filtered" v-for="user in users">
+                                <a :href="'/show/menu/' + user.id">
+                                    <img src="https://static-www.castedduonline.it/wp-content/2019/08/mcdonalds-653x367.png" alt="Logo">
+                                    <h5>{{user.name}}</h5>
+                                                
+                                    <div v-for="typology in user.typologies">
+                                        {{typology.name}}
+                                    </div>
+                                    <div>{{user.address}}</div>
+                                </a>
+                            </div>        
+                        </div>
+                </div>
 
-                </li>  
-            </ul>
-                      
+            </div>      
         </main>
+        
        
-
     </div>
 </template>
 

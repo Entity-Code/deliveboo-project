@@ -23,7 +23,7 @@ class SampleChart extends BaseChart
         $ordPrice = Payment::orderBy('created_at') -> pluck('total_price','created_at');
 
         return Chartisan::build()
-            -> labels($ordName -> keys()) //n. ordine -
-            -> dataset('Orders', $ordName -> values()); //n. piatti |
+            -> labels([$ordName]) //n. ordine -
+            -> dataset('Orders', [1,2,3]); //n. piatti |
     }
 }
