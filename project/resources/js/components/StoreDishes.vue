@@ -139,10 +139,16 @@
                     dish.quantity--;
                 }
                 this.totCart-- ; 
+
+                this.totPrice -= dish.price;
                  
             },
 
-            
+            sendTotPrice: function () {
+                
+                return this.totPrice;
+                
+            },   
             
         }
 

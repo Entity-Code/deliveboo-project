@@ -1,10 +1,9 @@
 <template>
 <div>
 
-    <input id="amount" name="amount" type="tel" min="1" placeholder="Amount">
+    <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" :value="totPrice">
 
-    {{username}}
-
+    
 </div>
 </template>
 
@@ -16,7 +15,7 @@
 
     export default {
         
-        props: ['username']
+        
 
         
     }
