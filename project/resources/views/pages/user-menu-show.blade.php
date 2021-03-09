@@ -63,7 +63,10 @@
                 <hr style="background: white;">
                 <h2>Total price: @{{totPrice/100}} €</h2>
 
-                <button @click="sendTotPrice()">Vai al checkout</button>
+                <a href="{{route('braintree-index')}}">
+                    <button>Vai al checkout</button>
+                </a>
+                
             </div>
         </div>
 

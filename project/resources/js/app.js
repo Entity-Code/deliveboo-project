@@ -26,7 +26,7 @@ function init() {
                 checkedNames: [],
 
                 //ristoranti
-                users: [] 
+                users: [],
 //------------------------------------------------
             //CART
                 categories: [],
@@ -38,19 +38,16 @@ function init() {
                 //quantità totale
                 totCart: 0,
                 //prezzo totale
-                totPrice: 0
-                
+                totPrice: 0,
+                id: 0
             }
         },
 
         mounted: function () {
-
+            this.getUrl();
             this.getData();
-            
         },
-        props: {
-            id: Number,
-        },
+        
         methods: {
 
             getData: function () {
@@ -135,6 +132,14 @@ function init() {
                     
                 });
             
+            },
+            getUrl: function () {
+
+                var currentUrl = window.location.pathname;
+                var idUrl = currentUrl.replace('/show/menu/', '');
+
+                this.id = idUrl;
+                console.log(this.id);
             },
 
 

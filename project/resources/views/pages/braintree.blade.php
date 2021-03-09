@@ -27,8 +27,8 @@
                 <label for="amount">
                     <h2 class="input-label">Totale Carrello</h2>
                     <div class="input-wrapper amount-wrapper">
-                        {{-- <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" value="10"> --}}
-                        <input-brain></input-brain>
+                        <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" :value="totPrice">
+                        
                     </div>
                 </label>
         
