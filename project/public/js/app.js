@@ -50430,11 +50430,15 @@ function init() {
         dishes: [],
         page: "dishes",
         cart: [],
+        id: 0,
         //quantità totale
         totCart: 0,
         //prezzo totale
         totPrice: 0,
-        id: 0
+        //-------------------------------------------------
+        //CHECKOUT
+        visible: "visible",
+        hidden: "hidden"
       };
     },
     mounted: function mounted() {
@@ -50507,7 +50511,6 @@ function init() {
         var currentUrl = window.location.pathname;
         var idUrl = currentUrl.replace('/show/menu/', '');
         this.id = idUrl;
-        console.log(this.id);
       },
       //cart methods
       navigateTo: function navigateTo(page) {
@@ -50518,16 +50521,20 @@ function init() {
           dish.quantity++;
         } else {
           this.cart.push(dish);
+          console.log(this.cart);
         } //quantità totale
 
 
         this.totCart++; //prezzo totale
 
         this.totPrice += dish.price;
+        console.log(dish);
       },
       removeItemFromCart: function removeItemFromCart(dish) {
-        if (dish.quantity === 1) {
+        if (dish.quantity == 1 && this.cart.length == 1) {
           this.cart.splice(dish, 1);
+        } else if (dish.quantity == 1 && this.cart.length > 1) {
+          this.cart.splice(dish.quantity, 1);
         } else {
           dish.quantity--;
         }
@@ -50535,8 +50542,9 @@ function init() {
         this.totCart--;
         this.totPrice -= dish.price;
       },
-      sendTotPrice: function sendTotPrice() {
-        return this.totPrice;
+      checkoutVisibility: function checkoutVisibility() {
+        this.isHidden = !this.isHidden;
+        console.log(this.isHidden);
       }
     }
   });

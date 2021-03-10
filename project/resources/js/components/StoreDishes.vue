@@ -132,6 +132,8 @@
             },
             removeItemFromCart: function(dish) {
 
+                
+
                 if (dish.quantity === 1) {       
                     this.cart.splice(dish,1);
                 } else {

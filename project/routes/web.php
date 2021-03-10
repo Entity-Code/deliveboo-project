@@ -64,13 +64,12 @@ Route::get('/show/order/{id}', 'OrderController@show')
 Route::get('/stats', 'OrderController@stats') 
     -> name('order-stats');
     
-
 //Typologies filter
 Route::get('/typs/filter', 'TypologyController@getTyps')
     -> name('typs-filter');
 
 //braintree
-Route::get('/braintree', 'UserMenuController@braintreeForm') 
+Route::get('/show/menu/{id}', 'UserMenuController@braintreeForm') 
     -> name('braintree-index');
 Route::post('/braintree-checkout', 'UserMenuController@braintreePayment') 
     -> name('braintree-payment');

@@ -35,11 +35,15 @@ function init() {
                 page: "dishes",
                 cart: [],
                 
+                id: 0,
                 //quantità totale
                 totCart: 0,
                 //prezzo totale
                 totPrice: 0,
-                id: 0
+//-------------------------------------------------
+                //CHECKOUT
+                visible: "visible",
+                hidden: "hidden",
             }
         },
 
@@ -139,7 +143,7 @@ function init() {
                 var idUrl = currentUrl.replace('/show/menu/', '');
 
                 this.id = idUrl;
-                console.log(this.id);
+
             },
 
 
@@ -156,31 +160,41 @@ function init() {
                     dish.quantity++;
                 } else {                  
                     this.cart.push(dish);
+                    console.log(this.cart);
                 }
                 
                 //quantità totale
                 this.totCart++;  
                 //prezzo totale
                 this.totPrice += dish.price;
+
+                console.log(dish)
                 
             },
             removeItemFromCart: function(dish) {
 
-                if (dish.quantity === 1) {       
-                    this.cart.splice(dish,1);
+                
+                if (dish.quantity == 1 && this.cart.length == 1) {
+                    this.cart.splice(dish, 1);
+                
+                } else if (dish.quantity == 1 && this.cart.length > 1) {
+                    this.cart.splice(dish.quantity, 1);
+                    
                 } else {
-                        
+                    
                     dish.quantity--;
                 }
-                this.totCart-- ; 
 
+                this.totCart-- ; 
                 this.totPrice -= dish.price;
                  
             },
 
-            sendTotPrice: function () {
+            checkoutVisibility: function () {
                 
-                return this.totPrice;
+                this.isHidden = !this.isHidden;
+
+                console.log(this.isHidden);
                 
             }
             
