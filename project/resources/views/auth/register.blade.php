@@ -14,13 +14,13 @@
                         @csrf
 
                         
-                        <ul class="form-group row form-check-flex mb-4" style="width: 100%; justify-content: space-between;">
-                            <label class="col-form-label col-md-2">Tipologie: </label>
+                        <ul class="typologies text-center">
+                            <label>Tipologie: </label>
                             @foreach ($typologies as $typology)
-                                <li style="list-style-type: none;">
+                                {{-- checkboxes --}}
+                                <li>
                                     <input class="form-check-input" name="typologies[]" class="form-check-input" type="checkbox"
-                                        value={{ $typology -> id}}> 
-                                            
+                                        value={{ $typology -> id}}>                                         
                                     <label class="form-check-label">{{ $typology->name }}</label> 
                                 </li>
                             @endforeach

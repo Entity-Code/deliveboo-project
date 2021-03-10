@@ -36,20 +36,20 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        <!-- Authentication Links -->
+                        <!-- Authentication Links (HEADER) -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link log-reg" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <li>
+                                <a href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link log-reg" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <li>
+                                    <a href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
 
                         
-                            <li class="nav-item dropdown">
+                            <li>
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
@@ -74,10 +74,10 @@
 
         {{-- chart js --}}
     
-        
-        <main class="py-4">
+        <main class="py-4 background">
             @yield('content')
         </main>
+        
     </div>
     
     @stack('modals')

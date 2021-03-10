@@ -77,7 +77,6 @@ function init() {
                         }
 
                     }).catch((err) => {
-                        
                         console.log(err);
                     });
                 
@@ -174,33 +173,29 @@ function init() {
             removeItemFromCart: function(dish) {
 
                 
-                if (dish.quantity == 1 && this.cart.length == 1) {
-                    this.cart.splice(dish, 1);
-                
-                } else if (dish.quantity == 1 && this.cart.length > 1) {
-                    this.cart.splice(dish.quantity, 1);
-                    
+/*                 if (dish.quantity == 1 && this.cart.length == 1) {
+                    this.cart.splice(dish, 1);           
                 } else {
-                    
                     dish.quantity--;
                 }
 
                 this.totCart-- ; 
                 this.totPrice -= dish.price;
-                 
+                  */
+                 this.$delete(this.cart, dish);
+
+                 dish.quantity--;
+
+                 this.totCart--;
+                 this.totPrice -= dish.price;
             },
 
             checkoutVisibility: function () {
                 
                 this.isHidden = !this.isHidden;
-
                 console.log(this.isHidden);
-                
             }
-            
         }
-
-
     });
 
 }

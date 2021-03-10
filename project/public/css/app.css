@@ -102,9 +102,13 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 62.5%;
+body {
+  font-size: 1rem;
   scroll-behavior: smooth;
+}
+
+.round {
+  font-size: 62.5%;
 }
 
 body {
@@ -218,6 +222,7 @@ body {
 }
 
 span {
+  font-size: 10px;
   z-index: 999;
   height: 3px;
   margin: 1px;
@@ -391,6 +396,29 @@ span:nth-child(4) {
   font-size: 1.2rem;
   font-family: "Hind", sans-serif;
   color: #363535;
+}
+
+.background {
+  background-color: #6bb3f2;
+}
+
+.card-body,
+.card-header {
+  border: 2px solid red;
+}
+
+.typologies {
+  margin: 10px auto;
+}
+
+.typologies label:first-child {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+ul > li {
+  list-style-type: none;
 }
 
 /*!

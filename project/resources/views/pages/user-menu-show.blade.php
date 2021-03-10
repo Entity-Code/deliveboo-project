@@ -17,13 +17,21 @@
             <h1>Restaurant menu</h1>
 
             <div v-for="(category, i) in categories">
-                <div v-for="(dish, i) in dishes" v-if="dish.user_id == id && category.id == dish.category_id" :key="dish.name">
+                <div v-for="(dish, i) in dishes" v-if="dish.user_id == id && category.id == dish.category_id  && dish.status === 1" :key="dish.name">
                     <p>
                         dish name: @{{dish.name}} <br>
                         dish price: @{{dish.price/100}}€ <br>
                         dish category: @{{category.name}}
                     </p>
-                    <button @click="addItemToCart(dish)">Add to cart</button>     
+                    <button @@click="addItemToCart(dish)">Add to cart</button>     
+                </div>
+                <div v-for="(dish, i) in dishes" v-if="dish.user_id == id && category.id == dish.category_id && dish.status === 0" :key="dish.name">
+                        Piatto non disponibile, scusateci!
+                    <p>
+                        dish name: @{{dish.name}} <br>
+                        dish price: @{{dish.price/100}}€ <br>
+                        dish category: @{{category.name}}
+                    </p> 
                 </div>
             </div>
         </div>
@@ -33,11 +41,11 @@
         
             <h1>Your cart</h1>
             <div class="cart">
-                <div v-for="(dish, i) in cart" :key="dish.name">
+                <div v-for="(dish, i) in cart" :key="dish.name" v-if="dish.quantity > 0">
                     dish name: @{{dish.name}} <br>
                     dish price: @{{dish.price/100}}€
                     <br>
-                    <button @click="removeItemFromCart(dish)">Remove item</button>
+                    <button @@click="removeItemFromCart(dish)">Remove item</button>
                     <div class="quantity">
                         @{{dish.quantity}}
                     </div>
@@ -75,7 +83,7 @@
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                        <li>{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>
@@ -90,7 +98,7 @@
                 <label for="amount">
                     <h2 class="input-label">Totale Carrello</h2>
                     <div class="input-wrapper amount-wrapper">
-                        <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" :value="totPrice/100">
+                        <input id="amount" name="amount" type="tel" min="1" placeholder="Amount" style="cursor: default;"readonly :value="totPrice/100">
                     </div>
                 </label>
                     

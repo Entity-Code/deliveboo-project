@@ -50531,14 +50531,17 @@ function init() {
         console.log(dish);
       },
       removeItemFromCart: function removeItemFromCart(dish) {
-        if (dish.quantity == 1 && this.cart.length == 1) {
-          this.cart.splice(dish, 1);
-        } else if (dish.quantity == 1 && this.cart.length > 1) {
-          this.cart.splice(dish.quantity, 1);
-        } else {
-          dish.quantity--;
-        }
-
+        /*                 if (dish.quantity == 1 && this.cart.length == 1) {
+                            this.cart.splice(dish, 1);           
+                        } else {
+                            dish.quantity--;
+                        }
+        
+                        this.totCart-- ; 
+                        this.totPrice -= dish.price;
+                          */
+        this.$delete(this.cart, dish);
+        dish.quantity--;
         this.totCart--;
         this.totPrice -= dish.price;
       },
