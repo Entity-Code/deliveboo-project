@@ -57,6 +57,35 @@
                             <input style="cursor: default; border-radius: 10px; margin: 15px; outline: none; text-align: center;" type="text" id="amountShow" readonly> 
                             <span style="position: relative; right: 50px;">€</span>
                             
+                            <br>
+                            
+                            {{-- ORDER FORM --}}
+                            <label for="firstname">Nome</label>
+                            <input type="text" name="firstname" placeholder="nome">
+                            
+                            <br>
+                            
+                            <label for="lastname">Cognome</label>
+                            <input type="text" name="lastname" placeholder="cognome">
+                            <br>
+                            
+                            <label for="email">Email</label>
+                            <input type="email" name="email" placeholder="email">
+                            
+                            <br>
+                            
+                            <label for="address">Indirizzo di consegna</label>
+                            <input type="text" name="address" placeholder="indirizzo">
+                            
+                            <br>
+                            
+                            {{-- hidden --}}
+                            <input id="tot_price" name="total_price" type="text" placeholder="Amount" style="display: block;" onlyread>
+
+                            
+
+
+                            
 
                         </div>
                     </label>
@@ -108,11 +137,14 @@
                 
 
                 var input = document.querySelector('#amount');
+                var totPrice = document.querySelector('#tot_price');
+
                 var total = parseInt(localStorage.totPrice);
                 var msg = 'Puoi tornare alla home, buon appetito!';
                 var home = document.querySelector('#home');
 
                 input.value = total/100;
+                totPrice.value = total/100;
 
                 var amountShow = document.querySelector('#amountShow');
 
@@ -121,6 +153,8 @@
                 } else {
                     amountShow.value = 'Buon appetito!';  
                 }
+
+                console.log(localStorage.cart);
 
                 
 

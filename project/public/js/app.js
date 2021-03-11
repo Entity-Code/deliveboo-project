@@ -50442,17 +50442,26 @@ function init() {
       };
     },
     mounted: function mounted() {
-      localStorage.clear();
+      //localStorage.clear();
+      console.log(this.cart);
       this.getUrl();
-      this.getData();
+      this.getData(); //passaggio totPrice
 
       if (localStorage.totPrice) {
         this.totPrice = JSON.parse(localStorage.totPrice);
+      } //passaggio Cart
+
+
+      if (localStorage.cart) {
+        this.cart = JSON.parse(localStorage.cart);
       }
     },
     watch: {
       totPrice: function totPrice(newPrice) {
         localStorage.totPrice = JSON.stringify(newPrice);
+      },
+      cart: function cart(newCart) {
+        localStorage.cart = JSON.stringify(newCart);
       }
     },
     methods: {

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Dish;
 use App\Category;
+use App\Payment;
 use Braintree\Gateway;
 
 

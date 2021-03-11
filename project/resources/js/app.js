@@ -49,18 +49,25 @@ function init() {
         },
 
         mounted: function () {
-            localStorage.clear();
+            //localStorage.clear();
+            console.log(this.cart)
             this.getUrl();
             this.getData();
+            //passaggio totPrice
             if (localStorage.totPrice) {
                 this.totPrice = JSON.parse(localStorage.totPrice);
             }
+            //passaggio Cart
+            if (localStorage.cart) {
+                this.cart = JSON.parse(localStorage.cart);
+            }
         },
         watch: {
-            totPrice(newPrice) {
-                
-                localStorage.totPrice = JSON.stringify(newPrice);
-
+            totPrice(newPrice) {                
+                localStorage.totPrice = JSON.stringify(newPrice);                
+            },
+            cart(newCart) {
+                localStorage.cart = JSON.stringify(newCart);
             }
         },
         
