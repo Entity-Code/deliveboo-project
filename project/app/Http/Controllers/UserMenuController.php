@@ -64,8 +64,10 @@ function getMenu($id){
     public function braintreePayment(Request $request) {
 
         $data = $request -> all();
+        //
+        // dd($data);
 
-        dd($data);
+        $dish = Dish::findOrFail($data['cart']);
 
         $gateway = new \Braintree\Gateway([
           'environment' => config('services.braintree.environment'),
@@ -73,10 +75,10 @@ function getMenu($id){
           'publicKey' => config('services.braintree.publicKey'),
           'privateKey' => config('services.braintree.privateKey')
         ]);
-  
+
         $amount = $request -> amount;
         $nonce = $request -> payment_method_nonce;
-  
+
         $result = $gateway->transaction() -> sale([
             'amount' => $amount,
             'paymentMethodNonce' => $nonce,
@@ -84,6 +86,18 @@ function getMenu($id){
                 'submitForSettlement' => true
             ]
         ]);
+
+        $order = new Payment;
+        $order -> firstname = $data['firstname'];
+        $order -> lastname = $data['lastname'];
+        $order -> address = $data['address'];
+        $order -> email = $data['email'];
+        $order -> status = $result -> success;
+        $order -> total_price =  $data['total_price'];
+        $order -> note =  $data['note'];
+        $order -> save();
+        $order -> dishes() -> attach($dish);
+        
   
         if ($result -> success) {
             $transaction = $result -> transaction;

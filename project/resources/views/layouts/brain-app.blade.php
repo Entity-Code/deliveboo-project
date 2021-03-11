@@ -84,7 +84,8 @@
                             {{-- hidden --}}
                             <input id="tot_price" name="total_price" type="text" placeholder="Amount" style="display: block;" onlyread>
 
-                            
+                            <label for="note">Note</label>
+                            <textarea name="note" rows="8" cols="80" placeholder="Inserire eventuali note: allergie, intolleranze o aggiunta/rimozione ingredienti"></textarea>
                             {{-- dishes --}}
 
                             <div id="cboxes">
@@ -175,8 +176,8 @@
                     var checkBox = document.createElement("input");
                     var label = document.createElement("label");
                     checkBox.type = "checkbox";
-                    checkBox.value = cart[i];
-                    //checkBox.name = 'name';
+                    checkBox.value = cart[i].id;
+                    checkBox.name = 'cart[]';
                     checkBox.checked = true;
                     myDiv.appendChild(checkBox);
                     myDiv.appendChild(label);
@@ -184,6 +185,8 @@
 
 
                 }
+
+
 
                 
                 
