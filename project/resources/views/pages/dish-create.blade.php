@@ -9,7 +9,7 @@
         @method('POST')
         
         {{-- categoria piatto --}}
-        <label for="category_id mb-4">Category</label> <br>
+        <label for="category_id mb-4">Categorie</label> <br>
         <select name="category_id" class="mb-4">
             @foreach ($categories as $category)
                 <option value="{{$category -> id}}">{{ $category -> name }}</option>
@@ -18,7 +18,7 @@
 
         {{-- nome piatto --}}
         <div class="form-group">
-          <label for="name">Name</label>
+          <label for="name">Nome</label>
           <input minlength="5" maxlength="30" name="name" type="text" class="form-control" autofocus>
         </div>
 
@@ -26,7 +26,7 @@
 
         {{-- descrizione piatto --}}
         <div class="form-group">
-          <label for="description">Description</label>
+          <label for="description">Descrizione</label>
           <input minlength="5" maxlength="255" name="description" type="text" class="form-control" autofocus>
         </div> 
 
@@ -34,7 +34,7 @@
 
         {{-- prezzo piatto --}}
         <div class="form-group">
-          <label for="price">Price</label> (€)
+          <label for="price">Prezzo</label> (€)
           <input min="1" max="1000" name="price" type="number" class="form-control" autofocus>
         </div>
 
@@ -85,7 +85,7 @@
 
         
           
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Conferma</button>
       </form>
 
 

@@ -4,10 +4,11 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-const files = require.context('./', true, /\.vue$/i)
-files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+const files = require.context('./', true, /\.vue$/i);
+files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 //Vue.component('filter-typologies', require('./components/FilterTypologies.vue').default);
+
 
 
 //-------------------------------------------------
@@ -41,15 +42,26 @@ function init() {
                 //prezzo totale
                 totPrice: 0,
 //-------------------------------------------------
-                //CHECKOUT
+                //CHECKOUT    
                 visible: "visible",
                 hidden: "hidden",
             }
         },
 
         mounted: function () {
+            localStorage.clear();
             this.getUrl();
             this.getData();
+            if (localStorage.totPrice) {
+                this.totPrice = JSON.parse(localStorage.totPrice);
+            }
+        },
+        watch: {
+            totPrice(newPrice) {
+                
+                localStorage.totPrice = JSON.stringify(newPrice);
+
+            }
         },
         
         methods: {
@@ -167,7 +179,7 @@ function init() {
                 //prezzo totale
                 this.totPrice += dish.price;
 
-                console.log(dish)
+                //console.log(dish)
                 
             },
             removeItemFromCart: function(dish) {
@@ -193,9 +205,15 @@ function init() {
             checkoutVisibility: function () {
                 
                 this.isHidden = !this.isHidden;
-                console.log(this.isHidden);
-            }
+                //console.log(this.isHidden);
+            },
+
+
         }
+
+        
+
+
     });
 
 }

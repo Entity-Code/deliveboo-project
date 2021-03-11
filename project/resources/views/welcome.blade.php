@@ -20,7 +20,9 @@
         <link
           href="https://fonts.googleapis.com/css2?family=Monofett&display=swap"
           rel="stylesheet"
-        />   
+        />
+        <!-- font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous"/>
     </head>
     <body>
         
@@ -43,7 +45,6 @@
                 </div>
                 
                 <div class="home__container">
-
                     <div class="home__logo">
 
                       <div class="home__logo--text">DeliveBoo</div>
@@ -56,15 +57,13 @@
                       </div>
 
                       <a href="#order" class="home__logo--arrow">
-                      <div class="round">                         
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>                                                 
-                      </div>
-                      Ordina ora
+                        <div class="round">                         
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>                                                 
+                        </div>
                     </a>
-
                     </div>              
                 </div>           
               </header>
@@ -77,47 +76,85 @@
                     <div>
                       <main id="order" class="main">
                           <div class="main__container">             
-                                                            
-                              <div class="main__container--left">
-                                  <div class="main__container--left--top">
+                            
+                            {{-- desktop --}}
+                            <div class="main__container--left">
+                                <div class="main__container--left--top">
                                       <h5>Tipologie:</h5>
-                                  </div>
-                                  <div class="main__container--left--checkbox">
+                                </div>
+                                <div class="main__container--left--checkbox">
                                               
-                                      <div v-for="typ in data" class="main__container--left--checkbox--single">
-                                          <input 
-                                              type="checkbox" 
-                                              :id="typ.name" 
-                                              v-model="checkedNames" 
-                                              :value="typ.name" 
-                                              @change="filtraggio()"
-                                          >
-                                          <label :for="typ.name">@{{ typ.name }}</label>
-                                      </div>    
-                                  </div>
-                              </div> 
+                                    <div v-for="typ in data" class="main__container--left--checkbox--single">
+                                        <input 
+                                            type="checkbox" 
+                                            :id="typ.name" 
+                                            v-model="checkedNames" 
+                                            :value="typ.name" 
+                                            @change="filtraggio()"
+                                        >
+                                        <label :for="typ.name">@{{ typ.name }}</label>
+                                    </div>    
+                                </div>
+                            </div> 
 
                                   
-                              <div class="main__container--right">
-                                  <div class="main__container--right--top">
-                                      <h5>Cerca un ristorante:</h5>
-                                  </div>
-                                      <div class="main__container--right--restourants">
-                                          <div class="main__container--right--restourants--box" v-if="user.filtered" v-for="user in users">
-                                              <a :href="'/show/menu/' + user.id">
-                                                  <img src="https://static-www.castedduonline.it/wp-content/2019/08/mcdonalds-653x367.png" alt="Logo">
-                                                  <h5>@{{user.name}}</h5>
+                            <div class="main__container--right">
+                                <div class="main__container--right--top text-center">
+                                    <h5>Cerca un ristorante</h5>
+                                    
+                                    {{-- checkboxes --}}
+                                    <div class="typ-mobile">
+
+                                        <div class="form-group row margin-auto">
+                                            <div class="dropdown text-center margin-auto">
+                                                <button class="btn btn-default dropdown-toggle margin-auto t" type="button" 
+                                                    id="dropdownMenu1" data-toggle="dropdown" 
+                                                    aria-haspopup="true" aria-expanded="true">
+                                                    Tipologie
+                                                </button>
+                                                <ul class="dropdown-menu checkbox-menu allow-focus" aria-labelledby="dropdownMenu1">
+                                                
+                                                    <li v-for="typ in data">
+                                                        <label class="form-check-label">
+                                                            <input 
+                                                                type="checkbox" 
+                                                                :id="typ.name" 
+                                                                v-model="checkedNames" 
+                                                                :value="typ.name" 
+                                                                @change="filtraggio()"
+                                                            >
+                                                            @{{ typ.name }}
+                                                            
+                                                            
+                                                        </label>
+                                                    </li>
+                                                       
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                                    <div class="main__container--right--restourants">
+                                        <div class="main__container--right--restourants--box" v-if="user.filtered" v-for="user in users">
+                                            <a :href="'/show/menu/' + user.id">
+                                                <img src="https://static-www.castedduonline.it/wp-content/2019/08/mcdonalds-653x367.png" alt="Logo">
+                                                <h5>@{{user.name}}</h5>
                                                               
-                                                  <div v-for="typology in user.typologies">
-                                                      @{{typology.name}}
-                                                  </div>
-                                                  <div>@{{user.address}}</div>
-                                              </a>
-                                          </div>        
-                                      </div>
-                                  </div>
-                              </div>      
-                          </main>
+                                                <div v-for="typology in user.typologies">
+                                                    @{{typology.name}}
+                                                </div>
+                                                <div>@{{user.address}}</div>
+                                            </a>
+                                        </div>        
+                                    </div>
+                                </div>
+                            </div>      
+                        </main>
                   
                   
                       

@@ -8,7 +8,7 @@
         
 
         {{-- list restaurants --}}
-        <h3>Restaurants:</h3>
+        <h3>Ristoranti:</h3>
         <li>
             @foreach ($typ -> users as $user)    
                 <a href="{{route('user-menu-show', $user -> id)}}">{{$user -> name}} (id: {{$user -> id}})</a> <br>       

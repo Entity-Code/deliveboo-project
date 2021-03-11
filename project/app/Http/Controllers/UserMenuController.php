@@ -44,11 +44,11 @@ function getMenu($id){
         return view('pages.user-menu-show', compact( 'category','categories', 'dish', 'user'));
     }
 
-    public function braintreeForm($id) {
+    public function braintreeForm() {
 
-        $user = User::findOrFail($id);
+        //$user = User::findOrFail($id);
 
-        $gateway = new Gateway([
+        $gateway = new \Braintree\Gateway([
           'environment' => config('services.braintree.environment'),
           'merchantId' => config('services.braintree.merchantId'),
           'publicKey' => config('services.braintree.publicKey'),
@@ -57,14 +57,14 @@ function getMenu($id){
   
         $token = $gateway->ClientToken()->generate();
   
-        return view('pages.user-menu-show', compact('token','user'));
+        return view('layouts.brain-app', compact('token'));
     }
   
     public function braintreePayment(Request $request) {
         
         //dd($request -> all());
 
-        $gateway = new Gateway([
+        $gateway = new \Braintree\Gateway([
           'environment' => config('services.braintree.environment'),
           'merchantId' => config('services.braintree.merchantId'),
           'publicKey' => config('services.braintree.publicKey'),
@@ -74,7 +74,7 @@ function getMenu($id){
         $amount = $request -> amount;
         $nonce = $request -> payment_method_nonce;
   
-        $result = $gateway->transaction()->sale([
+        $result = $gateway->transaction() -> sale([
             'amount' => $amount,
             'paymentMethodNonce' => $nonce,
             'options' => [
@@ -82,19 +82,19 @@ function getMenu($id){
             ]
         ]);
   
-        if ($result->success) {
-            $transaction = $result->transaction;
+        if ($result -> success) {
+            $transaction = $result -> transaction;
   
             // return redirect() -> route('welcome') ->  with('success_message', 'Transazione avvenuta con successo ' . 'Id: ' . $transaction-> id);
-            return back() -> with('success_message', 'Transazione avvenuta con successo ' . 'Id: ' . $transaction-> id);
+            return back() -> with('success_message', 'Transazione avvenuta con successo ' . 'Id: ' . $transaction -> id);
         } else {
             $errorString = "";
   
-            foreach($result->errors->deepAll() as $error) {
-                $errorString .= 'Error: ' . $error->code . ": " . $error->message . "\n";
+            foreach($result -> errors -> deepAll() as $error) {
+                $errorString .= 'Error: ' . $error -> code . ": " . $error -> message . "\n";
             }
   
-            return back() -> withErrors('Transazione annullata' . $result-> message);
+            return back() -> withErrors('Transazione annullata' . $result -> message);
         }
   
     }

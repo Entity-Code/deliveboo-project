@@ -14,39 +14,41 @@
     <link rel="stylesheet" href="{{ asset('sass/app.scss') }}">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous"/>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+        <nav class="navbar navbar-expand-md shadow-sm" id="navbarr">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    Deliveboo
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="log-reg">
 
+                        <!-- Authentication Links (HEADER) -->
+                        @guest
+                            <li id="login">
+                                <a href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li id="register">
+                                    <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        <!-- Authentication Links (HEADER) -->
-                        @guest
-                            <li>
-                                <a href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li>
-                                    <a href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
 
                         
                             <li>
@@ -72,14 +74,27 @@
             </div>
         </nav>
 
-        {{-- chart js --}}
-    
-        <main class="py-4 background">
+        
+        
+        <main class="py-4 background gradient4">
             @yield('content')
         </main>
         
     </div>
     
+        
+
+
+
+
+
+
+
+
+
+
+
+    {{-- chart js --}}
     @stack('modals')
     
     @livewireScripts
@@ -92,5 +107,14 @@
     @stack('js')
 
 
+    {{-- animations --}}
+    <script>
+        $(".checkbox-menu").on("change", "input[type='checkbox']", function() {
+            $(this).closest("li").toggleClass("active", this.checked);
+        });
+        $(document).on('click', '.allow-focus', function (e) {
+            e.stopPropagation();
+        });
+    </script>
 </body>
 </html>

@@ -1,9 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.brain-app')
 
 @section('content')
 
     
-
 
 
 @endsection

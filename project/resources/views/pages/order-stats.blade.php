@@ -12,7 +12,7 @@
 
 
 
-    <h1>Orders Chart</h1>
+    <h1>Grafico Ordini</h1>
 
     <!-- Chart container -->
     <div id="order-chart" style="height: 300px; border: 1px solid white;">

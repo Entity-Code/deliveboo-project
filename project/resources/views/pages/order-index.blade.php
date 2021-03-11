@@ -14,7 +14,7 @@
                         <li> 
                             @if ($loop -> parent -> count)
                                 
-                                <a href="{{route('order-show', $order -> id)}}">total price: {{$order -> total_price/100}} (id:{{$order -> id}})</a> 
+                                <a href="{{route('order-show', $order -> id)}}">Prezzo Totale: {{$order -> total_price/100}} (id:{{$order -> id}})</a> 
                             @break
                             @endif 
                         </li>

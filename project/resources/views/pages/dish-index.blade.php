@@ -13,7 +13,7 @@
                 
                 @if (Auth::user() -> id === $dish -> user_id)
                     <li class="card p-3 mr-5">
-                        <h4>name: {{$dish -> name}}(user_id: {{Auth::user() -> id}})</h4>
+                        <h4>Nome: {{$dish -> name}}(user_id: {{Auth::user() -> id}})</h4>
 
                         <img 
                             src="{{$dish -> img_dish}}"
@@ -21,11 +21,11 @@
                             style="display: {{$dish -> img_dish == '0' ? 'none' : 'block'}}"
                         >
                         <p>
-                            Category: {{$dish -> category -> name}} <br>
-                            price: {{$dish -> price/100}}€ <br>
-                            description: {{$dish -> description}} <br>
+                            Categoria: {{$dish -> category -> name}} <br>
+                            prezzo: {{$dish -> price/100}}€ <br>
+                            descrizione: {{$dish -> description}} <br>
                             id: {{$dish -> id}} <br>
-                            status: 
+                            stato: 
                             @if ($dish -> status == 1)
                                 Disponibile
                             @else

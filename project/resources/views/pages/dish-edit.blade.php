@@ -2,14 +2,14 @@
 
 @section('content') 
     
-    <h1 class="ml-5">EDIT PIATTO</h1>
+    <h1 class="ml-5">Modifica PIATTO</h1>
 
     <form class="ml-5 w-25 .mx-auto mt-5" action="{{route('dish-update', $dish -> id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('POST')
         
         {{-- categoria piatto --}}
-        <label for="category_id mb-4">Category</label> <br>
+        <label for="category_id mb-4">Categoria</label> <br>
         <select name="category_id" class="mb-4">
 
             @foreach ($categories as $category)
@@ -27,7 +27,7 @@
 
         {{-- nome piatto --}}
         <div class="form-group">
-          <label for="name">Name</label>
+          <label for="name">Nome</label>
           <input 
             minlength="5" 
             maxlength="30"
@@ -42,7 +42,7 @@
 
         {{-- descrizione piatto --}}
         <div class="form-group">
-          <label for="description">Description</label>
+          <label for="description">Descrizione</label>
           <input 
             minlength="5"
             maxlength="255"
@@ -57,7 +57,7 @@
 
         {{-- prezzo piatto --}}
         <div class="form-group">
-          <label for="price">Price</label> (€)
+          <label for="price">Prezzo</label> (€)
           <input 
             min="1" 
             max="1000"
@@ -86,7 +86,7 @@
 
         {{-- stato piatto (0,1) (default value, not visible) --}}
         <div class="form-group">
-          <label for="status">Status</label>
+          <label for="status">Stato</label>
           <select class="form-control" name="status" required autofocus>
             <option value="1" @if ($dish -> status == 1)selected @endif>Disponibile</option>
             <option value="0" @if ($dish -> status == 0) selected @endif>Non disponibile</option>
@@ -108,7 +108,7 @@
 
         <br>
           
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Conferma</button>
       </form>
 
 @endsection 

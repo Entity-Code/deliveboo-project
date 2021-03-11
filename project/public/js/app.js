@@ -50436,14 +50436,24 @@ function init() {
         //prezzo totale
         totPrice: 0,
         //-------------------------------------------------
-        //CHECKOUT
+        //CHECKOUT    
         visible: "visible",
         hidden: "hidden"
       };
     },
     mounted: function mounted() {
+      localStorage.clear();
       this.getUrl();
       this.getData();
+
+      if (localStorage.totPrice) {
+        this.totPrice = JSON.parse(localStorage.totPrice);
+      }
+    },
+    watch: {
+      totPrice: function totPrice(newPrice) {
+        localStorage.totPrice = JSON.stringify(newPrice);
+      }
     },
     methods: {
       getData: function getData() {
@@ -50527,8 +50537,7 @@ function init() {
 
         this.totCart++; //prezzo totale
 
-        this.totPrice += dish.price;
-        console.log(dish);
+        this.totPrice += dish.price; //console.log(dish)
       },
       removeItemFromCart: function removeItemFromCart(dish) {
         /*                 if (dish.quantity == 1 && this.cart.length == 1) {
@@ -50546,8 +50555,7 @@ function init() {
         this.totPrice -= dish.price;
       },
       checkoutVisibility: function checkoutVisibility() {
-        this.isHidden = !this.isHidden;
-        console.log(this.isHidden);
+        this.isHidden = !this.isHidden; //console.log(this.isHidden);
       }
     }
   });

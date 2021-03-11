@@ -43,17 +43,17 @@
                                           
                     </form>
                     
-                    Name: {{$user -> name }} <br>
-                    IVA: {{$user -> IVA }} <br>
-                    email: {{$user -> email }} <br>
-                    address: {{$user -> address }} <br>
-                    city: {{$user -> city }} <br>
-                    day_off: {{$user -> day_off }} <br>
-                    rating: {{$user -> rating }} <br>
+                    Nome: {{$user -> name }} <br>
+                    P.IVA: {{$user -> IVA }} <br>
+                    Email: {{$user -> email }} <br>
+                    Indizirro: {{$user -> address }} <br>
+                    Città: {{$user -> city }} <br>
+                    Chiusura settimanale: {{$user -> day_off }} <br>
+                    Voto: {{$user -> rating }} <br>
 
                     
                     
-                    <h4>Typologies:</h4>
+                    <h4>Tipologie:</h4>
                     <ul>
 
                         @foreach (Auth::user()->typologies as $typology)
@@ -70,10 +70,10 @@
   
 
                 {{-- I MIEI PIATTI --}}
-                <a class="btn btn-lg btn-success" href="{{route('dish-index')}}">MY MENU</a></a>
+                <a class="btn btn-lg btn-success" href="{{route('dish-index')}}">Il mio menù</a></a>
 
                 {{-- ORDINI RICEVUTI --}}
-                <a class="btn btn-danger btn-lg" href="{{route('order-index')}}"> ORDERS RECEIVED</a>
+                <a class="btn btn-danger btn-lg" href="{{route('order-index')}}">I miei ordini</a>
                 
 
 

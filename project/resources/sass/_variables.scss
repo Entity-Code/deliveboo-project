@@ -18,6 +18,8 @@ $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
 
+//backgrounds
+
 // General conditions
 
 * {
@@ -26,7 +28,7 @@ $cyan: #6cb2eb;
     box-sizing: border-box;
 }
 
-body {
+html {
     font-size: 1rem; //1 rem = 10px; 10px/16px = 62.5%
     scroll-behavior: smooth;
 }
@@ -37,4 +39,6 @@ body {
 
 body {
     margin: 1.5rem;
+    background: red;
+    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsfondo.info%2Fi%2Foriginal%2F0%2Fe%2F9%2F57009.jpg&f=1&nofb=1");
 }
