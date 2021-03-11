@@ -103,7 +103,7 @@
 }
 
 html {
-  font-size: 1rem;
+  font-size: 62.5%;
   scroll-behavior: smooth;
 }
 
@@ -113,7 +113,7 @@ html {
 
 body {
   margin: 1.5rem;
-  background: red;
+  min-height: 100vh;
   background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsfondo.info%2Fi%2Foriginal%2F0%2Fe%2F9%2F57009.jpg&f=1&nofb=1");
 }
 
@@ -134,7 +134,7 @@ body {
 }
 
 .home__register--box-anchor {
-  font-size: 1rem;
+  font-size: 2rem;
   margin-right: 2.5rem;
 }
 
@@ -184,7 +184,7 @@ body {
   text-transform: uppercase;
   color: white;
   letter-spacing: 2px;
-  font-size: 6.5rem;
+  font-size: 11rem;
   font-family: "Monofett", cursive;
   margin-bottom: 30px;
   -webkit-animation: deliveboo 1.4s;
@@ -196,7 +196,7 @@ body {
   text-transform: uppercase;
   color: white;
   letter-spacing: 5px;
-  font-size: 0.7rem;
+  font-size: 1.3rem;
   font-family: "Lato", sans-serif;
   text-align: center;
   -webkit-animation: presentation 1.4s;
@@ -208,7 +208,7 @@ body {
   text-transform: uppercase;
   color: white;
   text-decoration: none;
-  font-size: 0.5rem;
+  font-size: 1rem;
   font-family: "Hind", sans-serif;
   letter-spacing: 2px;
 }
@@ -216,8 +216,8 @@ body {
 .round {
   position: relative;
   border: 5px solid #fff;
-  width: 5rem;
-  height: 5rem;
+  width: 8rem;
+  height: 8rem;
   border-radius: 100%;
   margin-top: 6rem;
   margin-bottom: 1.5rem;
@@ -317,7 +317,7 @@ body {
 
 .main__container--left--top h5 {
   margin-left: 2rem;
-  font-size: 1.6rem;
+  font-size: 3.2rem;
   letter-spacing: 5px;
   font-family: "Hind", sans-serif;
   text-transform: uppercase;
@@ -333,7 +333,7 @@ body {
 }
 
 .main__container--left--checkbox--single label {
-  font-size: 1rem;
+  font-size: 2rem;
   margin-left: 0.5rem;
 }
 
@@ -351,7 +351,7 @@ body {
 
 .main__container--right--top h5 {
   margin-left: 2rem;
-  font-size: 1.6rem;
+  font-size: 3.2rem;
   letter-spacing: 5px;
   font-family: "Hind", sans-serif;
   text-transform: uppercase;
@@ -389,7 +389,7 @@ body {
 
 .main__container--right--restourants--box h5 {
   margin-left: 0.5rem;
-  font-size: 1rem;
+  font-size: 2rem;
   font-family: "Hind", sans-serif;
   text-transform: uppercase;
   color: #363535;
@@ -397,7 +397,7 @@ body {
 
 .main__container--right--restourants--box div {
   margin-left: 0.5rem;
-  font-size: 1rem;
+  font-size: 2rem;
   font-family: "Hind", sans-serif;
   color: #363535;
 }
@@ -418,16 +418,21 @@ body {
   margin: 0 auto;
 }
 
+.main__container--right--restourants {
+  margin: 0 auto;
+  text-align: center;
+}
+
 @media screen and (max-width: 750px) {
   .home__logo--text {
     margin-top: 10px;
-    font-size: 5rem;
+    font-size: 7.5rem;
   }
 }
 
 @media screen and (max-width: 1000px) {
   .main__container--left--top > h5 {
-    font-size: 1rem;
+    font-size: 2rem;
     font-weight: bold;
   }
 }
@@ -444,16 +449,6 @@ body {
   .main__container--right--top {
     display: block;
     padding: 15px;
-  }
-
-  .hamburgher {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    margin-right: 10px;
-    align-self: flex-start;
-    font-size: 25px;
-    cursor: pointer;
   }
 
   .typ-mobile {
@@ -479,7 +474,7 @@ body {
 @media screen and (max-width: 570px) {
   .home__logo--text {
     margin-top: 15px;
-    font-size: 4rem;
+    font-size: 6rem;
   }
 
   .main {
@@ -499,7 +494,7 @@ body {
 @media screen and (max-width: 470px) {
   .home__logo--text {
     margin-top: 20px;
-    font-size: 3.5rem;
+    font-size: 4.5rem;
   }
 }
 
@@ -525,6 +520,20 @@ body {
   color: white;
 }
 
+.tip-cont {
+  display: flex;
+  justify-content: center;
+}
+
+.tip-cont .tip {
+  text-align: center;
+  color: white;
+}
+
+.tip-cont .tip:hover {
+  color: white;
+}
+
 ul > li {
   list-style-type: none;
   color: white;
@@ -538,7 +547,6 @@ ul > li {
 #registrati:hover {
   background-color: #2cbddc;
   margin-left: 5px;
-  margin-bottom: 5px;
   box-shadow: -5px 7px 7px 2px #545454;
 }
 
@@ -586,7 +594,6 @@ ul > li {
 #loginn:hover {
   background-color: #2cbddc;
   margin-left: 5px;
-  margin-bottom: 5px;
   box-shadow: -5px 7px 7px 2px #545454;
 }
 
@@ -595,6 +602,7 @@ ul > li {
 }
 
 #navbarr .navbar-brand {
+  font-size: 2rem;
   font-style: italic;
   -webkit-text-decoration: dotted;
           text-decoration: dotted;
@@ -602,6 +610,20 @@ ul > li {
           text-decoration: wavy;
   text-decoration: underline;
   text-overflow: ellipsis;
+}
+
+#navbarr #navbarDropdown {
+  font-size: 2rem;
+}
+
+#navbarr .dropdown-menu-right {
+  font-size: 2rem;
+  margin-right: 52px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+#navbarr .dropdown-menu-right > a {
+  color: #1d68a7;
 }
 
 #navbarr .log-reg {
@@ -619,8 +641,7 @@ ul > li {
   align-self: center;
   border-left: 1px solid white;
   border-bottom: 1px solid white;
-  padding-left: 10px;
-  padding-bottom: 5px;
+  padding: 5px 10px;
 }
 
 #navbarr .log-reg #login > a,
@@ -634,7 +655,6 @@ ul > li {
 #navbarr .log-reg #login:hover,
 #navbarr .log-reg #register:hover {
   transition: 0.25s all;
-  padding: 10px;
   border: 1px solid white;
 }
 
@@ -649,6 +669,311 @@ ul > li {
         font-size: 6.5rem;
     }
 }*/
+
+footer {
+  height: 400px;
+  background-color: #37373f;
+}
+
+footer h5 {
+  text-align: center;
+  font-size: 5rem;
+  color: white;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.dashboard__box {
+  width: 90%;
+  border: 3px solid gold;
+  border-radius: 10px;
+}
+
+.dashboard__box--title {
+  background-image: linear-gradient(to right bottom, gold, #d1dabcba), url(/images/dashboard.jpg?6739bb2fb16b82d57376957fdf66252b);
+  background-size: cover;
+  background-position: center;
+  color: grey;
+  font-size: 5rem;
+  text-align: center;
+  letter-spacing: 1rem;
+  text-transform: uppercase;
+  padding: 6rem;
+}
+
+.dashboard__box--flex {
+  display: flex;
+  justify-content: flex-start;
+  background-color: white;
+}
+
+.dashboard__box--flex--left {
+  width: 35%;
+  background-color: grey;
+  color: white;
+}
+
+.dashboard__box--flex--left h4 {
+  text-align: center;
+  font-size: 3.2rem;
+  text-transform: uppercase;
+  padding: 1.4rem;
+}
+
+.dashboard__box--flex--left--data {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dashboard__box--flex--left--data div {
+  font-size: 1.8rem;
+}
+
+.dashboard__box--flex--left--data hr {
+  background-color: gold;
+  height: 2px;
+}
+
+.dashboard__box--flex--right {
+  width: 65%;
+  background-image: linear-gradient(to right bottom, #a8a7a1, #e1e2dfba), url(/images/dashboard2.jpg?6ecf9140c34f24e048fcb0024bb1e6ed);
+  color: ivory;
+  background-size: cover;
+  background-position: center;
+}
+
+.dashboard__box--flex--right h4 {
+  padding: 2rem;
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+.dashboard__box--flex--right .menu,
+.dashboard__box--flex--right .order,
+.dashboard__box--flex--right .choose,
+.dashboard__box--flex--right .upload {
+  text-align: center;
+  background-color: silver;
+  font-size: 1.3rem;
+  min-width: 10px;
+  padding: 0.8rem;
+  border: 2px solid gold;
+  color: black;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  text-decoration: none;
+  margin-left: 2rem;
+  text-transform: uppercase;
+}
+
+.dashboard__box--flex--right .menu:hover,
+.dashboard__box--flex--right .order:hover,
+.dashboard__box--flex--right .choose:hover,
+.dashboard__box--flex--right .upload:hover {
+  border: 2px solid red;
+}
+
+.dashboard__box--flex--img {
+  width: 100%;
+  background-image: linear-gradient(to right bottom, rgba(235, 231, 231, 0.5), rgba(149, 150, 146, 0.5)), url(/images/dashboard3.jpg?496375497bbfc465b7a4312b9c713088);
+  position: relative;
+  background-color: none;
+  background-size: cover;
+  background-position: center;
+  min-height: 520px;
+}
+
+.dashboard__box--flex--menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.dashboard__box--flex--menu--left {
+  margin-top: 3rem;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dashboard__box--flex--menu--left .new-plate,
+.dashboard__box--flex--menu--left .go-back {
+  text-align: center;
+  background-color: silver;
+  font-size: 1.3rem;
+  width: 180px;
+  padding: 0.8rem;
+  border: 2px solid gold;
+  color: black;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.dashboard__box--flex--menu--left .new-plate:hover,
+.dashboard__box--flex--menu--left .go-back:hover {
+  border: 2px solid red;
+}
+
+.dashboard__box--flex--menu--left .plus,
+.dashboard__box--flex--menu--left .arrow {
+  background-color: silver;
+  width: 50px;
+  height: 50px;
+  border: 2px solid gold;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.6s;
+  margin-bottom: 2rem;
+  display: none;
+}
+
+.dashboard__box--flex--menu--left .plus:hover,
+.dashboard__box--flex--menu--left .arrow:hover {
+  border: 1px solid white;
+  transform: scale(1.2);
+}
+
+.dashboard__box--flex--menu--left .plus i,
+.dashboard__box--flex--menu--left .arrow i {
+  color: black;
+  font-size: 2.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dashboard__box--flex--menu--right {
+  margin-top: 3rem;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard__box--flex--menu--right--container {
+  min-height: 100px;
+  width: 90%;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: rgba(240, 255, 240, 0.5);
+  margin-bottom: 2rem;
+  overflow-y: scroll;
+}
+
+.dashboard__box--flex--menu--right .dish__box {
+  width: 95%;
+  margin: 1rem auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px gold solid;
+  border-radius: 30px;
+  background-color: silver;
+  padding: 1rem;
+  transition: all 0.5s;
+  text-transform: uppercase;
+}
+
+.dashboard__box--flex--menu--right .dish__box:hover {
+  border: 2px red solid;
+}
+
+.dashboard__box--flex--menu--right .dish__box div {
+  font-size: 2rem;
+}
+
+.dashboard__box--flex--menu--right .dish__box--buttons {
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dashboard__box--flex--menu--right .dish__box--buttons .edit {
+  background-color: blue;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.6s;
+}
+
+.dashboard__box--flex--menu--right .dish__box--buttons .edit:hover {
+  border: 1px solid white;
+  transform: scale(1.2);
+}
+
+.dashboard__box--flex--menu--right .dish__box--buttons .edit .fa-edit {
+  color: white;
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dashboard__box--flex--menu--right .dish__box--buttons .cancel {
+  background-color: red;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.6s;
+}
+
+.dashboard__box--flex--menu--right .dish__box--buttons .cancel:hover {
+  border: 1px solid white;
+  transform: scale(1.2);
+}
+
+.dashboard__box--flex--menu--right .dish__box--buttons .cancel .fa-trash-alt {
+  color: white;
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dashboard__box--imgform {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to right bottom, #a8a7a1, #e1e2dfba), url(/images/dish.jpg?d692bcad623d59bb1db59dd37303d254);
+  background-size: cover;
+  background-position: center;
+}
+
+.dashboard__box--form {
+  width: 40%;
+  margin: auto;
+  padding: 3rem;
+}
+
+.dashboard__box--form select {
+  font-size: 1.5rem;
+}
+
+.dashboard__box--form label {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+.dashboard__box--form input {
+  font-size: 1.5rem;
+}
 
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)

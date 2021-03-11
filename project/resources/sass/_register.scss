@@ -17,6 +17,18 @@
     }
 }
 
+.tip-cont {
+    display: flex;
+    justify-content: center;
+    .tip {
+        text-align: center;
+        color: white;
+        &:hover {
+            color: white;
+        }
+    }
+}
+
 //typologies
 
 ul > li {
@@ -31,7 +43,6 @@ ul > li {
     &:hover {
         background-color: #2cbddc;
         margin-left: 5px;
-        margin-bottom: 5px;
         box-shadow: -5px 7px 7px 2px rgba(84, 84, 84, 1);
     }
 }

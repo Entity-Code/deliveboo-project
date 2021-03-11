@@ -109,10 +109,10 @@
                                             <div class="dropdown text-center margin-auto">
                                                 <button class="btn btn-default dropdown-toggle margin-auto t" type="button" 
                                                     id="dropdownMenu1" data-toggle="dropdown" 
-                                                    aria-haspopup="true" aria-expanded="true">
+                                                    aria-haspopup="true" aria-expanded="true" style="font-size: 1.8rem">
                                                     Tipologie
                                                 </button>
-                                                <ul class="dropdown-menu checkbox-menu allow-focus" aria-labelledby="dropdownMenu1">
+                                                <ul class="dropdown-menu checkbox-menu allow-focus" aria-labelledby="dropdownMenu1" style="font-size: 1.8rem">
                                                 
                                                     <li v-for="typ in data">
                                                         <label class="form-check-label">

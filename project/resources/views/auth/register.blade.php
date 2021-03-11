@@ -6,16 +6,16 @@
         
             <div class="col-md-8 card-back">
                 <div>
-                    <div class="card-header">{{ __('Register') }}</div>
+                    <div class="card-header">{{ __('Registrazione') }}</div>
                     <div class="card-body">
                                       
                         @method('POST')
                         <form method="POST" action="{{ route('register') }}">
                         @csrf  
     
-                        <div class="form-group row">
-                            <div class="dropdown text-center">
-                                <button class="btn btn-default dropdown-toggle" type="button" 
+                        <div class="form-group row tip-cont">
+                            <div class="dropdown text-center tip">
+                                <button class="btn btn-default dropdown-toggle tip" type="button" 
                                     id="dropdownMenu1" data-toggle="dropdown" 
                                     aria-haspopup="true" aria-expanded="true">
                                     Tipologie

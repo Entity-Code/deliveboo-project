@@ -1,0 +1,32 @@
+.dashboard__box--imgform {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+            to right bottom,
+            rgb(168, 167, 161),
+            #e1e2dfba
+        ),
+        url(../../storage/app/public/home/dish.jpg);
+
+    background-size: cover;
+    background-position: center;
+}
+
+.dashboard__box--form {
+    width: 40%;
+    margin: auto;
+    padding: 3rem;
+
+    & select {
+        font-size: 1.5rem;
+    }
+
+    & label {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+    }
+
+    & input {
+        font-size: 1.5rem;
+    }
+}

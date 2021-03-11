@@ -1,0 +1,10 @@
+footer {
+    height: 400px;
+    background-color: #37373f;
+
+    & h5 {
+        text-align: center;
+        font-size: 5rem;
+        color: white;
+    }
+}

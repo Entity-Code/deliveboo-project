@@ -11,14 +11,15 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('sass/app.scss') }}">
+    <link href="{{ asset('sass/app.scss') }}" rel="stylesheet">
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous"/>
 </head>
-<body>
+<body class="background">
     <div id="app">
         <nav class="navbar navbar-expand-md shadow-sm" id="navbarr">
             <div class="container">
@@ -29,7 +30,8 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="navbar-collapse" id="navbarSupportedContent">
+                <div class="navbar-collapse" id="
+                navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="log-reg">
 
@@ -40,17 +42,15 @@
                             </li>
                             @if (Route::has('register'))
                                 <li id="register">
-                                    <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a href="{{ route('register') }}">{{ __('Registrati') }}</a>
                                 </li>
                             @endif
                         @else
                     </ul>
-
+                    
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-
-
-                        
+           
                             <li>
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -73,10 +73,13 @@
                 </div>
             </div>
         </nav>
-
+       
         
         
-        <main class="py-4 background gradient4">
+        
+        <main 
+        {{-- class="py-4 background gradient4" --}}
+        >
             @yield('content')
         </main>
         

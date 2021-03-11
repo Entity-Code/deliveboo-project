@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+<div class="dashboard">
+    <div class="dashboard__box">
+        
+                <div class="dashboard__box--title">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
+                <div>
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
+                        <div role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
@@ -17,71 +16,81 @@
                 </div>
                 
 
-                <div>
+                <div class="dashboard__box--flex">
+                    <div class="dashboard__box--flex--left">
+                      <h4> I tuoi dati </h4>
+                      <div class="dashboard__box--flex--left--data">
+                          <div>Ristorante: {{$user -> name }}</div>
+                          <hr>
+                          <div>Partita IVA: {{$user -> IVA }}</div>
+                          <hr>
 
-                    @if (Auth::user() -> logo)
-                        <img src="{{asset('/storage/logo/' . Auth::user() -> logo)}}" width="300px">
-                    @else
-                        
-                    @endif
+                          <div>Email: {{$user -> email }}</div>
+                          <hr>
 
+                          <div>Indirizzo: {{$user -> address }}</div>
+                          <hr>
 
-                     
-                    <form action="{{route('update-logo')}}" method="POST" enctype="multipart/form-data">
-                        
-                        @csrf
-                        @method('POST')
+                          <div>Città: {{$user -> city }}</div>
+                          <hr>
+
+                          <div>Chiusura: {{$user -> day_off }}</div>
+                          <hr>
+
+                          <div>Valutazione: {{$user -> rating }}</div>
+                      </div>
+
+                      <h4>Le tue tipologie</h4>
+                      <div class="dashboard__box--flex--left--data">
+  
+                          @foreach (Auth::user()->typologies as $typology)
+                          
+                            <div>{{ $typology -> name }}</div>                       
+                          
+                          @endforeach
+                          
+                      </div>
+                    </div>
+
+                    <div class="dashboard__box--flex--right">
+                        <h4>Vuoi cambiare il logo del tuo ristorante?</h4>
+                            @if (Auth::user() -> logo)
+                              <img src="{{asset('/storage/logo/' . Auth::user() -> logo)}}" width="300px">
+                            @else
+                             
+                            @endif
+     
+     
+                          
+                         <form action="{{route('update-logo')}}" method="POST" enctype="multipart/form-data">
+                             
+                             @csrf
+                             @method('POST')
+                                     
+                             {{-- Aggiunto dopo punto 4 (metodo controller)--}}
+                             <input 
+                                 name="logo" 
+                                 type="file"
+                                 class="choose"
                                 
-                        {{-- Aggiunto dopo punto 4 (metodo controller)--}}
-                        <input 
-                            name="logo" 
-                            type="file"
-                            class="form-control border-0"
-                        >       
-                                
-                        <input type="submit" value="Upload" class="btn btn-primary">   
-                                          
-                    </form>
-                    
-                    Nome: {{$user -> name }} <br>
-                    P.IVA: {{$user -> IVA }} <br>
-                    Email: {{$user -> email }} <br>
-                    Indizirro: {{$user -> address }} <br>
-                    Città: {{$user -> city }} <br>
-                    Chiusura settimanale: {{$user -> day_off }} <br>
-                    Voto: {{$user -> rating }} <br>
+                             >
+                             <br>       
+                                     
+                             <input type="submit" value="Upload" class="upload">   
+                                               
+                         </form>
 
-                    
-                    
-                    <h4>Tipologie:</h4>
-                    <ul>
+                         <h4>Vuoi visualizzare il tuo menu?</h4>
+                         <a class="menu" href="{{route('dish-index')}}">Il mio menu</a></a>
 
-                        @foreach (Auth::user()->typologies as $typology)
-                        
-                            <li>{{ $typology -> name }}</li>                       
-                        
-                        @endforeach
-                        
-                    </ul>
+                         <h4>Vuoi visualizzare gli ordini ricevuti?</h4>
+                         <a class="order" href="{{route('order-index')}}">I miei ordini ricevuti</a>
+                         
+
+                    </div>
 
                 </div>
 
-                
-  
-
-                {{-- I MIEI PIATTI --}}
-                <a class="btn btn-lg btn-success" href="{{route('dish-index')}}">Il mio menù</a></a>
-
-                {{-- ORDINI RICEVUTI --}}
-                <a class="btn btn-danger btn-lg" href="{{route('order-index')}}">I miei ordini</a>
-                
-
-
-
-
-
-            </div>
-        </div>
     </div>
 </div>
 @endsection

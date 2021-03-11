@@ -1,0 +1,170 @@
+.dashboard__box--flex--img {
+    width: 100%;
+    background-image: linear-gradient(
+            to right bottom,
+            rgba(235, 231, 231, 0.5),
+            hsla(75, 2%, 58%, 0.5)
+        ),
+        url(../../storage/app/public/home/dashboard3.jpg);
+
+    position: relative;
+    background-color: none;
+    background-size: cover;
+    // background-size: cover;
+    background-position: center;
+    min-height: 520px;
+}
+
+.dashboard__box--flex--menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+
+    &--left {
+        margin-top: 3rem;
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & .new-plate,
+        & .go-back {
+            text-align: center;
+            background-color: silver;
+            font-size: 1.3rem;
+            width: 180px;
+            padding: 0.8rem;
+            border: 2px solid gold;
+            color: black;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+
+            &:hover {
+                border: 2px solid red;
+            }
+        }
+
+        & .plus,
+        & .arrow {
+            background-color: silver;
+            width: 50px;
+            height: 50px;
+            border: 2px solid gold;
+            border-radius: 50%;
+            position: relative;
+            transition: all 0.6s;
+            margin-bottom: 2rem;
+            display: none;
+
+            &:hover {
+                border: 1px solid white;
+                transform: scale(1.2);
+            }
+
+            & i {
+                color: black;
+
+                font-size: 2.5rem;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+
+    &--right {
+        margin-top: 3rem;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+
+        &--container {
+            min-height: 100px;
+            width: 90%;
+            border: 2px solid white;
+            border-radius: 5px;
+            background-color: rgba(240, 255, 240, 0.5);
+            margin-bottom: 2rem;
+            overflow-y: scroll;
+        }
+        & .dish__box {
+            width: 95%;
+            margin: 1rem auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border: 2px gold solid;
+            border-radius: 30px;
+            background-color: silver;
+            padding: 1rem;
+            transition: all 0.5s;
+            text-transform: uppercase;
+
+            &:hover {
+                border: 2px red solid;
+            }
+
+            & div {
+                font-size: 2rem;
+            }
+        }
+
+        .dish__box--buttons {
+            width: 130px;
+            display: flex;
+            justify-content: space-between;
+
+            .edit {
+                background-color: blue;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                position: relative;
+                transition: all 0.6s;
+
+                &:hover {
+                    border: 1px solid white;
+                    transform: scale(1.2);
+                }
+
+                .fa-edit {
+                    color: white;
+                    font-size: 2rem;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+            .cancel {
+                background-color: red;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                position: relative;
+                transition: all 0.6s;
+
+                &:hover {
+                    border: 1px solid white;
+                    transform: scale(1.2);
+                }
+
+                .fa-trash-alt {
+                    color: white;
+                    font-size: 2rem;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        }
+    }
+}

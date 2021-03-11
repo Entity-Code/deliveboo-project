@@ -29,7 +29,7 @@ $cyan: #6cb2eb;
 }
 
 html {
-    font-size: 1rem; //1 rem = 10px; 10px/16px = 62.5%
+    font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
     scroll-behavior: smooth;
 }
 
@@ -39,6 +39,6 @@ html {
 
 body {
     margin: 1.5rem;
-    background: red;
+    min-height: 100vh;
     background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsfondo.info%2Fi%2Foriginal%2F0%2Fe%2F9%2F57009.jpg&f=1&nofb=1");
 }
