@@ -50442,8 +50442,8 @@ function init() {
       };
     },
     mounted: function mounted() {
-      //localStorage.clear();
-      console.log(this.cart);
+      localStorage.clear(); //console.log(this.cart)
+
       this.getUrl();
       this.getData(); //passaggio totPrice
 
@@ -50495,9 +50495,8 @@ function init() {
 
           for (var key in _this.dishes) {
             _this.dishes[key].quantity = 1;
-          }
+          } //console.log(this.cart);
 
-          console.log(_this.cart);
         })["catch"](function (err) {
           console.log(err);
         });

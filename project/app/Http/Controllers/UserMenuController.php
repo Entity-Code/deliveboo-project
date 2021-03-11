@@ -62,8 +62,10 @@ function getMenu($id){
     }
   
     public function braintreePayment(Request $request) {
-        
-        //dd($request -> all());
+
+        $data = $request -> all();
+
+        dd($data);
 
         $gateway = new \Braintree\Gateway([
           'environment' => config('services.braintree.environment'),

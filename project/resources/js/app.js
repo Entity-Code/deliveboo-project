@@ -49,8 +49,8 @@ function init() {
         },
 
         mounted: function () {
-            //localStorage.clear();
-            console.log(this.cart)
+            localStorage.clear();
+            //console.log(this.cart)
             this.getUrl();
             this.getData();
             //passaggio totPrice
@@ -61,6 +61,7 @@ function init() {
             if (localStorage.cart) {
                 this.cart = JSON.parse(localStorage.cart);
             }
+            
         },
         watch: {
             totPrice(newPrice) {                
@@ -72,7 +73,7 @@ function init() {
         },
         
         methods: {
-
+            
             getData: function () {
                 
                 //filter
@@ -116,7 +117,7 @@ function init() {
                         }
                         
 
-                    console.log(this.cart);
+                    //console.log(this.cart);
                     }).catch((err) => {
                         
                         console.log(err);

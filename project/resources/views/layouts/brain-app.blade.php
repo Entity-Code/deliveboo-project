@@ -60,6 +60,8 @@
                             <br>
                             
                             {{-- ORDER FORM --}}
+                            <h3>Dati personali:</h3>
+
                             <label for="firstname">Nome</label>
                             <input type="text" name="firstname" placeholder="nome">
                             
@@ -82,6 +84,12 @@
                             {{-- hidden --}}
                             <input id="tot_price" name="total_price" type="text" placeholder="Amount" style="display: block;" onlyread>
 
+                            
+                            {{-- dishes --}}
+
+                            <div id="cboxes">
+
+                            </div>
                             
 
 
@@ -154,11 +162,30 @@
                     amountShow.value = 'Buon appetito!';  
                 }
 
-                console.log(localStorage.cart);
-
                 
 
-              
+                //dishes utente
+                var cart = JSON.parse(localStorage.cart);      
+                //console.log(cart);
+                
+                var myDiv = document.getElementById("cboxes");
+
+                for (var i = 0; i < cart.length; i++) {
+                    console.log(cart[i]);
+                    var checkBox = document.createElement("input");
+                    var label = document.createElement("label");
+                    checkBox.type = "checkbox";
+                    checkBox.value = cart[i];
+                    //checkBox.name = 'name';
+                    checkBox.checked = true;
+                    myDiv.appendChild(checkBox);
+                    myDiv.appendChild(label);
+                    label.appendChild(document.createTextNode(checkBox.value));
+
+
+                }
+
+                
                 
                 
                 
