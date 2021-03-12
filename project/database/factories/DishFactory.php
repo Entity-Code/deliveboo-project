@@ -10,7 +10,7 @@ $factory -> define(Dish::class, function (Faker $faker) {
 
         'name'   => $faker -> word(),
         'status' => rand(0, 1),
-        'price'  => rand(5000, 40000) ,
+        'price'  => rand(100, 5000) ,
         'description' => $faker -> paragraph(),
         'img_dish' => $faker -> imageUrl()
         

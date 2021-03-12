@@ -41,12 +41,10 @@ function getMenu($id){
     
     public function show($id) {
 
-        $categories = Category::all();
         $user = User::FindOrFail($id);
-        $category = Category::FindOrFail($id);
         $dish = Dish::FindOrFail($id); 
 
-        return view('pages.user-menu-show', compact( 'category','categories', 'dish', 'user'));
+        return view('pages.user-menu-show', compact('dish', 'user'));
     }
 
     public function braintreeForm() {

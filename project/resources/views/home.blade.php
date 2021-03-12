@@ -54,7 +54,7 @@
 
                     <div class="dashboard__box--flex--right">
                         <h4>Vuoi cambiare il logo del tuo ristorante?</h4>
-                            @if (Auth::user() -> logo)
+                            @if (Auth::user() -> logo != 'default-logo.png')
                               <img src="{{asset('/storage/logo/' . Auth::user() -> logo)}}" width="300px">
                             @else
                              

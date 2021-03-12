@@ -15,7 +15,7 @@ class DishSeeder extends Seeder
     public function run()
     {
         
-        factory(Dish::class, 50) 
+        factory(Dish::class, 70) 
             -> make()
             -> each(function($dish){
 
