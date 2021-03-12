@@ -22,7 +22,7 @@ class CreatePaymentsTable extends Migration
             $table -> string('address', 100);
             $table -> integer('total_price');
             $table -> string('status', 50);
-            $table -> text('note');
+            $table -> text('note') ->nullable();
 
             $table -> timestamps();
         });

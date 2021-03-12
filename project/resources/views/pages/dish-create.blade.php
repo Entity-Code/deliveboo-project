@@ -26,7 +26,7 @@
           {{-- nome piatto --}}
           <div class="form-group">
             <label for="name">Name</label>
-            <input minlength="5" maxlength="30" name="name" type="text" class="form-control" autofocus>
+            <input minlength="5" maxlength="30" name="name" type="text" class="form-control" autofocus required>
           </div>
     
           <br>
@@ -34,7 +34,7 @@
           {{-- descrizione piatto --}}
           <div class="form-group">
             <label for="description">Description</label>
-            <input minlength="5" maxlength="255" name="description" type="text" class="form-control" autofocus>
+            <input minlength="5" maxlength="255" name="description" type="text" class="form-control" autofocus required>
           </div> 
     
           <br>
@@ -42,7 +42,7 @@
           {{-- prezzo piatto --}}
           <div class="form-group">
             <label for="price">Price</label> (€)
-            <input min="1" max="1000" name="price" type="number" class="form-control" autofocus>
+            <input min="1" max="1000" name="price" type="text" class="form-control" autofocus required>
           </div>
     
           <br>

@@ -8,6 +8,9 @@ use App\Dish;
 use App\Category;
 use App\Payment;
 use Braintree\Gateway;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestMail;
+use Illuminate\Support\Facades\Validator;
 
 
 class UserMenuController extends Controller
@@ -37,6 +40,7 @@ function getMenu($id){
 
     
     public function show($id) {
+
         $categories = Category::all();
         $user = User::FindOrFail($id);
         $category = Category::FindOrFail($id);
@@ -46,8 +50,6 @@ function getMenu($id){
     }
 
     public function braintreeForm() {
-
-        //$user = User::findOrFail($id);
 
         $gateway = new \Braintree\Gateway([
           'environment' => config('services.braintree.environment'),
@@ -64,8 +66,13 @@ function getMenu($id){
     public function braintreePayment(Request $request) {
 
         $data = $request -> all();
-        //
-        // dd($data);
+        
+        Validator::make($data, [
+            'firstname' =>  ['required', 'string', 'min:3','max:20'],
+            'lastname' => ['required', 'string', 'min:3','max:20'],
+            'address' => ['required', 'string', 'min:2', 'max:50'],
+            'email' => ['required', 'string', 'email', 'max:100']
+        ]) -> validate();
 
         $dish = Dish::findOrFail($data['cart']);
 
@@ -101,6 +108,8 @@ function getMenu($id){
   
         if ($result -> success) {
             $transaction = $result -> transaction;
+
+            Mail::to($order -> email)->send(new TestMail($order));
   
             // return redirect() -> route('welcome') ->  with('success_message', 'Transazione avvenuta con successo ' . 'Id: ' . $transaction-> id);
             return back() -> with('success_message', 'Transazione avvenuta con successo ' . 'Id: ' . $transaction -> id);

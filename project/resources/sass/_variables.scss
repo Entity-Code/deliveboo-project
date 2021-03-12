@@ -33,12 +33,13 @@ html {
     scroll-behavior: smooth;
 }
 
-.round {
-    font-size: 62.5%;
-}
+// .round {
+//     font-size: 62.5%;
+// }
 
 body {
     margin: 1.5rem;
     min-height: 100vh;
-    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsfondo.info%2Fi%2Foriginal%2F0%2Fe%2F9%2F57009.jpg&f=1&nofb=1");
+    // MODIFICA
+    background-image: linear-gradient(to right bottom, #0974f085, #098fe7ba);
 }

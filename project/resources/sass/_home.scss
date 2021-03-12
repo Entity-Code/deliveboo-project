@@ -39,7 +39,7 @@
     &__container {
         width: 85%;
         height: 85%;
-        border: 3px red solid;
+        border: 3px gold solid;
         margin: auto;
         /* z-index: 99; */
         animation-name: redCont;
@@ -144,7 +144,7 @@
 }
 
 .round:hover {
-    border: 5px solid red;
+    border: 5px solid gold;
     transition: all 1s;
 }
 

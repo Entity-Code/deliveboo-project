@@ -63,39 +63,35 @@
                             <h3>Dati personali:</h3>
 
                             <label for="firstname">Nome</label>
-                            <input type="text" name="firstname" placeholder="nome">
+                            <input type="text" name="firstname" placeholder="nome" required minlength="2">
                             
                             <br>
                             
                             <label for="lastname">Cognome</label>
-                            <input type="text" name="lastname" placeholder="cognome">
+                            <input type="text" name="lastname" placeholder="cognome" required minlength="2">
                             <br>
                             
                             <label for="email">Email</label>
-                            <input type="email" name="email" placeholder="email">
+                            <input type="email" name="email" placeholder="email" required>
                             
                             <br>
                             
                             <label for="address">Indirizzo di consegna</label>
-                            <input type="text" name="address" placeholder="indirizzo">
+                            <input type="text" name="address" placeholder="indirizzo" required minlength="6">
                             
                             <br>
                             
                             {{-- hidden --}}
-                            <input id="tot_price" name="total_price" type="text" placeholder="Amount" style="display: block;" onlyread>
+                            <input id="tot_price" name="total_price" type="hidden" placeholder="Amount" onlyread>
 
                             <label for="note">Note</label>
                             <textarea name="note" rows="8" cols="80" placeholder="Inserire eventuali note: allergie, intolleranze o aggiunta/rimozione ingredienti"></textarea>
                             {{-- dishes --}}
 
-                            <div id="cboxes">
-
+                            <div id="cboxes" style="display: none">
+                                
                             </div>
                             
-
-
-                            
-
                         </div>
                     </label>
                         

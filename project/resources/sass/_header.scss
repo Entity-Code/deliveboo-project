@@ -1,15 +1,24 @@
 //navbar
 #navbarr {
-    background: rgba(255, 255, 255, 0.5);
+    background-image: linear-gradient(
+            to right bottom,
+            rgba(235, 231, 231, 0.5),
+            rgba(149, 150, 146, 0.5)
+        ),
+        url(../../storage/app/public/home/header.png);
+    background-size: cover;
+    // background-size: cover;
+    background-position: top;
+
+    border-bottom: 2px solid gold;
 
     //logo
     .navbar-brand {
-        font-size: 2rem;
-        font-style: italic;
-        text-decoration: dotted;
-        text-decoration: wavy;
-        text-decoration: underline;
-        text-overflow: ellipsis;
+        font-size: 4rem;
+        text-transform: uppercase;
+        color: white;
+        letter-spacing: 2px;
+        font-family: "Monofett", cursive;
     }
     #navbarDropdown {
         font-size: 2rem;
@@ -33,14 +42,14 @@
         #login,
         #register {
             position: relative;
-            transition: 0.25s all;
+            transition: 0.2s all;
             margin: 0 5px;
             align-self: center;
-            border-left: 1px solid white;
-            border-bottom: 1px solid white;
+            border-left: 3px solid gold;
+            border-bottom: 3px solid gold;
             padding: 5px 10px;
             & > a {
-                font-size: 15px;
+                font-size: 1.8rem;
                 font-weight: bolder;
                 text-decoration: none;
                 color: white;
@@ -48,10 +57,13 @@
             &:hover {
                 transition: 0.25s all;
                 //border-radius: 10px;
-                border: 1px solid white;
+                border: 3px solid white;
+                transform: scale(1.2);
             }
             &:active {
                 bottom: 2px;
+                border: 3px solid gold;
+                color: gold;
             }
         }
     }
