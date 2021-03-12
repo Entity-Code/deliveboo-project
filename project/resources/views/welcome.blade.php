@@ -28,6 +28,10 @@
     </head>
     <body>
         
+        <div class="loader">
+            <img src="{{ asset('loader/circles.svg') }}">
+        </div>
+
         {{-- header  --}}
              <header class="home">
                 <div class="home__register">
@@ -69,12 +73,8 @@
                     </div>              
                 </div>           
               </header>
-
-           
-                
-                <div id="app">
-                    {{-- <filter-typologies></filter-typologies>   --}}
-                    
+   
+                <div id="app">                
                     <div>
                       <main id="order" class="main">
                           <div class="main__container">             
@@ -129,16 +129,11 @@
                                                             
                                                             
                                                         </label>
-                                                    </li>
-                                                       
+                                                    </li>                                                      
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
-
-
-
-
 
                                 </div>
                                     <div class="main__container--right--restourants">
@@ -167,13 +162,7 @@
                                 </div>
                             </div>      
                         </main>
-                  
-                  
-                      
-                      
-      
                        </div>
-
                     </div>
                   
           </main>
@@ -204,7 +193,6 @@
                         <i class="fab fa-linkedin fa-2x"></i>
                     </a>
                 </div>
-
               </div>
 
               <div class="box_">
@@ -229,7 +217,6 @@
               </div>
             </div>
 
-
             <div class="footer_down">
                   <p>
                     &copy; Copyright 2021| Deliveboo Boolean | All Rights Reserved
@@ -237,7 +224,14 @@
             </div>
         </footer>
 
-            
+        {{-- loader --}}
+        <script>
+            $(function(){
+                setTimeout(() => {
+                    $('.loader').fadeOut(500);
+                },500);
+            });
+        </script>
         
     </body>
 </html>

@@ -20,9 +20,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous"/>
+
 </head>
 <body class="background">
-    
+
+    <div class="loader">
+        <img src="{{ asset('loader/circles.svg') }}">
+    </div>
+
     <div id="app">
         <nav class="navbar navbar-expand-md shadow-sm" id="navbarr">
             <div class="container">
@@ -33,15 +38,14 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="navbar-collapse" id="
-                navbarSupportedContent">
+                <div class="navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="log-reg">
 
                         <!-- Authentication Links (HEADER) -->
                         @guest
                             <li id="login">
-                                <a href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a href="{{ route('login') }}">{{ __('Accedi') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li id="register">
@@ -80,24 +84,12 @@
         
         
         
-        <main 
-        {{-- class="py-4 background gradient4" --}}
-        >
+        <main>
             @yield('content')
         </main>
         
     </div>
     
-        
-
-
-
-
-
-
-
-
-
 
 
     {{-- chart js --}}
@@ -120,6 +112,14 @@
         });
         $(document).on('click', '.allow-focus', function (e) {
             e.stopPropagation();
+        });
+    </script>
+    {{-- loader --}}
+    <script>
+        $(function(){
+            setTimeout(() => {
+                $('.loader').fadeOut(500);
+            },500);
         });
     </script>
 </body>

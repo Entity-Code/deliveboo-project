@@ -96,6 +96,22 @@
   }
 }
 
+.loader {
+  position: relative;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: aqua;
+}
+
+.loader > img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -110,7 +126,7 @@ html {
 body {
   margin: 1.5rem;
   min-height: 100vh;
-  background-image: linear-gradient(to right bottom, #0974f085, #098fe7ba);
+  background-image: linear-gradient(to right bottom, aqua, #019191);
 }
 
 .home {
@@ -154,9 +170,8 @@ body {
 .home__container {
   width: 85%;
   height: 85%;
-  border: 3px gold solid;
+  border: 3px #fff solid;
   margin: auto;
-  /* z-index: 99; */
   -webkit-animation-name: redCont;
           animation-name: redCont;
   -webkit-animation-duration: 1.4s;
@@ -233,7 +248,7 @@ body {
   display: block;
   position: absolute;
   transform: rotate(48deg);
-  left: 15%;
+  left: 14%;
   bottom: 35%;
 }
 
@@ -241,7 +256,7 @@ body {
   display: block;
   position: absolute;
   transform: rotate(-48deg);
-  left: 43%;
+  left: 41%;
   bottom: 35%;
 }
 
@@ -249,7 +264,7 @@ body {
   display: block;
   position: absolute;
   transform: rotate(48deg);
-  left: 15%;
+  left: 14%;
   bottom: 54%;
 }
 
@@ -257,7 +272,7 @@ body {
   display: block;
   position: absolute;
   transform: rotate(-48deg);
-  left: 43%;
+  left: 41%;
   bottom: 54%;
 }
 
@@ -543,6 +558,10 @@ body {
     justify-content: center;
     font-size: 1.5rem;
   }
+
+  .round {
+    margin-top: 3rem;
+  }
 }
 
 @media screen and (max-width: 570px) {
@@ -567,6 +586,14 @@ body {
   .footer_up .box_ {
     width: 100%;
   }
+
+  .round {
+    margin-top: 1.5rem;
+  }
+
+  .home__logo--subtext {
+    font-size: 1rem;
+  }
 }
 
 @media screen and (max-width: 470px) {
@@ -579,24 +606,24 @@ body {
 .register__box {
   width: 60%;
   margin: 5rem auto;
-  border: 3px solid gold;
+  border: 3px solid #fff;
   border-radius: 20px;
 }
 
 .register__box--top {
   text-align: center;
-  background-color: #aaaaaa;
+  background-color: #757575;
   padding: 4em;
   text-transform: uppercase;
   letter-spacing: 0.5rem;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
-  border-bottom: 2px solid gold;
+  border-bottom: 2px solid #fff;
 }
 
 .register__box--top h4 {
   font-size: 3rem;
-  color: gold;
+  color: #fff;
 }
 
 .register__box--form {
@@ -609,20 +636,6 @@ body {
 
 .register__box--form form {
   padding: 3rem;
-}
-
-#registrati {
-  margin-top: 2rem;
-  background-color: transparent;
-  transition: 0.25s;
-  font-size: 2rem;
-  border: 1px solid gold;
-}
-
-#registrati:hover {
-  background-color: #2cbddc;
-  margin-left: 5px;
-  box-shadow: -5px 7px 7px 2px #545454;
 }
 
 .tip-cont {
@@ -691,18 +704,28 @@ select {
   color: black;
 }
 
-#loginn {
+#loginn,
+#registrati {
   background-color: transparent;
   transition: 0.25s;
   font-size: 1.8rem;
   color: black;
-  border: 1px solid gold;
+  border: 2px solid #fff;
+  background: rgba(84, 84, 84, 0.25);
 }
 
-#loginn:hover {
-  background-color: #2cbddc;
+#loginn:hover,
+#registrati:hover {
+  background-color: #019999;
   margin-left: 5px;
   box-shadow: -5px 7px 7px 2px #545454;
+  color: white;
+}
+
+#loginn:active,
+#registrati:active {
+  position: relative;
+  top: 2.5px;
 }
 
 .col-md-6 input {
@@ -713,7 +736,7 @@ select {
   background-image: linear-gradient(to right bottom, rgba(235, 231, 231, 0.5), rgba(149, 150, 146, 0.5)), url(/images/header.png?b83c56dd8bbdc7f3901ad7f88f1c63c9);
   background-size: cover;
   background-position: top;
-  border-bottom: 2px solid gold;
+  border-bottom: 2px solid #fff;
 }
 
 #navbarr .navbar-brand {
@@ -751,8 +774,9 @@ select {
   transition: 0.2s all;
   margin: 0 5px;
   align-self: center;
-  border-left: 3px solid gold;
-  border-bottom: 3px solid gold;
+  border-left: 3px solid #fff;
+  border-bottom-left-radius: 15px;
+  border-bottom: 3px solid #fff;
   padding: 5px 10px;
 }
 
@@ -766,16 +790,15 @@ select {
 
 #navbarr .log-reg #login:hover,
 #navbarr .log-reg #register:hover {
-  transition: 0.25s all;
+  border-top-right-radius: 15px;
   border: 3px solid white;
-  transform: scale(1.2);
 }
 
 #navbarr .log-reg #login:active,
 #navbarr .log-reg #register:active {
   bottom: 2px;
-  border: 3px solid gold;
-  color: gold;
+  border: 3px solid #fff;
+  color: #fff;
 }
 
 footer {

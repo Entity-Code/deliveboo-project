@@ -20,6 +20,9 @@
 </head>
 <body>
     
+    <div class="loader">
+        <img src="{{ asset('loader/circles.svg') }}">
+    </div>
     
     {{-- braintree --}}
     <div>
@@ -139,8 +142,6 @@
             </script>
 
             <script>
-                
-
                 var input = document.querySelector('#amount');
                 var totPrice = document.querySelector('#tot_price');
 
@@ -159,11 +160,8 @@
                     amountShow.value = 'Buon appetito!';  
                 }
 
-                
-
                 //dishes utente
                 var cart = JSON.parse(localStorage.cart);      
-                //console.log(cart);
                 
                 var myDiv = document.getElementById("cboxes");
 
@@ -178,18 +176,8 @@
                     myDiv.appendChild(checkBox);
                     myDiv.appendChild(label);
                     label.appendChild(document.createTextNode(checkBox.value));
-
-
-                }
-
-
-
-                
-                
-                
-                
-            </script>
-            
+                }                          
+            </script>   
         </div>
 
         
@@ -197,12 +185,14 @@
 
 
 
-
-
-
-
-
-
+        {{-- loader --}}
+        <script>
+            $(function(){
+                setTimeout(() => {
+                    $('.loader').fadeOut(500);
+                }, 500);
+            });
+        </script>
 
     
 </body>
