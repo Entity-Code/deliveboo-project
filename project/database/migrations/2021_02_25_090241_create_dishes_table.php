@@ -20,7 +20,7 @@ class CreateDishesTable extends Migration
             $table -> tinyInteger('status');
             $table -> integer('price');
             $table -> text('description');
-            $table -> text('img_dish');
+            $table -> text('img_dish') -> nullable();
 
             //foreign keys
             $table -> bigInteger('user_id') -> unsigned(); 

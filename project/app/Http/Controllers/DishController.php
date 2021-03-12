@@ -37,14 +37,17 @@ class DishController extends Controller
         return view('pages.dish-create', compact('dishes', 'users', 'categories'));
     }
     public function store(Request $request) {
-
         //validazione
+        
         $request -> validate([
             'name' => 'required', 'min:5', 'max:30',
             'description' => 'required','min:5','max:255',
-            'price' => 'required','integer','min:1','max:999','digits_between:1,3'
+            'price' => 'required','integer','min:1','max:999','digits_between:1,3',
+            'img_dish' => 'nullable|image|max:20240'
         ]);
-        
+
+
+
         $request = $this -> conversion($request);
 
         $newDish = Dish::make($request -> all());
@@ -52,12 +55,32 @@ class DishController extends Controller
         $user = User::findOrFail($request -> get('user_id'));
         $category = Category::findOrFail($request -> get('category_id'));
 
-        $newDish -> user() -> associate($user);
-        $newDish -> category() -> associate($category);
+        if ($request['img_dish']) {
 
-        $newDish -> save();
+          $img = $request -> file('img_dish');
 
-        return redirect() -> route('dish-index');   
+          $ext = $img -> getClientOriginalExtension();
+          $name = rand(100000, 999999) . '_' . time();
+          $fileName = $name . '.' . $ext;
+
+          $img -> storeAs('dishes', $fileName, 'public');
+          $newDish -> img_dish = $fileName;
+
+          $newDish -> user() -> associate($user);
+          $newDish -> category() -> associate($category);
+
+          $newDish -> save();
+
+          return redirect() -> route('dish-index');
+        } else {
+            $newDish -> user() -> associate($user);
+            $newDish -> category() -> associate($category);
+    
+            $newDish -> save();
+    
+            return redirect() -> route('dish-index');
+        }
+
     }
 
     //edit-update
@@ -73,26 +96,52 @@ class DishController extends Controller
     public function update(Request $request, $id) {
 
         $request = $this -> conversion($request);
-        $data = $request -> all();
 
-        //validazione
         $request -> validate([
             'name' => 'required', 'min:5', 'max:30',
             'description' => 'required','min:5','max:255',
-            'price' => 'required','integer','min:1','max:999','digits_between:1,3'
+            'price' => 'required','integer','min:1','max:999','digits_between:1,3',
+            'img_dish' => 'nullable|image|max:20240'
         ]);
-        
-        $user = User::findOrFail($data['user_id']);
-        $category = Category::findOrFail($data['category_id']);
+
+        $user = User::findOrFail($request -> get('user_id'));
+        $category = Category::findOrFail($request -> get('category_id'));
 
         $editDish = Dish::findOrFail($id);
-        $editDish -> update($data);
+
+        if ($request['img_dish']) {
+
+            $fileimg = $editDish -> img_dish;
+
+            $file = storage_path('app/public/dishes/' . $fileimg);
+
+            $deleteimg = File::delete($file);
+
+            $img = $request -> file('img_dish');
+
+            $ext = $img -> getClientOriginalExtension();
+            $name = rand(100000, 999999) . '_' . time();
+            $fileName = $name . '.' . $ext;
+
+            $img -> storeAs('dishes', $fileName, 'public');
+            $editDish -> img_dish = $fileName;
+
+        }
+
+        $editDish -> update([
+          'name' => $request -> name,
+          'description' => $request -> description,
+          'price' => $request -> price,
+          'category' => $request -> category,
+          'status' => $request -> status,
+          'img_dish' => $fileName
+        ]);
 
         $editDish -> user() -> associate($user);
         $editDish -> category() -> associate($category);
 
         $editDish -> save();
-        
+
         return redirect() -> route('dish-index');
         
     }

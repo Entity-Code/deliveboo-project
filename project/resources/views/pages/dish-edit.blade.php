@@ -11,115 +11,112 @@
 
       <div class="dashboard__box--form">
     
-    
+        <form  action="{{route('dish-update', $dish -> id)}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('POST')
+            
+            {{-- categoria piatto --}}
+            <label for="category_id mb-4">Category</label> <br>
+            <select name="category_id" class="mb-4">
 
-    
-     <form  action="{{route('dish-update', $dish -> id)}}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('POST')
-        
-        {{-- categoria piatto --}}
-        <label for="category_id mb-4">Category</label> <br>
-        <select name="category_id" class="mb-4">
+                @foreach ($categories as $category)
 
-            @foreach ($categories as $category)
+                    <option value="{{$category -> id}}"
+                        @if ($dish -> category -> id == $category -> id)
+                            selected
+                        @endif
+                        >{{ $category -> name }}
+                    </option>
 
-                <option value="{{$category -> id}}"
-                    @if ($dish -> category -> id == $category -> id)
-                        selected
-                    @endif
-                    >{{ $category -> name }}
-                </option>
+                @endforeach
 
-            @endforeach
+            </select>
 
-        </select>
+            {{-- nome piatto --}}
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input 
+                minlength="5" 
+                maxlength="30"
+                name="name" 
+                type="text" 
+                class="form-control"
+                value="{{$dish -> name}}"
+              >
+            </div>
 
-        {{-- nome piatto --}}
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input 
-            minlength="5" 
-            maxlength="30"
-            name="name" 
-            type="text" 
-            class="form-control"
-            value="{{$dish -> name}}"
-          >
-        </div>
+            <br>
 
-        <br>
+            {{-- descrizione piatto --}}
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input 
+                minlength="5"
+                maxlength="255"
+                name="description" 
+                type="text" 
+                class="form-control"
+                value="{{$dish -> description}}"
+              >
+            </div>
 
-        {{-- descrizione piatto --}}
-        <div class="form-group">
-          <label for="description">Description</label>
-          <input 
-            minlength="5"
-            maxlength="255"
-            name="description" 
-            type="text" 
-            class="form-control"
-            value="{{$dish -> description}}"
-          >
-        </div>
+            <br>
 
-        <br>
+            {{-- prezzo piatto --}}
+            <div class="form-group">
+              <label for="price">Price</label> (€)
+              <input 
+                min="1" 
+                max="1000"
+                name="price" 
+                type="text" 
+                class="form-control"
+                value="{{$dish -> price/100}}"
+              >
+            </div>
 
-        {{-- prezzo piatto --}}
-        <div class="form-group">
-          <label for="price">Price</label> (€)
-          <input 
-            min="1" 
-            max="1000"
-            name="price" 
-            type="text" 
-            class="form-control"
-            value="{{$dish -> price/100}}"
-          >
-        </div>
-
-        <br>
-        
+            <br>
+            
 
 
-        {{-- img piatto --}}
-        <div class="form-group" style="display: none;">
-          <input 
-            name="img_dish" 
-            type="text" 
-            class="form-control"
-            value="{{$dish -> img_dish}}"
-          >
-        </div>
+            {{-- img piatto --}}
+            <div class="form-group">
+              <input id="img_dish" type="file" name="img_dish" value="{{$dish -> img_dish}}">
+              <img
+                src="{{asset('/storage/dishes/' . $dish -> img_dish)}}"
+                width="200px"
+              >
+            </div>
+            
 
-        <br>
+            <br>
 
-        {{-- stato piatto (0,1) (default value, not visible) --}}
-        <div class="form-group">
-          <label for="status">Status</label>
-          <select class="form-control" name="status" required autofocus>
-            <option value="1" @if ($dish -> status == 1)selected @endif>Disponibile</option>
-            <option value="0" @if ($dish -> status == 0) selected @endif>Non disponibile</option>
-          </select>
-        </div>
+            {{-- stato piatto (0,1) (default value, not visible) --}}
+            <div class="form-group">
+              <label for="status">Status</label>
+              <select class="form-control" name="status" required autofocus>
+                <option value="1" @if ($dish -> status == 1)selected @endif>Disponibile</option>
+                <option value="0" @if ($dish -> status == 0) selected @endif>Non disponibile</option>
+              </select>
+            </div>
 
-       
-        {{-- user id (default value, not visible)--}}
-        <div class="form-group">
-          <input 
-            name="user_id"
-            type="text" 
-            class="form-control"
-            value="{{Auth::user() -> id}}"
-            readonly
-            style="display: none"
-          >
-        </div>
-
-        <br>
           
-        <button type="submit" class="btn btn-lg btn-light">MODIFICA</button>
-      </form>
+            {{-- user id (default value, not visible)--}}
+            <div class="form-group">
+              <input 
+                name="user_id"
+                type="text" 
+                class="form-control"
+                value="{{Auth::user() -> id}}"
+                readonly
+                style="display: none"
+              >
+            </div>
+
+            <br>
+              
+            <button type="submit" class="btn btn-lg btn-light">MODIFICA</button>
+          </form>
 
       </div>
     </div>

@@ -1082,6 +1082,29 @@ footer h5 {
   font-size: 1.5rem;
 }
 
+.dashboard__box {
+  min-height: 500px !important;
+}
+
+.dashboard__box--flex--menu--right--container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 10px;
+  height: auto !important;
+  overflow-y: auto !important;
+}
+
+.dish__box {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  height: 300px !important;
+  width: 200px !important;
+  overflow-y: auto;
+  margin: 10px !important;
+}
+
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

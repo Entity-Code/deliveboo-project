@@ -35,51 +35,25 @@
                                             @if (Auth::user() -> id === $dish -> user_id)
                                                 <div class="dish__box">
                                                     
-                                                        <div>{{$dish -> name}}
-                                                            {{-- (user_id: {{Auth::user() -> id}}) --}}
-                                                        </div>
-                                                        {{-- <h4>Descrizione:</h4>
-                                                        <div>{{$dish -> description}}</div>    --}}
-                                                    
-                                                    {{-- s --}}
+                                                    <h3><strong>{{$dish -> name}}</strong> <br></h3>
+                                                    <img src="{{asset('/storage/dishes/' . $dish -> img_dish)}}" width="150px">
+                                                    <h3>{{$dish -> price/100}}€</h3>
+                                                    <h3>{{$dish -> description}}</h3>
+
                                                     <div class="to-hide">
                                                         @if ($dish -> status == 1)
-                                                            Disponibile
+                                                            <h5>(Disponibile)</h5> 
                                                         @else
-                                                            Non disponibile
+                                                            <h5>(Non disponibile)</h5> 
                                                         @endif
                                                     </div>
-                                                    <div>{{$dish -> price/100}}€ <br></div>
-                            
-                                                    {{-- <img 
-                                                        src="{{$dish -> img_dish}}" --}}
-                                                        {{-- width="200px" --}}
-                                                        {{-- style="display: {{$dish -> img_dish == '0' ? 'none' : 'block'}}" --}}
-                                                    {{-- > --}}
-                                                    {{-- <p>
-                                                        Category: {{$dish -> category -> name}} <br>
-                                                        price: {{$dish -> price/100}}€ <br>
-                                                        description: {{$dish -> description}} <br>
-                                                        id: {{$dish -> id}} <br>
-                                                        status: 
-                                                        @if ($dish -> status == 1)
-                                                            Disponibile
-                                                        @else
-                                                            Non disponibile
-                                                        @endif
-                                                    </p> --}}
                                                     
                                                     <div class="dish__box--buttons">
                                                         <a href="{{route('dish-edit', $dish -> id)}}" class="edit" ><i class="fas fa-edit"></i></a>
                                                         <a href="{{route('dish-delete', $dish -> id)}}" class="cancel"><i class="fas fa-trash-alt"></i></a>
                                                     </div>
-                                                        
-                                                    {{-- <div class="container-edit-delete">
-                                                        <a href="{{route('dish-edit', $dish -> id)}}" class="btn btn-primary" style="width: 100px;">EDIT</a>
-                                                        <a href="{{route('dish-delete', $dish -> id)}}" class="btn btn-warning" style="width: 100px;">DELETE</a>
-                                                    </div> --}}
+                                                    
                                                 </div>
-                            
                                             @endif        
                                     @endforeach
                                 </div>        

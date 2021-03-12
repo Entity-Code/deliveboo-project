@@ -10,8 +10,7 @@
     <div class="dashboard__box--imgform">
 
       <div class="dashboard__box--form">
-        <form  class="myform"
-        action="{{route('dish-store')}}" method="POST">
+        <form  class="myform" action="{{route('dish-store')}}" method="POST" enctype="multipart/form-data">
           @csrf
           @method('POST')
           
@@ -50,15 +49,8 @@
     
     
           {{-- img piatto --}}
-          <div class="form-group" style="display: none;">
-            <label for="img_dish">Image (url)</label>
-            <input 
-              name="img_dish" 
-              type="text" 
-              class="form-control"
-              value="0"
-              readonly     
-            >
+          <div class="form-group">
+            <input id="img_dish" type="file" name="img_dish">
           </div>
           
           <br>
