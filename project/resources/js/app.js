@@ -82,8 +82,6 @@ function init() {
 
                         //typs per le checkbox (search)
                         this.data = res.data.typs;
-                        //console.log(this.data);
-
 
                         //restaurants
                         this.users = res.data.users;
@@ -186,34 +184,21 @@ function init() {
                 this.totCart++;  
                 //prezzo totale
                 this.totPrice += dish.price;
-
-                //console.log(dish)
                 
             },
-            removeItemFromCart: function(dish) {
-
+            removeItemFromCart: function (dish) {
                 
-/*                 if (dish.quantity == 1 && this.cart.length == 1) {
-                    this.cart.splice(dish, 1);           
-                } else {
-                    dish.quantity--;
-                }
+                this.$delete(this.cart, dish);
 
-                this.totCart-- ; 
+                dish.quantity--;
+
+                this.totCart--;
                 this.totPrice -= dish.price;
-                  */
-                 this.$delete(this.cart, dish);
-
-                 dish.quantity--;
-
-                 this.totCart--;
-                 this.totPrice -= dish.price;
             },
 
             checkoutVisibility: function () {
                 
                 this.isHidden = !this.isHidden;
-                //console.log(this.isHidden);
             },
 
 

@@ -3,7 +3,7 @@
 @section('content')
 <div class="register__box">
     <div class="register__box--top">
-        <h4>Registrazione</h4>
+        <h4>Login</h4>
     </div>
     <div class="register__box--form">
 

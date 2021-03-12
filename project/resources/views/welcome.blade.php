@@ -143,14 +143,24 @@
                                 </div>
                                     <div class="main__container--right--restourants">
                                         <div class="main__container--right--restourants--box" v-if="user.filtered" v-for="user in users">
-                                            <a :href="'/show/menu/' + user.id">
-                                                <img src="https://static-www.castedduonline.it/wp-content/2019/08/mcdonalds-653x367.png" alt="Logo">
+                                            <a :href="'/show/menu/' + user.id" class="text-left a-cont">
+                                                <img v-if="user.logo != null" :src="'/storage/logo/' + user.logo" alt="Logo">
+                                                <img v-else src="https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found.jpg" style="opacity: 0.3;" alt="logo">
                                                 <h5>@{{user.name}}</h5>
-                                                              
-                                                <div v-for="typology in user.typologies">
-                                                    @{{typology.name}}
+                                               
+                                                <div class="stars">
+                                                    <span v-for="(vote,i) in 5"><i class="fa-star" id="star" :class="i < user.rating ? 'fas' : 'far'"></i></span>
                                                 </div>
-                                                <div>@{{user.address}}</div>
+                                                
+                                                <div>
+                                                    @{{user.address}}
+                                                </div>
+                                                
+                                                <div class="myflex">
+                                                    <div v-for="typology in user.typologies" class="typs-box">
+                                                        @{{typology.name}}
+                                                    </div>
+                                                </div>
                                             </a>
                                         </div>        
                                     </div>

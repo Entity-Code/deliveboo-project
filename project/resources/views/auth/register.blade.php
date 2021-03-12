@@ -3,7 +3,10 @@
 @section('content')
 <div class="register__box">
     <div class="register__box--top">
-        <h4>Registrazione</h4>
+        <h4>
+            Registrazione <br>
+            ristorante
+        </h4>
     </div>
     <div class="register__box--form">
         <form method="POST" action="{{ route('register') }}">

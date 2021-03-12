@@ -164,6 +164,10 @@
     transform: rotate(-228deg);
 }
 
+.main__container--right--restourants {
+    margin: 30px 0 !important;
+}
+
 .main {
     min-height: 1000px;
     background-image: linear-gradient(to right bottom, #0974f085, #098fe7ba);
@@ -200,7 +204,7 @@
             }
 
             &--checkbox {
-                margin-left: 1.5rem;
+                margin-left: 2rem;
 
                 &--single {
                     margin-bottom: 0.5rem;
@@ -266,15 +270,18 @@
 
                     h5 {
                         margin-left: 0.5rem;
-                        font-size: 2rem;
+                        font-size: 1.5rem;
+                        font-weight: bold;
+                        padding-top: 7.5px;
                         font-family: "Hind", sans-serif;
                         text-transform: uppercase;
                         color: rgb(54, 53, 53);
                     }
 
                     div {
+                        padding-top: 1.5px;
                         margin-left: 0.5rem;
-                        font-size: 2rem;
+                        font-size: 1.5rem;
                         font-family: "Hind", sans-serif;
                         color: rgb(54, 53, 53);
                     }
@@ -301,6 +308,69 @@
 .main__container--right--restourants {
     margin: 0 auto;
     text-align: center;
+}
+
+.myflex {
+    display: flex;
+    flex-flow: row wrap;
+}
+.typs-box {
+    margin-left: 0 !important;
+    color: red !important;
+    font-size: 1.1rem !important;
+    display: flex;
+    margin-right: 5px;
+}
+
+.a-cont {
+    font-size: 1.1rem !important;
+}
+
+.stars {
+    text-align: left;
+    #star {
+        color: rgb(224, 165, 0);
+    }
+}
+
+.footer_up {
+    padding: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .contatti_ {
+        margin-bottom: 0;
+    }
+    .box_ {
+        width: 20%;
+        padding: 1% 1%;
+        border-radius: 10px;
+        margin: 0 2%;
+    }
+    .box_:hover {
+        border: 2px solid red;
+        // background-color: rgba(77,172,237,255);
+    }
+    .container_social {
+        padding: 3% 0;
+        .social_icons {
+            margin: 0 2%;
+        }
+    }
+}
+
+.footer_down {
+    text-align: center;
+}
+
+@media screen and (max-width: 1064px) {
+    .footer_up {
+        justify-content: center;
+        .box_ {
+            text-align: center;
+            width: 40%;
+        }
+    }
 }
 
 @media screen and (max-width: 750px) {
@@ -345,6 +415,7 @@
     }
     .home__register {
         justify-content: center;
+        font-size: 1.5rem;
     }
 }
 
@@ -362,6 +433,12 @@
     }
     .main__container--right--restourants--box {
         margin: 0;
+    }
+
+    .footer_up {
+        .box_ {
+            width: 100%;
+        }
     }
 }
 @media screen and (max-width: 470px) {

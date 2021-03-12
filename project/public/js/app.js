@@ -49685,8 +49685,7 @@ function init() {
         //filter
         axios.get('http://localhost:8000/typs/filter').then(function (res) {
           //typs per le checkbox (search)
-          _this.data = res.data.typs; //console.log(this.data);
-          //restaurants
+          _this.data = res.data.typs; //restaurants
 
           _this.users = res.data.users;
           console.log(_this.users); //ciclo ogni oggetto e gli aggiungo la chiave filtered = true di default;
@@ -49759,25 +49758,16 @@ function init() {
 
         this.totCart++; //prezzo totale
 
-        this.totPrice += dish.price; //console.log(dish)
+        this.totPrice += dish.price;
       },
       removeItemFromCart: function removeItemFromCart(dish) {
-        /*                 if (dish.quantity == 1 && this.cart.length == 1) {
-                            this.cart.splice(dish, 1);           
-                        } else {
-                            dish.quantity--;
-                        }
-        
-                        this.totCart-- ; 
-                        this.totPrice -= dish.price;
-                          */
         this.$delete(this.cart, dish);
         dish.quantity--;
         this.totCart--;
         this.totPrice -= dish.price;
       },
       checkoutVisibility: function checkoutVisibility() {
-        this.isHidden = !this.isHidden; //console.log(this.isHidden);
+        this.isHidden = !this.isHidden;
       }
     }
   });
