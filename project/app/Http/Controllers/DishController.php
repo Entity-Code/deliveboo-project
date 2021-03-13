@@ -103,7 +103,8 @@ class DishController extends Controller
         
         $request -> validate([
             'name' => 'required|min:3|max:30',
-            'description' => 'required|min:5|max:255',
+            'description' => 'requir
+            ed|min:5|max:255',
             'price' => 'required|integer|min:1|max:99999|digits_between:1,5',
             'img_dish' => 'nullable|image|max:20240'
         ]);

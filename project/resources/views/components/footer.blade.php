@@ -30,7 +30,7 @@
             <h2>Ringraziamenti</h2>
             <h5>Un grazie di cuore a: </h5>
             <ul>
-                <li>Prof</li>
+                <li>Giovanni</li>
                 <li>Prof</li>
                 <li>Prof</li>
                 <li>Prof</li>

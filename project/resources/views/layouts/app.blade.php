@@ -28,6 +28,8 @@
         <img src="{{ asset('loader/circles.svg') }}">
     </div>
 
+    <div class="scritta">fwekd</div>
+
     <div id="app">
         <nav class="navbar navbar-expand-md shadow-sm" id="navbarr">
             <div class="container">
