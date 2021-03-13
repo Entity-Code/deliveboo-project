@@ -76,23 +76,13 @@
               style="display: none"
             >
           </div>
-    
-          
+        
           <br>        
-    
-          
-            
+
           <button type="submit" class="btn btn-lg btn-light">CREA</button>
         </form>
       </div>
-
-      
-
     </div>
-    
-
-    
-
   </div>
 </div>
 

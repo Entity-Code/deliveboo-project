@@ -1,29 +1,45 @@
-@media screen and (max-width: 700px) {
-    html {
-        font-size: 45%;
+@media screen and (max-width: 900px) {
+    #logo {
+        width: 250px;
     }
+}
 
+@media screen and (max-width: 700px) {
     .dashboard__box--flex--menu {
         display: flex;
-        flex-flow: column wrap;
+        flex-flow: row wrap;
         justify-content: center;
-    }
-    .dashboard__box--flex--menu--left {
-        background: red;
     }
 
     .dashboard__box {
         width: 100%;
         height: auto;
-        h3 {
-            font-size: 3rem;
+        h3,
+        h4 {
+            text-align: center;
+            font-size: 3.5rem;
         }
-        h5 {
+        h5,
+        div {
+            text-align: center;
             font-size: 2rem;
+        }
+
+        .menu,
+        .order,
+        .upload {
+            font-size: 2rem;
+            padding: 15px;
+        }
+        .choose {
+            font-size: 1.5rem;
         }
         .dish__box {
             margin: 0.5rem auto;
             width: 250px;
+            & > h3 {
+                font-size: 2rem;
+            }
         }
     }
     .dashboard {
@@ -57,5 +73,43 @@
 
     .dashboard__box--flex--menu--right {
         width: 80%;
+    }
+
+    //login
+    .register__box {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .register__box {
+        width: 95%;
+    }
+    .container {
+        display: flex;
+        flex-flow: column wrap;
+        text-align: center;
+        .rightt {
+            width: 100%;
+            justify-content: space-around;
+            margin-bottom: 15px;
+        }
+    }
+    #navbarr {
+        .navbar-brand {
+            font-size: 6rem;
+        }
+    }
+    //nome utente loggato
+    .logoutt {
+        font-size: 3rem;
+        width: 100%;
+        margin: 0 auto;
+    }
+    #sub-logoutt {
+        width: 100%;
+        text-align: center;
+        background: red;
+        margin: 0 auto;
     }
 }

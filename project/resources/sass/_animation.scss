@@ -52,7 +52,11 @@
     width: 100%;
     height: 100%;
     z-index: 9999;
-    background: aqua;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba(9, 116, 240, 1),
+        rgba(9, 143, 231, 1)
+    );
     & > img {
         position: absolute;
         top: 50%;

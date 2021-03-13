@@ -1,10 +1,52 @@
-footer {
-    height: 400px;
-    background-color: #37373f;
+.footer_up {
+    padding: 3.5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-image: linear-gradient(to right bottom, aqua, #019191);
 
-    & h5 {
-        text-align: center;
-        font-size: 5rem;
-        color: white;
+    .box_ {
+        //width: 25%;
+        padding: 1rem;
+        border-radius: 10px;
+
+        & h2 {
+            font-size: 3rem;
+            color: gold;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        & p {
+            font-size: 2rem;
+            color: white;
+        }
+
+        & i {
+            font-size: 3.4rem;
+            color: white;
+            margin: 0 5px;
+        }
+
+        & h5,
+        & ul li,
+        & a {
+            font-size: 2rem;
+            color: white;
+        }
     }
+}
+
+.footer_down {
+    text-align: center;
+    font-size: 1.5rem;
+    background-image: linear-gradient(to right bottom, aqua, #019191);
+    p {
+        margin: 0;
+    }
+}
+
+.up_down {
+    margin-top: 400px;
+    width: 100%;
 }

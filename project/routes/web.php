@@ -19,11 +19,6 @@ Route::get('/index/menu/{id}', 'UserMenuController@getMenu')
 //show
 Route::get('/show/menu/{id}', 'UserMenuController@show')
     -> name('user-menu-show');
-/* Route::get('/show/menu/{id}', 'TypologyController@userShow')
-    -> name('user-menu-show'); */
-
-
-
 
 //RISTORANTE
 //img upload (restaurant) (HomeController)
@@ -52,12 +47,10 @@ Route::get('/delete/dish/{id}', 'DishController@delete')
 Route::post('/update/img-dish', 'DishController@updateLogo')
     -> name('update-logo-dish');
     
-
-
 //ORDERS
 Route::get('/orders', 'OrderController@index') 
     -> name('order-index');
-    //orders-show
+
 Route::get('/show/order/{id}', 'OrderController@show')
     -> name('order-show');
     //orders-stats

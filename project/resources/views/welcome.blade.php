@@ -171,13 +171,8 @@
           
 
         {{-- loader --}}
-        <script>
-            $(function(){
-                setTimeout(() => {
-                    $('.loader').fadeOut(500);
-                },500);
-            });
-        </script>
+        @include('components.script')
+
         
     </body>
 </html>

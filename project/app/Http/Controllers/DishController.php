@@ -41,7 +41,7 @@ class DishController extends Controller
         //validazione
         
 
-        $data= $request -> validate([
+        $request -> validate([
             'name' => 'required', 'min:5', 'max:30',
             'description' => 'required','min:5','max:255',
             'price' => 'required','integer','min:1','max:999','digits_between:1,3',
@@ -59,7 +59,7 @@ class DishController extends Controller
         $user = User::findOrFail($request -> get('user_id'));
         $category = Category::findOrFail($request -> get('category_id'));
 
-        if ($request['img_dish']) {
+        if ($request['img_dish'] != NULL || $request['img_dish'] != '') {
 
           $img = $request -> file('img_dish');
 
@@ -77,12 +77,13 @@ class DishController extends Controller
 
           return redirect() -> route('dish-index');
         } else {
-            $newDish -> user() -> associate($user);
-            $newDish -> category() -> associate($category);
-    
-            $newDish -> save();
-    
-            return redirect() -> route('dish-index');
+        
+          $newDish -> user() -> associate($user);
+          $newDish -> category() -> associate($category);
+
+          $newDish -> save();
+          return redirect() -> route('dish-index');
+
         }
 
     }
@@ -103,8 +104,7 @@ class DishController extends Controller
         
         $request -> validate([
             'name' => 'required|min:3|max:30',
-            'description' => 'requir
-            ed|min:5|max:255',
+            'description' => 'required|min:3|max:255',
             'price' => 'required|integer|min:1|max:99999|digits_between:1,5',
             'img_dish' => 'nullable|image|max:20240'
         ]);
@@ -217,7 +217,5 @@ class DishController extends Controller
             //dd($image, $ext, $name, $destFile);
             return redirect('dish-index', compact('dish'));
         }
-    
-        
+            
 }       
-

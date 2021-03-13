@@ -20,6 +20,7 @@
                     <div class="dashboard__box--flex--left">
                       <h4> I tuoi dati </h4>
                       <div class="dashboard__box--flex--left--data">
+                          <hr>
                           <div>Ristorante: {{$user -> name }}</div>
                           <hr>
                           <div>Partita IVA: {{$user -> IVA }}</div>
@@ -38,24 +39,21 @@
                           <hr>
 
                           <div>Valutazione: {{$user -> rating }}</div>
-                      </div>
-
-                      <h4>Le tue tipologie</h4>
-                      <div class="dashboard__box--flex--left--data">
-  
                           @foreach (Auth::user()->typologies as $typology)
                           
                             <div>{{ $typology -> name }}</div>                       
-                          
+                            <hr>
                           @endforeach
-                          
                       </div>
+
+                      
+                      
                     </div>
 
                     <div class="dashboard__box--flex--right">
                         <h4>Vuoi cambiare il logo del tuo ristorante?</h4>
                             @if (Auth::user() -> logo != 'default-logo.png')
-                              <img src="{{asset('/storage/logo/' . Auth::user() -> logo)}}" width="300px">
+                              <img id="logo" src="{{asset('/storage/logo/' . Auth::user() -> logo)}}" width="300px">
                             @else
                              
                             @endif
@@ -80,11 +78,11 @@
                                                
                          </form>
 
-                         <h4>Vuoi visualizzare il tuo menu?</h4>
-                         <a class="menu" href="{{route('dish-index')}}">Il mio menu</a></a>
+                         <h4>MENÙ PERSONALE</h4>
+                         <a class="menu" href="{{route('dish-index')}}">menu</a></a>
 
-                         <h4>Vuoi visualizzare gli ordini ricevuti?</h4>
-                         <a class="order" href="{{route('order-index')}}">I miei ordini ricevuti</a>
+                         <h4>ORDINI RICEVUTI</h4>
+                         <a class="order" href="{{route('order-index')}}">ordini</a>
                          
 
                     </div>

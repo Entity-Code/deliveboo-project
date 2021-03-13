@@ -21,7 +21,7 @@
                     <div class="dashboard__box--flex--img">
                         <div class="dashboard__box--flex--menu">
                             <div class="dashboard__box--flex--menu--left">
-                                <a href="{{route('dish-create')}}" class="new-plate">Crea un nuovo piatto</a>
+                                <a href="{{route('dish-create')}}" class="new-plate">Crea piatto</a>
                                 <a href="{{route('home')}}" class="go-back">Torna alla home</a>
 
                                 <a href="{{route('dish-create')}}" class="plus" ><i class="fas fa-plus"></i></a>
