@@ -736,7 +736,7 @@ select {
   background-image: linear-gradient(to right bottom, rgba(235, 231, 231, 0.5), rgba(149, 150, 146, 0.5)), url(/images/header.png?b83c56dd8bbdc7f3901ad7f88f1c63c9);
   background-size: cover;
   background-position: top;
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid gold;
 }
 
 #navbarr .navbar-brand {
@@ -774,9 +774,8 @@ select {
   transition: 0.2s all;
   margin: 0 5px;
   align-self: center;
-  border-left: 3px solid #fff;
-  border-bottom-left-radius: 15px;
-  border-bottom: 3px solid #fff;
+  border-left: 3px solid gold;
+  border-bottom: 3px solid gold;
   padding: 5px 10px;
 }
 
@@ -790,15 +789,16 @@ select {
 
 #navbarr .log-reg #login:hover,
 #navbarr .log-reg #register:hover {
-  border-top-right-radius: 15px;
+  transition: 0.25s all;
   border: 3px solid white;
+  transform: scale(1.2);
 }
 
 #navbarr .log-reg #login:active,
 #navbarr .log-reg #register:active {
   bottom: 2px;
-  border: 3px solid #fff;
-  color: #fff;
+  border: 3px solid gold;
+  color: gold;
 }
 
 footer {
