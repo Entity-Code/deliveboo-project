@@ -80,6 +80,8 @@
                 </div>
             </div>
         </nav>
+
+        @include('components.error')
        
         
         
@@ -87,7 +89,7 @@
         <main>
             @yield('content')
         </main>
-        
+        @include('components.footer')
     </div>
     
 

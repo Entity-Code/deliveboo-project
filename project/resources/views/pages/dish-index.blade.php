@@ -36,7 +36,10 @@
                                                 <div class="dish__box">
                                                     
                                                     <h3><strong>{{$dish -> name}}</strong> <br></h3>
-                                                    <img src="{{asset('/storage/dishes/' . $dish -> img_dish)}}" width="150px">
+                                                    @if ($dish -> img_dish != null)
+                                                        
+                                                        <img src="{{asset('/storage/dishes/' . $dish -> img_dish)}}" width="150px">
+                                                    @endif
                                                     <h3>{{$dish -> price/100}}€</h3>
                                                     <h3>{{$dish -> description}}</h3>
 
@@ -53,7 +56,7 @@
                                                         <a href="{{route('dish-delete', $dish -> id)}}" class="cancel"><i class="fas fa-trash-alt"></i></a>
                                                     </div>
                                                     
-                                                </div>
+                                                </div> 
                                             @endif        
                                     @endforeach
                                 </div>        

@@ -24,6 +24,8 @@
         <img src="{{ asset('loader/circles.svg') }}">
     </div>
     
+    @include('components.error')
+
     {{-- braintree --}}
     <div>
             @if (session('success_message'))
@@ -110,6 +112,8 @@
             
             {{-- return --}}
             <a href="/" class="btn btn-primary return" id="home">Torna alla home</a>
+            
+            @include('components.footer')
             
             <script src="https://js.braintreegateway.com/web/dropin/1.26.1/js/dropin.min.js"></script>
             <script>

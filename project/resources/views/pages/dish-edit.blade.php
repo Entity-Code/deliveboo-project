@@ -64,7 +64,7 @@
 
             {{-- prezzo piatto --}}
             <div class="form-group">
-              <label for="price">Price</label> (€)
+              <label min="1" max="1000" name="price" type="text" class="form-control" autofocus required>Price</label> (€)
               <input 
                 min="1" 
                 max="1000"

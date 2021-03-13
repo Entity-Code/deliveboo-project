@@ -12,9 +12,6 @@
 
         <hr style="background: white;">
 
-        
-
-
         <!-- dishes -->
         <div v-if="page === 'dishes'">    
             <h1>Menu</h1>
@@ -45,6 +42,7 @@
             <h1>Il tuo carrello</h1>
             <div class="cart">
                 <div v-for="(dish, i) in cart" :key="dish.name" v-if="dish.quantity > 0">
+                    
                     Nome piatto: @{{dish.name}} <br>
                     prezzo: @{{dish.price/100}}€
                     <br>
