@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
+use App\Rules\IsValidPassword;
 
 class RegisterController extends Controller
 {
@@ -47,7 +48,7 @@ class RegisterController extends Controller
 
             'name' => ['required', 'string', 'min:3','max:20'],
             'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'confirmed', new isValidPassword()],
             'address' => ['required', 'string', 'min:2', 'max:50'],
             'city' => ['required'],
             'IVA' => ['required', 'numeric', 'digits_between:11,11'], 
@@ -91,3 +92,5 @@ class RegisterController extends Controller
 
 
 }
+
+

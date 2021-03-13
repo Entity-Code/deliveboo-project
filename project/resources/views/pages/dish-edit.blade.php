@@ -36,6 +36,7 @@
             <div class="form-group">
               <label for="name">Name</label>
               <input 
+                required
                 minlength="5" 
                 maxlength="30"
                 name="name" 
@@ -50,7 +51,8 @@
             {{-- descrizione piatto --}}
             <div class="form-group">
               <label for="description">Description</label>
-              <input 
+              <input
+                required
                 minlength="5"
                 maxlength="255"
                 name="description" 
@@ -64,8 +66,9 @@
 
             {{-- prezzo piatto --}}
             <div class="form-group">
-              <label min="1" max="1000" name="price" type="text" class="form-control" autofocus required>Price</label> (€)
+              <label min="1" max="1000" name="price" type="text" autofocus required>Price</label> (€)
               <input 
+                required
                 min="1" 
                 max="1000"
                 name="price" 
@@ -76,26 +79,22 @@
             </div>
 
             <br>
-            
-
 
             {{-- img piatto --}}
             <div class="form-group">
               <input id="img_dish" type="file" name="img_dish" value="{{$dish -> img_dish}}">
-              <img
-                src="{{asset('/storage/dishes/' . $dish -> img_dish)}}"
-                width="200px"
-              >
+              @if ($dish -> img_dish != null)                                         
+                <img src="{{asset('/storage/dishes/' . $dish -> img_dish)}}" width="200px">
+              @endif
             </div>
             
-
             <br>
 
             {{-- stato piatto (0,1) (default value, not visible) --}}
             <div class="form-group">
               <label for="status">Status</label>
               <select class="form-control" name="status" required autofocus>
-                <option value="1" @if ($dish -> status == 1)selected @endif>Disponibile</option>
+                <option value="1" @if ($dish -> status == 1) selected @endif>Disponibile</option>
                 <option value="0" @if ($dish -> status == 0) selected @endif>Non disponibile</option>
               </select>
             </div>

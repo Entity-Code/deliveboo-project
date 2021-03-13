@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\File;
 use App\Dish;
 use App\Category;
 use App\User;
+use Illuminate\Support\Facades\Validator;
 
 
 class DishController extends Controller
@@ -39,12 +40,15 @@ class DishController extends Controller
     public function store(Request $request) {
         //validazione
         
-        $request -> validate([
+
+        $data= $request -> validate([
             'name' => 'required', 'min:5', 'max:30',
             'description' => 'required','min:5','max:255',
             'price' => 'required','integer','min:1','max:999','digits_between:1,3',
             'img_dish' => 'nullable|image|max:20240'
         ]);
+
+        
 
 
 
@@ -96,20 +100,21 @@ class DishController extends Controller
     public function update(Request $request, $id) {
 
         $request = $this -> conversion($request);
-
+        
         $request -> validate([
-            'name' => 'required', 'min:5', 'max:30',
-            'description' => 'required','min:5','max:255',
-            'price' => 'required','integer','min:1','max:999','digits_between:1,3',
+            'name' => 'required|min:3|max:30',
+            'description' => 'required|min:5|max:255',
+            'price' => 'required|integer|min:1|max:99999|digits_between:1,5',
             'img_dish' => 'nullable|image|max:20240'
         ]);
+            
 
         $user = User::findOrFail($request -> get('user_id'));
         $category = Category::findOrFail($request -> get('category_id'));
 
         $editDish = Dish::findOrFail($id);
 
-        if ($request['img_dish']) {
+        if ($request['img_dish'] != NULL || $request['img_dish'] != '') {
 
             $fileimg = $editDish -> img_dish;
 
@@ -126,21 +131,21 @@ class DishController extends Controller
             $img -> storeAs('dishes', $fileName, 'public');
             $editDish -> img_dish = $fileName;
 
+            $editDish -> update([
+              'name' => $request -> name,
+              'description' => $request -> description,
+              'price' => $request -> price,
+              'category' => $request -> category,
+              'status' => $request -> status,
+              'img_dish' => $fileName
+            ]);
+    
+            $editDish -> user() -> associate($user);
+            $editDish -> category() -> associate($category);
+    
+            $editDish -> save();
         }
 
-        $editDish -> update([
-          'name' => $request -> name,
-          'description' => $request -> description,
-          'price' => $request -> price,
-          'category' => $request -> category,
-          'status' => $request -> status,
-          'img_dish' => $fileName
-        ]);
-
-        $editDish -> user() -> associate($user);
-        $editDish -> category() -> associate($category);
-
-        $editDish -> save();
 
         return redirect() -> route('dish-index');
         
@@ -158,7 +163,13 @@ class DishController extends Controller
     //conversione euro -> cent (richiamata in store)
     private function conversion($request) {
 
+        $request -> validate([
+            'price' => 'required|integer|min:1|max:999|digits_between:1,3'
+        ]);
+
         $price = $request -> get('price') * 100;
+
+
         $request -> merge([
             'price' => $price
         ]);
@@ -176,9 +187,6 @@ class DishController extends Controller
             //usiamo la funzione file('colonna') per passare i dati 'complessi', in questo caso un immagine
             $image = $request -> file('img_dish');
             //dd($data, $image);
-        
-            //evita l'accumulamento delle img (PUNTO 7)
-            //$this -> deleteLogo();
     
             //ALGORITMO PER RISOLVERE IL CONFLITTO DEI NOMI DEI FILE
                 //ricaviamo l'estensione del file caricato    
@@ -193,8 +201,6 @@ class DishController extends Controller
             $file = $image -> storeAs('img_dish', $destFile, 'public');
     
             //SALVIAMO L'INFORMAZIONE NEL DB
-
-
 
             $dish = Dish::findOrFail($id);
 
@@ -211,38 +217,6 @@ class DishController extends Controller
             return redirect('dish-index', compact('dish'));
         }
     
-        // public function clearLogo() {
-                    
-        //     //evita l'accumulamento delle img (PUNTO 7)
-        //     //$this -> deleteLogo();
-    
-        //     //recupero lo dish
-        //     $dish = Auth::dish();
-        //     //tolgo il valore icon e metto NULL
-        //     $dish -> img_dish = null;
-        //     //vado a salvare
-        //     $dish -> save();
-    
-        //     return redirect() -> back();
-        // }
-    
-        // private function deleteLogo() {
-            
-        //     //recupero lo dish e la sua icona
-        //     $dish = Auth::dish();
-     
-        //     //prova ad eseguire queste cose
-        //     try {
-                 
-        //         //nome del file da eliminare
-        //         $fileName = $dish -> logo;
-                         
-        //         //percorso file da eliminare
-        //         $file = storage_path('app/public/logo/'.$fileName);
-         
-        //         $res = File::delete($file);
-        //         //se avviene qualunque errore, non fare nulla
-        //     } catch (\Exception $e) { } //do nothing
-        // }
+        
 }       
 

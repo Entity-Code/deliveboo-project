@@ -16,11 +16,11 @@
                 <div id="pd" class="dropdown text-center tip">
                     <button class="btn btn-lg btn-light dropdown-toggle tip" type="button" 
                         id="dropdownMenu1" data-toggle="dropdown" 
-                        aria-haspopup="true" aria-expanded="true">
+                        aria-haspopup="true" aria-expanded="true" min-length="1" required autofocus>
                         Tipologie
                     </button>
                     <ul class="dropdown-menu checkbox-menu allow-focus" aria-labelledby="dropdownMenu1">
-                    @foreach ($typologies as $typology)
+                        @foreach ($typologies as $typology)
                         <li >
                             <label class="form-check-label">
                                 <input 
@@ -30,10 +30,10 @@
                                     type="checkbox"
                                     value={{ $typology -> id}}
                                 >    
-                                {{ $typology->name }}
+                                {{ $typology -> name }}
                             </label>
                         </li>
-                    @endforeach          
+                        @endforeach        
                     </ul>
                 </div>
             </div>
@@ -46,10 +46,8 @@
                         <input minlength="3" maxlength="20" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                         @error('name')
-                            <div class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </div>
-                        @enderror
+                            <div class="invalid-feedback" role="alert"></div>
+                            @enderror
                     </div>
                 </div>
 
@@ -61,9 +59,7 @@
                         <input maxlength="100" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                         @error('email')
-                            <div class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </div>
+                            <div class="invalid-feedback" role="alert"></div>
                         @enderror
                     </div>
                 </div>
@@ -76,9 +72,7 @@
                         <input minlength="2" maxlength="50" id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
 
                         @error('address')
-                            <div class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </div>
+                            <div class="invalid-feedback" role="alert"></div>
                         @enderror
                     </div>
                 </div>
@@ -91,9 +85,7 @@
                         <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city" autofocus>
 
                         @error('city')
-                            <div class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </div>
+                            <div class="invalid-feedback" role="alert"></div>
                         @enderror
                     </div>
                 </div>
@@ -106,10 +98,7 @@
                         <input size="11" id="IVA" type="text" class="form-control @error('IVA') is-invalid @enderror" name="IVA" value="{{ old('IVA') }}" required autocomplete="IVA" autofocus>
 
                         @error('IVA')
-                            <div class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </div>
-                        @enderror
+                            <div class="invalid-feedback" role="alert"></div>@enderror
                     </div>
                 </div>
 
@@ -129,9 +118,7 @@
                         </select>
 
                         @error('day_off')
-                            <div class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </div>
+                            <div class="invalid-feedback" role="alert"></div>
                         @enderror
                     </div>
                 </div> 
@@ -161,9 +148,7 @@
                         <input minlength="8" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                         @error('password')
-                            <div class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </div>
+                            <div class="invalid-feedback" role="alert"></div>
                         @enderror
                     </div>
                 </div>

@@ -1,3 +1,4 @@
+//parte ristorante
 .dashboard__box--imgform {
     width: 100%;
     height: 100%;
@@ -13,7 +14,7 @@
 }
 
 .dashboard__box--form {
-    width: 40%;
+    width: 60%;
     margin: auto;
     padding: 3rem;
 
@@ -29,7 +30,6 @@
     & input {
         font-size: 1.5rem;
     }
-}
 
 .dashboard__box {
     min-height: 500px !important;
@@ -53,3 +53,5 @@
     overflow-y: auto;
     margin: 10px !important;
 }
+
+//parte utente

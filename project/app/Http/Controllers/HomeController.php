@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use App\Typology;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {

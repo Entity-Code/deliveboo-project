@@ -41,7 +41,9 @@
           {{-- prezzo piatto --}}
           <div class="form-group">
             <label for="price">Price</label> (€)
-            <input min="1" max="1000" name="price" type="text" class="form-control" autofocus required>
+            <input @error('price') is-invalid @enderror min="1" max="1000" name="price" type="text" class="form-control" autofocus required>
+
+            
           </div>
     
           <br>

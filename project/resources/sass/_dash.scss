@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    padding: 5rem;
 
     &__box {
         width: 90%;
@@ -26,6 +26,7 @@
         &--flex {
             display: flex;
             justify-content: flex-start;
+            flex-wrap: wrap;
             background-color: white;
 
             &--left {
@@ -68,6 +69,7 @@
                 color: ivory;
                 background-size: cover;
                 background-position: center;
+                padding: 2rem;
 
                 & h4 {
                     padding: 2rem;

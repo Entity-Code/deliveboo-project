@@ -816,7 +816,7 @@ footer h5 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  padding: 5rem;
 }
 
 .dashboard__box {
@@ -840,6 +840,7 @@ footer h5 {
 .dashboard__box--flex {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
   background-color: white;
 }
 
@@ -878,6 +879,7 @@ footer h5 {
   color: ivory;
   background-size: cover;
   background-position: center;
+  padding: 2rem;
 }
 
 .dashboard__box--flex--right h4 {
@@ -1087,7 +1089,7 @@ footer h5 {
 }
 
 .dashboard__box--form {
-  width: 40%;
+  width: 60%;
   margin: auto;
   padding: 3rem;
 }
@@ -1126,6 +1128,31 @@ footer h5 {
   width: 200px !important;
   overflow-y: auto;
   margin: 10px !important;
+}
+
+.info,
+.success,
+.warning,
+.error,
+.validation {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  font-size: 1.8rem;
+  border: 2px solid;
+  margin: 0 auto;
+  padding: 15px 100px;
+  background-repeat: no-repeat;
+  background-position: 50px center;
+  width: 100%;
+}
+
+.validation {
+  color: #d63301;
+  background-color: #ffccba;
+  background-image: url("https://i.imgur.com/GnyDvKN.png");
+  background-size: auto;
 }
 
 /*!

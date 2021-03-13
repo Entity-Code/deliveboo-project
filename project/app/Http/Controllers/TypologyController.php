@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Typology;
 use App\User;
+use Illuminate\Support\Facades\Validator;
 
 class TypologyController extends Controller
 {
