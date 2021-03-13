@@ -165,9 +165,9 @@
                        </div>
                     </div>
                   
-          </main>
+        </main>
 
-          @include('components.footer')
+        @include('components.footer')
           
 
         {{-- loader --}}

@@ -1,23 +1,17 @@
-.orderbox_ {
-    border: 2px solid gold;
-    border-radius: 10px;
+//box order container
+.order-box {
+    display: flex;
+    margin-top: 25px;
     transition: all 0.5s;
-    padding: 1%;
+    padding: 2%;
     font-size: 20px;
-    background-color: silver;
+    background-color: rgba(192, 192, 192, 0.5);
     font-weight: bold;
 }
-​ .containerOrder {
-    background-image: linear-gradient(
-            to right bottom,
-            rgba(235, 231, 231, 0.5),
-            rgba(149, 150, 146, 0.5)
-        ),
-        url(/images/dashboard3.jpg?496375497bbfc465b7a4312b9c713088);
-    background-color: none;
-    background-size: cover;
-    background-position: center;
-}
-​ .orderbox_:hover {
-    border: 2px solid red;
+​
+//order card
+.orderr{
+    border: 1px solid black;
+    background: red;
+    margin: 15px;
 }
