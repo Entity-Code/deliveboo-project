@@ -51,7 +51,7 @@
           
           {{-- img piatto --}}
           <div class="form-group">
-            <input id="img_dish" type="file" name="img_dish">
+            <input id="img_dish" type="file" name="img_dish" required>
           </div>
           
           <br>

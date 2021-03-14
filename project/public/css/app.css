@@ -248,7 +248,7 @@ body {
   display: block;
   position: absolute;
   transform: rotate(48deg);
-  left: 16%;
+  left: 15%;
   bottom: 35%;
 }
 
@@ -256,7 +256,7 @@ body {
   display: block;
   position: absolute;
   transform: rotate(-48deg);
-  left: 43%;
+  left: 41%;
   bottom: 35%;
 }
 
@@ -264,7 +264,7 @@ body {
   display: block;
   position: absolute;
   transform: rotate(48deg);
-  left: 16%;
+  left: 15%;
   bottom: 54%;
 }
 
@@ -272,7 +272,7 @@ body {
   display: block;
   position: absolute;
   transform: rotate(-48deg);
-  left: 42%;
+  left: 41%;
   bottom: 54%;
 }
 

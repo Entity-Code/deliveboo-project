@@ -40,17 +40,12 @@ class DishController extends Controller
     public function store(Request $request) {
         //validazione
         
-
         $request -> validate([
             'name' => 'required', 'min:5', 'max:30',
             'description' => 'required','min:5','max:255',
             'price' => 'required','min:1','max:999',
             'img_dish' => 'nullable|image|max:20240'
         ]);
-
-        
-
-
 
         $request = $this -> conversion($request);
 

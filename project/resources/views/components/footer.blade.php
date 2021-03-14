@@ -39,7 +39,7 @@
                 <li>Prof Nikolas</li>
             </ul>
 
-            <h5>Ed un pensiero a Vanessa <3 </h5>
+            <h5><strong>Ed un pensiero per Vanessa <span style="color:red; font-size:25px;">&hearts;</span></strong></h5>
         </div>        
             
 

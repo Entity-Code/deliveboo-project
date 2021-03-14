@@ -39,6 +39,8 @@
                           <hr>
 
                           <div>Valutazione: {{$user -> rating }}</div>
+
+                          <h4>Tipologie</h4>
                           @foreach (Auth::user()->typologies as $typology)
                           
                             <div>{{ $typology -> name }}</div>                       
