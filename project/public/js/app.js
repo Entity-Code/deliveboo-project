@@ -49652,7 +49652,8 @@ function init() {
         //-------------------------------------------------
         //CHECKOUT    
         visible: "visible",
-        hidden: "hidden"
+        hidden: "hidden",
+        active: false
       };
     },
     mounted: function mounted() {
@@ -49758,7 +49759,11 @@ function init() {
 
         this.totCart++; //prezzo totale
 
-        this.totPrice += dish.price;
+        this.totPrice += dish.price; //cart visibility
+
+        if (this.active == false) {
+          this.active = !this.active;
+        }
       },
       removeItemFromCart: function removeItemFromCart(dish) {
         this.$delete(this.cart, dish);

@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-md shadow-sm" id="navbarr">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" style="font-size: 4rem;text-transform: uppercase;color: white;letter-spacing: 2px;font-family:'Monofett', cursive;" href="{{ url('/') }}">
                     Deliveboo
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

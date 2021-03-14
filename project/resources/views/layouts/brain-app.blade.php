@@ -20,9 +20,8 @@
 </head>
 <body>
     <div class="loader">
-            <img src="{{ asset('loader/circles.svg') }}">
-
-        </div>
+        <img src="{{ asset('loader/circles.svg') }}">
+    </div>
     
     @include('components.header')
     

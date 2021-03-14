@@ -9,14 +9,6 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 //Vue.component('filter-typologies', require('./components/FilterTypologies.vue').default);
 
 
-
-
-
-
-
-
-
-
 //-------------------------------------------------
 function init() {
     
@@ -51,6 +43,7 @@ function init() {
                 //CHECKOUT    
                 visible: "visible",
                 hidden: "hidden",
+                active: false
             }
         },
 
@@ -190,6 +183,12 @@ function init() {
                 this.totCart++;  
                 //prezzo totale
                 this.totPrice += dish.price;
+                
+                //cart visibility
+                if(this.active == false){
+    
+                    this.active = !this.active;
+                }
                 
             },
             removeItemFromCart: function (dish) {
