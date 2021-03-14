@@ -141,7 +141,7 @@
 
                     {{-- show --}}
                     <input style="cursor: default; border-radius: 10px; margin: 10px; outline: none; text-align: center; border: 1px solid gold" type="text" id="amountShow" readonly>
-                    <span style="position: relative; right: 50px;">€</span>
+                    
 
 
                     <div id="cboxes" style="display: none">

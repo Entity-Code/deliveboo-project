@@ -8,7 +8,8 @@
         flex-direction: column;
         font-size: 2rem;
         .media_flex_{
-            justify-content: space-around;
+            justify-content: space-between;
+            margin: 0 10%;
         }
 
     }
@@ -126,7 +127,12 @@
             align-items: center;
         }
 
-    }        
+    }    
+    .order-index-box{ 
+        h1{
+            text-align: center;
+        }
+    }  
 }
 
 

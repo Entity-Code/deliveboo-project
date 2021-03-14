@@ -17,11 +17,18 @@
     font-weight: bolder;
 
     #amount_ {
+        width: 230px;
         background-color: white;
         padding: 2% 2%;
         border-radius: 10px;
-        max-height: 100px;
+        max-height: 150px;
         color: black;
+    }
+    #amountShow{
+        width: 90%;
+        font-size: 2rem;
+        margin-bottom: 15px;
+
     }
 
     .flex_cart_box {

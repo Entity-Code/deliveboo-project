@@ -815,7 +815,7 @@ select {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  background-image: linear-gradient(to right bottom, aqua, #019191);
+  background-image: linear-gradient(to right bottom, #666564, #919191);
 }
 
 .footer_up .box_ {
@@ -849,9 +849,10 @@ select {
 }
 
 .footer_down {
+  padding: 2.5px 0;
   text-align: center;
   font-size: 1.5rem;
-  background-image: linear-gradient(to right bottom, aqua, #019191);
+  background-image: linear-gradient(to right bottom, #666564, #919191);
 }
 
 .footer_down p {
@@ -1380,7 +1381,8 @@ select {
   }
 
   .container_menu-chart .media_flex_ {
-    justify-content: space-around;
+    justify-content: space-between;
+    margin: 0 10%;
   }
 
   .cart {
@@ -1502,6 +1504,10 @@ select {
     flex-direction: column;
     align-items: center;
   }
+
+  .order-index-box h1 {
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -1554,11 +1560,18 @@ select {
 }
 
 .containerBraintree_ #amount_ {
+  width: 230px;
   background-color: white;
   padding: 2% 2%;
   border-radius: 10px;
-  max-height: 100px;
+  max-height: 150px;
   color: black;
+}
+
+.containerBraintree_ #amountShow {
+  width: 90%;
+  font-size: 2rem;
+  margin-bottom: 15px;
 }
 
 .containerBraintree_ .flex_cart_box {
@@ -1631,6 +1644,56 @@ select {
 .order-box .ordered-dishes li {
   color: black;
   font-size: 2rem;
+}
+
+.order-index-box {
+  margin: 0 1.5%;
+  border: 3px ridge goldenrod;
+  margin-top: 25px;
+  transition: all 0.5s;
+  padding: 2%;
+  font-size: 20px;
+  background-image: linear-gradient(to right bottom, #d8d8d8, #f8f8ca91), url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.XjvYT98KCNWok-EKx5wZLwHaE8%26pid%3DApi&f=1");
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-weight: bold;
+}
+
+.order-index-box hr {
+  background: gray;
+  margin: 0 auto;
+}
+
+.order-index-box h1 {
+  font-size: 3rem;
+  font-weight: bolder;
+}
+
+.order-index-box .order-li:first-child {
+  padding-bottom: 7.5px;
+}
+
+.order-index-box .order-li {
+  color: black;
+  border-bottom: 1px ridge gray;
+  transition: all 0.25s;
+  transition: all 0.05s;
+  cursor: pointer;
+}
+
+.order-index-box .order-li a {
+  color: #555555;
+  text-decoration: none;
+  font-size: 1.75rem;
+}
+
+.order-index-box .order-li:hover {
+  margin-left: 2.5px;
+  border-bottom: 5px ridge goldenrod;
+}
+
+.order-index-box .order-li:hover a {
+  color: black;
 }
 
 /*!

@@ -72,7 +72,8 @@
                 min="1" 
                 max="1000"
                 name="price" 
-                type="text" 
+                type="number" 
+                step="any"
                 class="form-control"
                 value="{{$dish -> price/100}}"
               >

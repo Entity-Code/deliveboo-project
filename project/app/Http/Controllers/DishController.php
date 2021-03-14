@@ -44,7 +44,7 @@ class DishController extends Controller
         $request -> validate([
             'name' => 'required', 'min:5', 'max:30',
             'description' => 'required','min:5','max:255',
-            'price' => 'required','integer','min:1','max:999','digits_between:1,3',
+            'price' => 'required','min:1','max:999',
             'img_dish' => 'nullable|image|max:20240'
         ]);
 
@@ -105,7 +105,7 @@ class DishController extends Controller
         $request -> validate([
             'name' => 'required|min:3|max:30',
             'description' => 'required|min:3|max:255',
-            'price' => 'required|integer|min:1|max:99999|digits_between:1,5',
+            'price' => 'required|min:1|max:99999',
             'img_dish' => 'nullable|image|max:20240'
         ]);
             
@@ -131,21 +131,21 @@ class DishController extends Controller
 
             $img -> storeAs('dishes', $fileName, 'public');
             $editDish -> img_dish = $fileName;
-
+            
+        }
             $editDish -> update([
-              'name' => $request -> name,
-              'description' => $request -> description,
-              'price' => $request -> price,
-              'category' => $request -> category,
-              'status' => $request -> status,
-              'img_dish' => $fileName
-            ]);
+                'name' => $request -> name,
+                'description' => $request -> description,
+                'price' => $request -> price,
+                'category' => $request -> category,
+                'status' => $request -> status,
+                /* 'img_dish' => $fileName */
+                ]);
     
             $editDish -> user() -> associate($user);
             $editDish -> category() -> associate($category);
     
             $editDish -> save();
-        }
 
 
         return redirect() -> route('dish-index');
@@ -165,7 +165,7 @@ class DishController extends Controller
     private function conversion($request) {
 
         $request -> validate([
-            'price' => 'required|integer|min:1|max:999|digits_between:1,3'
+            'price' => 'required|min:1|max:99999'
         ]);
 
         $price = $request -> get('price') * 100;

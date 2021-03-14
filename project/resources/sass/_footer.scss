@@ -3,7 +3,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    background-image: linear-gradient(to right bottom, aqua, #019191);
+    background-image: linear-gradient(to right bottom, #666564, #919191);
 
     .box_ {
         //width: 25%;
@@ -38,9 +38,10 @@
 }
 
 .footer_down {
+    padding: 2.5px 0;
     text-align: center;
     font-size: 1.5rem;
-    background-image: linear-gradient(to right bottom, aqua, #019191);
+    background-image: linear-gradient(to right bottom, #666564, #919191);
     p {
         margin: 0;
     }

@@ -2,30 +2,33 @@
 
 @section('content')
 
-    <h1>
-        lista degli ordini
-        <a href="{{route('order-stats')}}" class="btn btn-primary btn-lg">statistiche</a> 
-    </h1>
+    <div class="order-index-box">
 
+        <h1>I tuoi ordini</h1> <br>
+        <hr>
         @foreach ($orders as $order)  
             <ul>
                 @foreach ($order -> dishes as $dish)
                     @if (Auth::user() -> id === $dish -> user_id)       
-                        <li> 
+                        <li class="order-li"> 
                             @if ($loop -> parent -> count)
-                                
-                                
+           
                                 <a href="{{route('order-show', $order -> id)}}">
-                                    - {{$order -> firstname}} {{$order -> lastname}} - {{$order -> total_price}}€   /   {{$order -> created_at}}
+                                    {{$order -> firstname}} {{$order -> lastname}} - {{$order -> total_price}}€ <br> {{$order -> created_at}}
                                 </a> 
-                                
+
                             @break
                             @endif
                         </li>
+
                     @endif
                 @endforeach
             </ul>                        
         @endforeach
+    </div>
+    <div class="dashboard__box--flex--menu--left">
+        <a href="{{route('home')}}" class="go-back">Torna alla home</a>
+    </div>
     
 @endsection 
  
