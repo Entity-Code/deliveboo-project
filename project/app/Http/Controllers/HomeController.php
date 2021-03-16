@@ -35,17 +35,11 @@ class HomeController extends Controller
         return redirect() -> route('home');
   
     }
-  
-
-
 
     //upload img
     public function updateLogo(Request $request) {
-        //DA FARE PER VERIFICARE CHE FUNZIONI TUTTO
-        //prendo l'icona inserita dall'utente
         $data = $request -> all();
         
-        //usiamo la funzione file('colonna') per passare i dati 'complessi', in questo caso un immagine
         $image = $request -> file('logo');
         //dd($data, $image); 
 	

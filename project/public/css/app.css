@@ -979,6 +979,10 @@ select {
   border: 2px solid red;
 }
 
+.dashboard__box--flex--right .order {
+  margin-bottom: 50px;
+}
+
 .dashboard__box--flex--img {
   width: 100%;
   background-image: linear-gradient(to right bottom, rgba(235, 231, 231, 0.5), rgba(149, 150, 146, 0.5)), url(/images/dashboard3.jpg?496375497bbfc465b7a4312b9c713088);

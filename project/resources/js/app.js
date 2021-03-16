@@ -20,20 +20,16 @@ function init() {
             //FILTER
                 //typs in check
                 data: [],
-
                 //value input checkbox
                 checkedNames: [],
-
                 //ristoranti
                 users: [],
 //------------------------------------------------
             //CART
                 categories: [],
-                dishes: [],
-                
+                dishes: [],         
                 page: "dishes",
-                cart: [],
-                
+                cart: [],          
                 id: 0,
                 //quantità totale
                 totCart: 0,
@@ -46,7 +42,6 @@ function init() {
                 active: false
             }
         },
-
         mounted: function () {
             localStorage.clear();
             //console.log(this.cart)
@@ -59,8 +54,7 @@ function init() {
             //passaggio Cart
             if (localStorage.cart) {
                 this.cart = JSON.parse(localStorage.cart);
-            }
-            
+            }           
         },
         watch: {
             totPrice(newPrice) {                
@@ -69,105 +63,76 @@ function init() {
             cart(newCart) {
                 localStorage.cart = JSON.stringify(newCart);
             }
-        },
-        
-        methods: {
-            
-            getData: function () {
-                
+        },     
+        methods: {       
+            getData: function () {          
                 //filter
                 axios.get('http://localhost:8000/typs/filter')
                     .then(res => {
-
                         //typs per le checkbox (search)
                         this.data = res.data.typs;
-
                         //restaurants
                         this.users = res.data.users;
                         console.log(this.users);
-
                         //ciclo ogni oggetto e gli aggiungo la chiave filtered = true di default;
                         //che utilizzo in filtraggio()
                         for (let key in this.users) {
                             this.users[key].filtered = true;
                             //console.log(this.data[key]);
                         }
-
                     }).catch((err) => {
                         console.log(err);
                     });
-                
+         
                 //cart
                 axios.get('http://localhost:8000/index/menu/' + this.id)
-                    .then(res => {
-                       
+                    .then(res => {           
                         //categories
                         this.categories = res.data.categories;
-                        console.log(this.categories);
-                        
+                        console.log(this.categories);              
                         //dishes
                         this.dishes = res.data.dishes;
                         console.log(this.dishes);
-
                         for (const key in this.dishes) {
                             this.dishes[key].quantity = 1;
                         }
-                        
-
                     //console.log(this.cart);
                     }).catch((err) => {
                         
                         console.log(err);
-                    });
-                
-                
+                    });                
             },
             //filter methods
-            filtraggio: function () {
-                
+            filtraggio: function () {   
                 //console.log(this.checkedNames);
                 // ciclo user in users
                 this.users.forEach(user => {
-
                     //count
                     var n = 0;
                     user.typologies.forEach(typ => {
-
                         var typName = typ.name;
 
                         if (this.checkedNames.includes(typName)){
-
                             n = n + 1; 
                         }
 
                     });
-
                     if (n == this.checkedNames.length || this.checkedNames == '') {
 
                         user.filtered = true;                        
                     } else {
 
                         user.filtered = false;
-                    }         
-                    
-                });
-            
+                    }           
+                });  
             },
             getUrl: function () {
-
                 var currentUrl = window.location.pathname;
                 var idUrl = currentUrl.replace('/show/menu/', '');
-
                 this.id = idUrl;
-
             },
-
-
-
-
             //cart methods
-            navigateTo: function (page) {
-    
+            navigateTo: function (page) { 
                 this.page = page;
             },
             addItemToCart: function (dish) {
@@ -177,8 +142,7 @@ function init() {
                 } else {                  
                     this.cart.push(dish);
                     console.log(this.cart);
-                }
-                
+                }        
                 //quantità totale
                 this.totCart++;  
                 //prezzo totale
@@ -191,29 +155,18 @@ function init() {
                 }
                 
             },
-            removeItemFromCart: function (dish) {
-                
+            removeItemFromCart: function (dish) {             
                 this.$delete(this.cart, dish);
-
                 dish.quantity--;
-
                 this.totCart--;
                 this.totPrice -= dish.price;
             },
-
             checkoutVisibility: function () {
                 
                 this.isHidden = !this.isHidden;
             },
-
-
         }
-
-        
-
-
     });
-
 }
 
 

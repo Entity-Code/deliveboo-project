@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
-    
     protected $fillable = [
         'firstname',
         'lastname',
@@ -16,10 +15,8 @@ class Payment extends Model
         'status',
         'note'
     ];
-
     public function dishes() {
         
         return $this -> belongsToMany(Dish::class);
     }
-
 }
